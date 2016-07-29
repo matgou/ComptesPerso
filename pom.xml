@@ -16,6 +16,11 @@
             <artifactId>spring-webmvc</artifactId>
             <version>${springframework.version}</version>
         </dependency>
+	<dependency>
+	    <groupId>log4j</groupId>
+	    <artifactId>log4j</artifactId>
+	    <version>1.2.17</version>
+	</dependency>
  
         <!-- Below declared dependencies are included for the servers who may complain about servlet/jstl missing dependency -->
         <dependency>
