@@ -51,4 +51,5 @@
         </pluginManagement>
         <finalName>ComptesPerso</finalName>
     </build>
+    <packaging>war</packaging>
 </project>
