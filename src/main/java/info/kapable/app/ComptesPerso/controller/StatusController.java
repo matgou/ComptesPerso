@@ -16,7 +16,7 @@ import java.util.Calendar;
  * @author Johanna
  *
  */
-public class statusController {
+public class StatusController {
  
     @RequestMapping(method = RequestMethod.GET)
     public String sayStatus(ModelMap model) {
