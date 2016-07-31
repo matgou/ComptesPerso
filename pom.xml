@@ -7,21 +7,78 @@
   <description>Application de gestion des Comptes</description>
   
   <properties>
-  	<springframework.version>4.0.6.RELEASE</springframework.version>
+  	<springframework.version>4.3.1.RELEASE</springframework.version>
+        <hibernate.version>5.0.1.Final</hibernate.version>
   </properties>
   
   <dependencies>
+	<!-- Spring Framework -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
             <version>${springframework.version}</version>
         </dependency>
 	<dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${springframework.version}</version>
+	</dependency>
+	<dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>${springframework.version}</version>
+	</dependency>
+
+	<!-- Log -->
+	<dependency>
 	    <groupId>log4j</groupId>
 	    <artifactId>log4j</artifactId>
 	    <version>1.2.17</version>
 	</dependency>
  
+	<!-- Hibernate -->
+	<dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate.version}</version>
+	</dependency>
+	<dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>${hibernate.version}</version>
+	</dependency>
+	<dependency>
+            <groupId>org.hibernate.common</groupId>
+            <artifactId>hibernate-commons-annotations</artifactId>
+            <version>${hibernate.version}</version>
+	</dependency>
+	<dependency>
+            <groupId>org.hibernate.javax.persistence</groupId>
+            <artifactId>hibernate-jpa-2.0-api</artifactId>
+            <version>1.0.1.Final</version>
+	</dependency>
+	<dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>5.0.1.Final</version>
+	</dependency>
+	<dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>1.0.0.GA</version>
+	</dependency>
+
+	<dependency>
+	    <groupId>org.hsqldb</groupId>
+	    <artifactId>hsqldb</artifactId>
+	    <version>2.3.4</version>
+	</dependency>
+	<dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.10</version>
+	</dependency>
+
         <!-- Below declared dependencies are included for the servers who may complain about servlet/jstl missing dependency -->
         <dependency>
             <groupId>javax.servlet</groupId>
