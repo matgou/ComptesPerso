@@ -1,0 +1,22 @@
+package info.kapable.app.ComptesPerso.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.TransactionStatus;
+
+import info.kapable.app.ComptesPerso.dao.FoyerDAO;
+import info.kapable.app.ComptesPerso.pojo.Foyer;
+
+@Service
+public class FoyerServiceImpl implements FoyerService {
+
+	   @Autowired
+	   protected FoyerDAO foyerDAO;
+	   
+	   public Foyer newFoyer(String name) {
+		   Foyer foyer = new Foyer(name);
+		   this.foyerDAO.save(foyer);
+		   return foyer;
+	   }
+}

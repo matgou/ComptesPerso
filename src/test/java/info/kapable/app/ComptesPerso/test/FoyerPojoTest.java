@@ -14,6 +14,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.context.ApplicationContext;
 
 import info.kapable.app.ComptesPerso.pojo.Foyer;
+import info.kapable.app.ComptesPerso.service.FoyerService;
 
 /**
  * @author Mathieu
@@ -23,7 +24,7 @@ import info.kapable.app.ComptesPerso.pojo.Foyer;
 @ContextConfiguration(locations = {"/services-test-config.xml"})
 public class FoyerPojoTest {
 	@Autowired
-	ApplicationContext context;
+	FoyerService foyerService;
 
 	/**
 	 * @throws java.lang.Exception
@@ -34,5 +35,7 @@ public class FoyerPojoTest {
 
 	@Test
 	public void createFoyerTest() {
+		Foyer foyerTest1 = this.foyerService.newFoyer("foyerTest1");
+		assertTrue(foyerTest1.getName().equals("foyerTest1"));
 	}
 }
