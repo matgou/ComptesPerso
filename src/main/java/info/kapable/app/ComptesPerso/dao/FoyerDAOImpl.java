@@ -8,4 +8,9 @@ import info.kapable.app.ComptesPerso.pojo.Foyer;
 @Repository
 @Transactional
 public class FoyerDAOImpl extends AbstractDAO<Foyer> implements FoyerDAO {
+
+	@Override
+	public Foyer get(Long id) {
+		return this.sessionFactory.getCurrentSession().load(Foyer.class, id);
+	}
 }

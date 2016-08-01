@@ -35,7 +35,30 @@ public class FoyerPojoTest {
 
 	@Test
 	public void createFoyerTest() {
+		/**
+		 * Test creation
+		 */
 		Foyer foyerTest1 = this.foyerService.newFoyer("foyerTest1");
 		assertTrue(foyerTest1.getName().equals("foyerTest1"));
+		assertTrue(foyerTest1.getId() != null);
+		
+		/**
+		 * Test loading
+		 */
+		Long id = foyerTest1.getId();
+		
+		Foyer foyerTest2 = this.foyerService.getFoyer(id);
+		assertTrue(foyerTest2.getName().equals("foyerTest1"));
+		
+		/**
+		 * Update must conserve id
+		 */
+		foyerTest2.setName("FoyerTest2");
+		this.foyerService.updateFoyer(foyerTest2);
+		
+		Foyer foyerTest3 = this.foyerService.getFoyer(id);
+		assertTrue(foyerTest3.getName().equals("foyerTest2"));
+		assertTrue(foyerTest3.getId() == id);
+		
 	}
 }

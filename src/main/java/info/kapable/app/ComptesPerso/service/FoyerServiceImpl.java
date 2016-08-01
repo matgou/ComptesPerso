@@ -19,4 +19,16 @@ public class FoyerServiceImpl implements FoyerService {
 		   this.foyerDAO.save(foyer);
 		   return foyer;
 	   }
+
+	@Override
+	public Foyer getFoyer(Long id) {
+		
+		return this.foyerDAO.get(id);
+	}
+
+	@Override
+	public void updateFoyer(Foyer foyer) {
+		this.foyerDAO.save(foyer);
+		
+	}
 }
