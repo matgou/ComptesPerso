@@ -17,4 +17,9 @@ public class AccountDAOImpl extends AbstractDAO<Account> implements AccountDAO {
 		List<Account> list = this.sessionFactory.getCurrentSession().createCriteria(Account.class).list();
 		return list;
 	}
+
+	@Override
+	public Account get(Long id) {
+		return this.sessionFactory.getCurrentSession().load(Account.class, id);
+	}
 }

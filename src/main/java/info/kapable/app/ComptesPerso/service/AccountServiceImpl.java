@@ -17,4 +17,9 @@ public class AccountServiceImpl implements AccountService {
 	public List<Account> getAccountForUser(String username) {
 		return this.accountDAO.getAll();
 	}
+
+	@Override
+	public Account get(Long id) {
+		return this.accountDAO.get(id);
+	}
 }

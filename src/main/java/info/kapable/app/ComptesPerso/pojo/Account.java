@@ -7,8 +7,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Proxy;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "COMPTE")
+@JsonIgnoreProperties(ignoreUnknown = false)
+@Proxy(lazy = false) 
 /**
  * Un foyer est un ensemble de comptes associé a des utilisateur
  * 

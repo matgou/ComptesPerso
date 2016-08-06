@@ -13,6 +13,14 @@
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
 		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
 		crossorigin="anonymous"></script>
-	<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-</body>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-route.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-resource.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/js/account/account.service.js"></script>
+	<script src="<%=request.getContextPath()%>/js/dashboard.js"></script>
+</body>	
 </html>
