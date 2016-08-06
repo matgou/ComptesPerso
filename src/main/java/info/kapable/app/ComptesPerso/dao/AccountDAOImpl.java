@@ -9,7 +9,6 @@ import info.kapable.app.ComptesPerso.pojo.Account;
 import info.kapable.app.ComptesPerso.pojo.Foyer;
 
 @Repository
-@Transactional
 public class AccountDAOImpl extends AbstractDAO<Account> implements AccountDAO {
 
 	@Override

@@ -11,6 +11,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.context.ApplicationContext;
 
 import info.kapable.app.ComptesPerso.pojo.Foyer;
@@ -22,6 +23,7 @@ import info.kapable.app.ComptesPerso.service.FoyerService;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"/services-test-config.xml"})
+@Transactional
 public class FoyerPojoTest {
 	@Autowired
 	FoyerService foyerService;
@@ -57,7 +59,8 @@ public class FoyerPojoTest {
 		this.foyerService.updateFoyer(foyerTest2);
 		
 		Foyer foyerTest3 = this.foyerService.getFoyer(id);
-		assertTrue(foyerTest3.getName().equals("foyerTest2"));
+		System.out.println(foyerTest3.getName());
+		assertTrue(foyerTest3.getName().equals("FoyerTest2"));
 		assertTrue(foyerTest3.getId() == id);
 		
 	}

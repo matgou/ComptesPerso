@@ -6,7 +6,6 @@ import org.springframework.transaction.annotation.Transactional;
 import info.kapable.app.ComptesPerso.pojo.Foyer;
 
 @Repository
-@Transactional
 public class FoyerDAOImpl extends AbstractDAO<Foyer> implements FoyerDAO {
 
 	@Override

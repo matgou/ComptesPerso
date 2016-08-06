@@ -13,15 +13,14 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "COMPTE")
-@JsonIgnoreProperties(ignoreUnknown = false)
-@Proxy(lazy = false) 
+@JsonIgnoreProperties(ignoreUnknown = false) 
 /**
  * Un foyer est un ensemble de comptes associé a des utilisateur
  * 
  * @author matgou
  *
  */
-public class Account {
+public class Account extends Pojo {
 	private Long id;
 	private String label;
 	private boolean enable;

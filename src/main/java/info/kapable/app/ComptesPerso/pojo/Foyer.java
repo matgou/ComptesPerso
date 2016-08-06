@@ -7,18 +7,26 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Proxy;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "FOYER")
+@JsonIgnoreProperties(ignoreUnknown = false)
 /**
  * Un foyer est un ensemble de comptes associé a des utilisateur
  * 
  * @author matgou
  *
  */
-public class Foyer {
+public class Foyer extends Pojo {
 	private Long id;
 	private String name;
 
+	public Foyer() {
+		this(null);
+	}
 	public Foyer(String name) {
 		this.name = name;
 	}
