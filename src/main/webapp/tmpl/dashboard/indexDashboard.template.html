@@ -1,5 +1,5 @@
 	<h1 class="page-header">Dashboard</h1>
-
+	<div class="edit-modal" ng-include="editModalTemplate"></div>
 	<div class="row placeholders">
 		<div class="col-xs-6 col-sm-3 placeholder">
 			<img
@@ -34,5 +34,4 @@
 			<span class="text-muted">Something else</span>
 		</div>
 	</div>
-	
-    <div class="list-account" ng-include="appliContext + 'tmpl/account/list.template.html'"></div>
+    <div class="list-account" ng-include="'tmpl/account/list.template.html'"></div>
