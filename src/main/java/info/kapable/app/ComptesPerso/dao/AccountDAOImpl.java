@@ -12,12 +12,14 @@ import info.kapable.app.ComptesPerso.pojo.Foyer;
 public class AccountDAOImpl extends AbstractDAO<Account> implements AccountDAO {
 
 	@Override
+	@Transactional
 	public List<Account> getAll() {
 		List<Account> list = this.sessionFactory.getCurrentSession().createCriteria(Account.class).list();
 		return list;
 	}
 
 	@Override
+	@Transactional
 	public Account get(Long id) {
 		return this.sessionFactory.getCurrentSession().load(Account.class, id);
 	}
