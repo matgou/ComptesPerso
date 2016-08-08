@@ -3,29 +3,29 @@ package info.kapable.app.ComptesPerso.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import info.kapable.app.ComptesPerso.dao.FoyerDAO;
-import info.kapable.app.ComptesPerso.pojo.Foyer;
+import info.kapable.app.ComptesPerso.dao.HomeDAO;
+import info.kapable.app.ComptesPerso.pojo.Home;
 
 @Service
-public class FoyerServiceImpl implements FoyerService {
+public class HomeServiceImpl implements HomeService {
 
 	@Autowired
-	protected FoyerDAO foyerDAO;
+	protected HomeDAO foyerDAO;
 
-	public Foyer newFoyer(String name) {
-		Foyer foyer = new Foyer(name);
+	public Home newFoyer(String name) {
+		Home foyer = new Home(name);
 		this.foyerDAO.save(foyer);
 		return foyer;
 	}
 
 	@Override
-	public Foyer getFoyer(Long id) {
+	public Home getFoyer(Long id) {
 
 		return this.foyerDAO.get(id);
 	}
 
 	@Override
-	public void updateFoyer(Foyer foyer) {
+	public void updateFoyer(Home foyer) {
 		this.foyerDAO.save(foyer);
 
 	}

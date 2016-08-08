@@ -1,12 +1,12 @@
 package info.kapable.app.ComptesPerso.service;
 
-import info.kapable.app.ComptesPerso.pojo.Foyer;
+import info.kapable.app.ComptesPerso.pojo.Home;
 
 /**
  * Service to access on foyer ressources
  * @author matgou
  */
-public interface FoyerService {
+public interface HomeService {
 
 	/**
 	 * Create a new foyer from string
@@ -14,7 +14,7 @@ public interface FoyerService {
 	 * @param name
 	 * @return the new foyer
 	 */
-	public Foyer newFoyer(String name);
+	public Home newFoyer(String name);
 
 	/**
 	 * Return the foyer of given id
@@ -22,12 +22,12 @@ public interface FoyerService {
 	 * @param id
 	 * @return
 	 */
-	public Foyer getFoyer(Long id);
+	public Home getFoyer(Long id);
 
 	/**
 	 * Update a foyer
 	 * 
 	 * @param foyer
 	 */
-	public void updateFoyer(Foyer foyer);
+	public void updateFoyer(Home foyer);
 }

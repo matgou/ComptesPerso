@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import info.kapable.app.ComptesPerso.pojo.Account;
-import info.kapable.app.ComptesPerso.pojo.Foyer;
+import info.kapable.app.ComptesPerso.pojo.Home;
 
 @Repository
 public class AccountDAOImpl extends AbstractDAO<Account> implements AccountDAO {

@@ -1,10 +1,14 @@
 package info.kapable.app.ComptesPerso.pojo;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Proxy;
@@ -21,11 +25,16 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  *
  */
 public class Account extends Pojo {
+
+	/* Private properties */
 	private Long id;
 	private String label;
-	private boolean enable;
+	private boolean enable = true;
 	private Integer type;
 	private Double intialValue;
+	
+	/* Link to object */
+	private List<Transaction> transactions;
 	
 
 	/**
@@ -45,7 +54,7 @@ public class Account extends Pojo {
 	 * @return the label
 	 */
 
-	@Column(name = "LIBELLE")
+	@Column(name = "LIBELLE", nullable = false)
 	public String getLabel() {
 		return label;
 	}
@@ -60,7 +69,7 @@ public class Account extends Pojo {
 	/**
 	 * @return the enable
 	 */
-	@Column(name = "COMPTE_ACTIF")
+	@Column(name = "COMPTE_ACTIF", nullable = false)
 	public boolean isEnable() {
 		return enable;
 	}
@@ -75,7 +84,7 @@ public class Account extends Pojo {
 	/**
 	 * @return the type
 	 */
-	@Column(name = "TYPE_COMPTE")
+	@Column(name = "TYPE_COMPTE", nullable = false)
 	public Integer getType() {
 		return type;
 	}
@@ -90,7 +99,7 @@ public class Account extends Pojo {
 	/**
 	 * @return the intialValue
 	 */
-	@Column(name = "SOLDE_INITIAL")
+	@Column(name = "SOLDE_INITIAL", nullable = false)
 	public Double getIntialValue() {
 		return intialValue;
 	}
@@ -100,6 +109,22 @@ public class Account extends Pojo {
 	 */
 	public void setIntialValue(Double intialValue) {
 		this.intialValue = intialValue;
+	}
+
+	/**
+	 * @return the transactions
+	 */
+    @OneToMany(mappedBy="account")
+    @OrderBy("date")
+	public List<Transaction> getTransactions() {
+		return transactions;
+	}
+
+	/**
+	 * @param transactions the transactions to set
+	 */
+	public void setTransactions(List<Transaction> transactions) {
+		this.transactions = transactions;
 	}
 
 

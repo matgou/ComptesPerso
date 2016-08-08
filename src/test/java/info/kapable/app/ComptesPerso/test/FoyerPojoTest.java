@@ -14,8 +14,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.context.ApplicationContext;
 
-import info.kapable.app.ComptesPerso.pojo.Foyer;
-import info.kapable.app.ComptesPerso.service.FoyerService;
+import info.kapable.app.ComptesPerso.pojo.Home;
+import info.kapable.app.ComptesPerso.service.HomeService;
 
 /**
  * @author Mathieu
@@ -26,7 +26,7 @@ import info.kapable.app.ComptesPerso.service.FoyerService;
 @Transactional
 public class FoyerPojoTest {
 	@Autowired
-	FoyerService foyerService;
+	HomeService foyerService;
 
 	/**
 	 * @throws java.lang.Exception
@@ -40,7 +40,7 @@ public class FoyerPojoTest {
 		/**
 		 * Test creation
 		 */
-		Foyer foyerTest1 = this.foyerService.newFoyer("foyerTest1");
+		Home foyerTest1 = this.foyerService.newFoyer("foyerTest1");
 		assertTrue(foyerTest1.getName().equals("foyerTest1"));
 		assertTrue(foyerTest1.getId() != null);
 		
@@ -49,7 +49,7 @@ public class FoyerPojoTest {
 		 */
 		Long id = foyerTest1.getId();
 		
-		Foyer foyerTest2 = this.foyerService.getFoyer(id);
+		Home foyerTest2 = this.foyerService.getFoyer(id);
 		assertTrue(foyerTest2.getName().equals("foyerTest1"));
 		
 		/**
@@ -58,7 +58,7 @@ public class FoyerPojoTest {
 		foyerTest2.setName("FoyerTest2");
 		this.foyerService.updateFoyer(foyerTest2);
 		
-		Foyer foyerTest3 = this.foyerService.getFoyer(id);
+		Home foyerTest3 = this.foyerService.getFoyer(id);
 		System.out.println(foyerTest3.getName());
 		assertTrue(foyerTest3.getName().equals("FoyerTest2"));
 		assertTrue(foyerTest3.getId() == id);

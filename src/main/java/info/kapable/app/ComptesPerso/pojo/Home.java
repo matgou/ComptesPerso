@@ -20,14 +20,14 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * @author matgou
  *
  */
-public class Foyer extends Pojo {
+public class Home extends Pojo {
 	private Long id;
 	private String name;
 
-	public Foyer() {
+	public Home() {
 		this(null);
 	}
-	public Foyer(String name) {
+	public Home(String name) {
 		this.name = name;
 	}
 
