@@ -13,11 +13,16 @@ public class TransactionServiceImpl implements TransactionService {
 
 	@Override
 	public Transaction getTransaction(Long id) {
-		return this.transactionDAO.get(id);
+		return this.transactionDAO.findOne(id);
 	}
 
 	@Override
 	public void updateTransaction(Transaction transaction) {
+		this.transactionDAO.save(transaction);
+	}
+
+	@Override
+	public void save(Transaction transaction) {
 		this.transactionDAO.save(transaction);
 	}
 }

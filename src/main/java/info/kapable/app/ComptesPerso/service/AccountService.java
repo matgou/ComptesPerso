@@ -13,4 +13,6 @@ public interface AccountService {
 	List<Account> getAccountForUser(String username);
 
 	Account get(Long id);
+
+	void save(Account a);
 }

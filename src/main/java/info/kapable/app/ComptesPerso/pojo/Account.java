@@ -4,12 +4,14 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.Proxy;
 
@@ -17,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "COMPTE")
-@JsonIgnoreProperties(ignoreUnknown = false) 
+@JsonIgnoreProperties(ignoreUnknown = false)
 /**
  * Un foyer est un ensemble de comptes associé a des utilisateur
  * 
@@ -26,16 +28,18 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  */
 public class Account extends Pojo {
 
+	/* STATIC PARAM */
+	public static final Integer TYPE_COMPTE_COURANT = 1;
+
 	/* Private properties */
 	private Long id;
 	private String label;
 	private boolean enable = true;
 	private Integer type;
 	private Double intialValue;
-	
+
 	/* Link to object */
 	private List<Transaction> transactions;
-	
 
 	/**
 	 * Getter and Setter
@@ -60,7 +64,8 @@ public class Account extends Pojo {
 	}
 
 	/**
-	 * @param label the label to set
+	 * @param label
+	 *            the label to set
 	 */
 	public void setLabel(String label) {
 		this.label = label;
@@ -75,7 +80,8 @@ public class Account extends Pojo {
 	}
 
 	/**
-	 * @param enable the enable to set
+	 * @param enable
+	 *            the enable to set
 	 */
 	public void setEnable(boolean enable) {
 		this.enable = enable;
@@ -90,7 +96,8 @@ public class Account extends Pojo {
 	}
 
 	/**
-	 * @param type the type to set
+	 * @param type
+	 *            the type to set
 	 */
 	public void setType(Integer type) {
 		this.type = type;
@@ -105,7 +112,8 @@ public class Account extends Pojo {
 	}
 
 	/**
-	 * @param intialValue the intialValue to set
+	 * @param intialValue
+	 *            the intialValue to set
 	 */
 	public void setIntialValue(Double intialValue) {
 		this.intialValue = intialValue;
@@ -114,18 +122,58 @@ public class Account extends Pojo {
 	/**
 	 * @return the transactions
 	 */
-    @OneToMany(mappedBy="account")
-    @OrderBy("date")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "account")
+	@OrderBy("date")
 	public List<Transaction> getTransactions() {
 		return transactions;
 	}
 
 	/**
-	 * @param transactions the transactions to set
+	 * @param transactions
+	 *            the transactions to set
 	 */
 	public void setTransactions(List<Transaction> transactions) {
 		this.transactions = transactions;
 	}
 
+	/**
+	 * Return current balance of account with all transaction
+	 * @return
+	 */
+	@Transient
+	public double getRealBalance() {
+		Double realBalance = this.intialValue;
+		for (Transaction t : this.getTransactions()) {
+			if (t.getCredit() != null) {
+				realBalance = realBalance + t.getCredit();
+			}
+			if (t.getDebit() != null) {
+				realBalance = realBalance - t.getDebit();
+			}
+
+		}
+		return realBalance;
+	}
+
+	/**
+	 * Return current balance of account with only pointed transaction
+	 * @return
+	 */
+	@Transient
+	public double getPointedBalance() {
+		Double pointedBalance = this.intialValue;
+		for (Transaction t : this.getTransactions()) {
+			if (t.getPointedTransaction()) {
+				if (t.getCredit() != null) {
+					pointedBalance = pointedBalance + t.getCredit();
+				}
+				if (t.getDebit() != null) {
+					pointedBalance = pointedBalance - t.getDebit();
+				}
+			}
+
+		}
+		return pointedBalance;
+	}
 
 }

@@ -1,12 +1,10 @@
 package info.kapable.app.ComptesPerso.dao;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
 import info.kapable.app.ComptesPerso.pojo.Home;
-import info.kapable.app.ComptesPerso.pojo.Pojo;
 
-public interface HomeDAO {
-
-	void save(Pojo o);
-
-	Home get(Long id);
-	
+@Repository
+public interface HomeDAO extends JpaRepository<Home, Long> {	
 }

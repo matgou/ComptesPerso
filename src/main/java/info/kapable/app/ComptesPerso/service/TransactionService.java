@@ -22,4 +22,10 @@ public interface TransactionService {
 	 * @param foyer
 	 */
 	public void updateTransaction(Transaction transaction);
+
+	/**
+	 * Basic save trasaction
+	 * @param t
+	 */
+	public void save(Transaction t);
 }

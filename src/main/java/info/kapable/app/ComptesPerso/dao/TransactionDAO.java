@@ -2,14 +2,11 @@ package info.kapable.app.ComptesPerso.dao;
 
 import java.util.List;
 
-import info.kapable.app.ComptesPerso.pojo.Pojo;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
 import info.kapable.app.ComptesPerso.pojo.Transaction;
 
-public interface TransactionDAO {
-
-	void save(Pojo o);
-
-	List<Transaction> getAll();
-
-	Transaction get(Long id);
+@Repository
+public interface TransactionDAO extends JpaRepository<Transaction, Long> {
 }

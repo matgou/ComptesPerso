@@ -21,7 +21,7 @@ public class HomeServiceImpl implements HomeService {
 	@Override
 	public Home getFoyer(Long id) {
 
-		return this.foyerDAO.get(id);
+		return this.foyerDAO.findOne(id);
 	}
 
 	@Override

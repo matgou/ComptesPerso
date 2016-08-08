@@ -1,12 +1,10 @@
 package info.kapable.app.ComptesPerso.dao;
 
-import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import info.kapable.app.ComptesPerso.pojo.Account;
 
-public interface AccountDAO {
-
-	List<Account> getAll();
-
-	Account get(Long id);
+@Repository
+public interface AccountDAO extends JpaRepository<Account, Long> {
 }
