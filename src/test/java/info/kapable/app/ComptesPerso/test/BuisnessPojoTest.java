@@ -98,12 +98,12 @@ public class BuisnessPojoTest {
 		Long tId = t.getId();
 		
 		// Verification du calcul de la balance
-		assertTrue(a.getRealBalance() == 10.);
-		assertTrue(a.getPointedBalance() == 0.);
+		assertTrue(this.accountService.getRealBalance(a) == 10.);
+		assertTrue(this.accountService.getPointedBalance(a) == 0.);
 		
 		t.setPointedTransaction(true);
 		this.transactionService.updateTransaction(t);
-		assertTrue(a.getPointedBalance() == 10.);
+		assertTrue(this.accountService.getPointedBalance(a) == 10.);
 		
 	}
 }

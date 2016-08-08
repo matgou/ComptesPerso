@@ -135,45 +135,4 @@ public class Account extends Pojo {
 	public void setTransactions(List<Transaction> transactions) {
 		this.transactions = transactions;
 	}
-
-	/**
-	 * Return current balance of account with all transaction
-	 * @return
-	 */
-	@Transient
-	public double getRealBalance() {
-		Double realBalance = this.intialValue;
-		for (Transaction t : this.getTransactions()) {
-			if (t.getCredit() != null) {
-				realBalance = realBalance + t.getCredit();
-			}
-			if (t.getDebit() != null) {
-				realBalance = realBalance - t.getDebit();
-			}
-
-		}
-		return realBalance;
-	}
-
-	/**
-	 * Return current balance of account with only pointed transaction
-	 * @return
-	 */
-	@Transient
-	public double getPointedBalance() {
-		Double pointedBalance = this.intialValue;
-		for (Transaction t : this.getTransactions()) {
-			if (t.getPointedTransaction()) {
-				if (t.getCredit() != null) {
-					pointedBalance = pointedBalance + t.getCredit();
-				}
-				if (t.getDebit() != null) {
-					pointedBalance = pointedBalance - t.getDebit();
-				}
-			}
-
-		}
-		return pointedBalance;
-	}
-
 }

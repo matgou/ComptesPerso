@@ -25,11 +25,11 @@ public class Transaction extends Pojo {
 
 	/* Private properties */
 	private Long id;
-	private Double credit;
-	private Double debit;
+	private Double credit = 0.;
+	private Double debit = 0.;
 	private Date date; 
-	private String description;
-	private Boolean pointedTransaction;
+	private String description = "";
+	private Boolean pointedTransaction = false;
 	
 	/* Link */
 	private Account account;
@@ -56,7 +56,7 @@ public class Transaction extends Pojo {
 	/**
 	 * @return the credit
 	 */
-	@Column(name = "CREDIT", nullable = true)
+	@Column(name = "CREDIT", nullable = false)
 	public Double getCredit() {
 		return credit;
 	}
@@ -71,7 +71,7 @@ public class Transaction extends Pojo {
 	/**
 	 * @return the debit
 	 */
-	@Column(name = "DEBIT", nullable = true)
+	@Column(name = "DEBIT", nullable = false)
 	public Double getDebit() {
 		return debit;
 	}

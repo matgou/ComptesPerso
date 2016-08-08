@@ -27,4 +27,22 @@ public class AccountServiceImpl implements AccountService {
 	public void save(Account a) {
 		this.accountDAO.save(a);
 	}
+
+	@Override
+	public double getRealBalance(Account a) {
+		Double returnValue = this.accountDAO.getRealBalance(a);
+		if(returnValue == null) {
+			return 0.;
+		}
+		return returnValue;
+	}
+
+	@Override
+	public double getPointedBalance(Account a) {
+		Double returnValue = this.accountDAO.getPointedBalance(a);
+		if(returnValue == null) {
+			return 0.;
+		}
+		return returnValue;
+	}
 }

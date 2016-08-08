@@ -15,4 +15,8 @@ public interface AccountService {
 	Account get(Long id);
 
 	void save(Account a);
+
+	double getRealBalance(Account a);
+
+	double getPointedBalance(Account a);
 }
