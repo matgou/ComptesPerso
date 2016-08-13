@@ -1,0 +1,22 @@
+	<h2 class="sub-header">Tiers</h2>
+	<!-- Button trigger modal -->
+	<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  		Nouveau tiers
+	</button>
+	<div class="table-responsive">
+			<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Nom</th>
+					<th>Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="thirdParty in thirdParties">
+					<td><a href="" ng-click="handleEditClick(thirdParty)"></a></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+		

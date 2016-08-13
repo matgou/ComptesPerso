@@ -23,7 +23,10 @@ config(['$locationProvider', '$routeProvider',
           templateUrl: 'tmpl/crud/detail-edit.template.html'
       }).
       when('/operations', {
-          templateUrl: 'tmpl/operations/list.template.html'
+          templateUrl: 'tmpl/operation/list.template.html'
+      }).
+      when('/thirdParties', {
+          templateUrl: 'tmpl/thirdParty/list.template.html'
       }).
       otherwise('/');
   }
@@ -31,7 +34,7 @@ config(['$locationProvider', '$routeProvider',
 
 /******************************************************************************/
 /**
- * This service is to access on Account buisness ressources via rest
+ * This service is to access on Account business ressources via rest
  */
 comptesPerso.service('Account', ['$resource', function($resource) {
 	return $resource('accounts/:accountId.json', {}, {
