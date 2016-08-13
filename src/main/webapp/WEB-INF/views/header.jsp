@@ -42,24 +42,33 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="<%=request.getContextPath()%>">ComptesPerso</a>
+			<a class="navbar-brand" href="#!/">ComptesPerso</a>
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#">Dashboard</a></li>
 				<li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings <span class="caret"></span></a>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Configuration <span class="caret"></span></a>
                   <ul class="dropdown-menu">
-                    <li><a href="<%=request.getContextPath()%>/accounts">Compte</a></li>
-                    <li><a href="#">Categories</a></li>
-                    <li><a href="#">Moyen Paiement</a></li>
-                    <li><a href="#">Mod&egrave;le op&eacute;ration</a></li>
+                  	<li class="dropdown-header">COMPTES</li>
+                    <li><a href="#!/accounts">Liste des comptes</a></li>
+                    <li><a href="#">Moyens de paiement</a></li>
+                    <li><a href="#">Rapprochements</a></li> 
                     <li role="separator" class="divider"></li>
-                    <li class="dropdown-header">ARCHIVES</li>
+                    <li class="dropdown-header">APPLICATION</li>
+                    <li><a href="#">Catégories</a></li>
+                    <li><a href="#">Mod&egrave;les d'op&eacute;ration</a></li>                                     
                   </ul>
                 </li>
-				<li><a href="#">Profile</a></li>
-				<li><a href="#">Help</a></li>
+				<li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mon profil <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+					<li><a href="#">Aide</a></li>
+					<li role="separator" class="divider"></li>
+					<li><a href="#!/accounts">Paramètres</a></li>
+					<li><a href="#">Se déconnecter</a></li>
+                  </ul>
+                </li>
+
 			</ul>
 		</div>
 	</div>
@@ -69,23 +78,11 @@
 		<div class="row">
 			<div class="col-sm-3 col-md-2 sidebar">
 				<ul class="nav nav-sidebar">
-					<li class="active"><a href="#">Overview <span
+					<li class="active"><a href="#!/">Synthèse<span
 							class="sr-only">(current)</span></a></li>
-					<li><a href="#">Reports</a></li>
-					<li><a href="#">Analytics</a></li>
-					<li><a href="#">Export</a></li>
-				</ul>
-				<ul class="nav nav-sidebar">
-					<li><a href="">Mes comptes</a></li>
-					<li><a href="">Nav item again</a></li>
-					<li><a href="">One more nav</a></li>
-					<li><a href="">Another nav item</a></li>
-					<li><a href="">More navigation</a></li>
-				</ul>
-				<ul class="nav nav-sidebar">
-					<li><a href="">Nav item again</a></li>
-					<li><a href="">One more nav</a></li>
-					<li><a href="">Another nav item</a></li>
-				</ul>
+					<li><a href="#">Comptes</a></li>
+					<li><a href="#">Echéances</a></li>
+					<li><a href="#">Tiers</a></li>
+				</ul>		
 			</div>
 			
