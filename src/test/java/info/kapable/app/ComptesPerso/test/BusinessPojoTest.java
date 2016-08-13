@@ -30,7 +30,7 @@ import info.kapable.app.ComptesPerso.service.TransactionService;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"/services-test-config.xml"})
 @Transactional
-public class BuisnessPojoTest {
+public class BusinessPojoTest {
 	@Autowired
 	HomeService foyerService;
 	@Autowired
@@ -76,7 +76,7 @@ public class BuisnessPojoTest {
 
 
 	@Test
-	public void accountAndOpérationTest() {
+	public void accountAndOperationTest() {
 		Account a = new Account();
 		a.setIntialValue(.0);
 		a.setLabel("Compte de test unitaire");
