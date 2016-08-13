@@ -22,6 +22,9 @@ config(['$locationProvider', '$routeProvider',
       when('/accounts/:accountId', {
           templateUrl: 'tmpl/crud/detail-edit.template.html'
       }).
+      when('/operations', {
+          templateUrl: 'tmpl/operations/list.template.html'
+      }).
       otherwise('/');
   }
 ]);

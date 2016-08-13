@@ -1,0 +1,37 @@
+	<h2 class="sub-header">Opérations</h2>
+	<!-- Button trigger modal -->
+	<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  		Ajouter
+	</button>
+	<select name="accounts">
+		<option>PEL Johanna</option>
+		<option>PEL Mathieu</option>
+		<option>Compte courant</option>
+	</select>
+	<div class="table-responsive">
+			<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Date</th>
+					<th>Catégorie</th>
+					<th>Tiers</th>
+					<th>Description</th>
+					<th>Débit</th>
+					<th>Crédit</th>
+					<th>P/R</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="operation in operations">
+					<td><a href="" ng-click="handleEditClick(operation)"></a></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>&euro;</td>
+					<td>&euro;</td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+		

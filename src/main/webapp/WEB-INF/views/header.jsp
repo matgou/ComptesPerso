@@ -80,7 +80,7 @@
 				<ul class="nav nav-sidebar">
 					<li class="active"><a href="#!/">Synthèse<span
 							class="sr-only">(current)</span></a></li>
-					<li><a href="#">Comptes</a></li>
+					<li><a href="#!/operations">Opérations</a></li>
 					<li><a href="#">Echéances</a></li>
 					<li><a href="#">Tiers</a></li>
 				</ul>		
