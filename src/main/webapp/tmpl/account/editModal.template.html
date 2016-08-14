@@ -11,7 +11,11 @@
 			</div>
 			<div class="modal-body">
 					<form novalidate class="simple-form">
-						Nom du compte : <input type="text" ng-model="object.label" /><br />
+						Nom du compte : <input type="text" name="input-label" ng-model="object.label" /><br />
+						Solde Initial : <input type="text" name="input-initialValue" ng-model="object.intialValue" /><br />
+						Type : <select name="input-type" ng-model="object.type">
+							<option value="1">COMPTE COURANT</option>
+						</select><br />
 					</form>
 					<pre>account = {{object | json}}</pre>
 			</div>

@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "COMPTE")
-@JsonIgnoreProperties(ignoreUnknown = false)
+@JsonIgnoreProperties({"transactions"})
 /**
  * Un foyer est un ensemble de comptes associé a des utilisateur
  * 
@@ -134,5 +134,9 @@ public class Account extends Pojo {
 	 */
 	public void setTransactions(List<Transaction> transactions) {
 		this.transactions = transactions;
+	}
+	
+	public String toString() {
+		return "id: " + this.getId() + ", label: " + this.getLabel() + ", initialValue: " + this.getIntialValue();
 	}
 }

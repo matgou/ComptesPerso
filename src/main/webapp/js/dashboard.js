@@ -17,10 +17,8 @@ config(['$locationProvider', '$routeProvider',
         templateUrl: 'tmpl/dashboard/indexDashboard.template.html'
       }).
       when('/accounts', {
-          templateUrl: 'tmpl/crud/list.template.html'
-      }).
-      when('/accounts/:accountId', {
-          templateUrl: 'tmpl/crud/detail-edit.template.html'
+          controller: 'accountController',
+          templateUrl: 'tmpl/account/list.template.html'
       }).
       when('/operations', {
           templateUrl: 'tmpl/operation/list.template.html'
@@ -43,7 +41,8 @@ comptesPerso.service('Account', ['$resource', function($resource) {
           params: {accountId: 'accounts'},
           isArray: true
         }
-      });
+	
+      });	
 }]);
 /*
  * This service is for broadcast edit request to modal windows
@@ -54,6 +53,9 @@ comptesPerso.service('ModalService', ['$rootScope', function($rootScope) {
 		this.objectType = type;
 		this.object = object;
 	    this.broadcastItem();
+	};
+	ModalService.closeModal = function() {
+	    $rootScope.$broadcast('ModalClose');
 	};
 
 	ModalService.broadcastItem = function() {
@@ -76,15 +78,46 @@ comptesPerso.controller('indexDashboardController', [ '$scope','Account', 'Modal
     	$('#myModal').modal('show');
     };
 }]);
-
+/**
+ * This controller for account list
+ */
+comptesPerso.controller('accountController', [ '$scope','Account', 'ModalService', function dashboardController($scope, Account, modalService) {
+	editModalTemplate="tmpl/account/editModal.template.html";
+    $scope.accounts = Account.query();
+    $scope.handleEditClick = function(account) {
+    	console.log("ModalService.callModal('account', " + account + ");")
+    	modalService.callModal('account', account);
+    	$('#myModal').modal('show');
+    };
+    $scope.handleNewClick = function() {
+    	account = {};
+    	console.log("ModalService.callModal('account', " + account + ");")
+    	modalService.callModal('account', account);
+    	$('#myModal').modal('show');
+    };
+    $scope.$on('ModalClose', function() { 
+    	$scope.accounts = Account.query();
+    });
+}]);
 /**
  * This controller for modal view
  */
-comptesPerso.controller('editModalController', [ '$scope', 'ModalService', function dashboardController($scope, modalService) {
+comptesPerso.controller('editModalController', [ '$scope', 'Account', 'ModalService', function dashboardController($scope, Account, modalService) {
 	$scope.$on('ModalBroadcast', function() {
 		$scope.template="tmpl/" + modalService.objectType + "/editModal.template.html";
 		$scope.object=modalService.object;
-		
+		$scope.update = function(object) {
+			console.log("create/update : " + modalService.objectType);
+			if(modalService.objectType == "account") {
+				var account = new Account(object);
+				account.$save(function(user, putResponseHeaders) {
+					$scope.object=account;
+					modalService.closeModal();
+					$('#myModal').modal('hide');
+				});
+			}
+			
+		};
 		
 	});
 }]);

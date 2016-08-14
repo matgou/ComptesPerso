@@ -50,7 +50,7 @@
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Configuration <span class="caret"></span></a>
                   <ul class="dropdown-menu">
                   	<li class="dropdown-header">COMPTES</li>
-                    <li><a href="#!/account">Liste des comptes</a></li>
+                    <li><a href="#!/accounts">Liste des comptes</a></li>
                     <li><a href="#">Moyens de paiement</a></li>
                     <li><a href="#">Rapprochements</a></li> 
                     <li role="separator" class="divider"></li>

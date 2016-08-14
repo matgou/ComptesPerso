@@ -1,11 +1,13 @@
 package info.kapable.app.ComptesPerso.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import info.kapable.app.ComptesPerso.dao.AccountDAO;
 import info.kapable.app.ComptesPerso.pojo.Account;
+import info.kapable.app.ComptesPerso.pojo.AccountWithBalance;
 
 @Service
 public class AccountServiceImpl implements AccountService {
@@ -14,8 +16,15 @@ public class AccountServiceImpl implements AccountService {
 	protected AccountDAO accountDAO;
 
 	@Override
-	public List<Account> getAccountForUser(String username) {
-		return this.accountDAO.findAll();
+	public List<AccountWithBalance> getAccountForUser(String username) {
+		List<AccountWithBalance> returnList = new ArrayList<AccountWithBalance>();
+		List<Account> accountList = this.accountDAO.findAll();
+		for(Account account: accountList)
+		{
+			AccountWithBalance accountWithBalance = new AccountWithBalance(account, this.getRealBalance(account), this.getPointedBalance(account));
+			returnList.add(accountWithBalance);
+		}
+		return returnList;
 	}
 
 	@Override
