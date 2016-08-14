@@ -27,8 +27,8 @@ public class AccountController extends CrudController<Account> {
 	@Autowired
 	AccountService accountService;
     @RequestMapping(value="/accounts", method = RequestMethod.GET)
-    public List<AccountWithBalance> listWithBalance() {
-    	List<AccountWithBalance> accounts = this.accountService.getAccountForUser("matgou");
+    public List<Account> list() {
+    	List<Account> accounts = this.accountService.getAccountForUser("matgou");
     	return accounts;
     }
     
@@ -43,11 +43,5 @@ public class AccountController extends CrudController<Account> {
     @RequestMapping("/{id}")
 	public Account get(@PathVariable("id") String id) {
 		return this.accountService.get(Long.valueOf(id));
-	}
-
-	@Override
-	public List<Account> list() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 }

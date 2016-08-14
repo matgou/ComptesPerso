@@ -18,4 +18,12 @@ public abstract class CrudController<T> {
      * @return
      */
     public abstract T get(String id);
+    
+    /**
+     * Return the saved object
+     * 
+     * @param id
+     * @return
+     */
+    public abstract T save(T o);
 }

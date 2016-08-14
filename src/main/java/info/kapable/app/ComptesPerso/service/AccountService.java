@@ -11,7 +11,7 @@ import info.kapable.app.ComptesPerso.pojo.AccountWithBalance;
  */
 public interface AccountService {
 
-	List<AccountWithBalance> getAccountForUser(String username);
+	List<Account> getAccountForUser(String username);
 
 	Account get(Long id);
 
