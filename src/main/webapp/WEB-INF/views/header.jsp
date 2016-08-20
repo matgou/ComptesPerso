@@ -55,7 +55,7 @@
                     <li><a href="#">Rapprochements</a></li> 
                     <li role="separator" class="divider"></li>
                     <li class="dropdown-header">APPLICATION</li>
-                    <li><a href="#">Catégories</a></li>
+                    <li><a href="#!/categories">Catégories</a></li>
                     <li><a href="#">Mod&egrave;les d'op&eacute;ration</a></li>                                     
                   </ul>
                 </li>

@@ -1,0 +1,22 @@
+	<h2 class="sub-header">Categorie</h2>
+	<!-- Button trigger modal -->
+	<button type="button" ng-click="handleNewClick()" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  		Nouvelle categorie
+	</button>
+	<div class="table-responsive">
+			<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Description</th>
+					<th>Parent</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="category in categories">
+					<td><a href="" ng-click="handleEditClick(category)">{{ category.label }}</a></td>
+					<td>{{ category.parent.label}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+		

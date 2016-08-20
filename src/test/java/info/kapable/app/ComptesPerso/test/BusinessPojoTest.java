@@ -18,9 +18,11 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.context.ApplicationContext;
 
 import info.kapable.app.ComptesPerso.pojo.Account;
+import info.kapable.app.ComptesPerso.pojo.Category;
 import info.kapable.app.ComptesPerso.pojo.Home;
 import info.kapable.app.ComptesPerso.pojo.Transaction;
 import info.kapable.app.ComptesPerso.service.AccountService;
+import info.kapable.app.ComptesPerso.service.CategoryService;
 import info.kapable.app.ComptesPerso.service.HomeService;
 import info.kapable.app.ComptesPerso.service.TransactionService;
 
@@ -38,6 +40,8 @@ public class BusinessPojoTest {
 	AccountService accountService;
 	@Autowired
 	TransactionService transactionService;
+	@Autowired
+	CategoryService categoryService;
 
 	/**
 	 * @throws java.lang.Exception
@@ -75,9 +79,7 @@ public class BusinessPojoTest {
 		assertTrue(foyerTest3.getId() == id);
 	}
 
-
 	@Test
-	@Rollback(false)
 	public void accountAndOperationTest() {
 		Account a = new Account();
 		a.setIntialValue(.0);
@@ -107,5 +109,23 @@ public class BusinessPojoTest {
 		this.transactionService.save(t);
 		assertTrue(this.accountService.getPointedBalance(a) == 10.);
 		
+	}
+
+	@Test
+	public void categoryTest() {
+		Category c = new Category("Parent category 1");
+		
+		this.categoryService.save(c);
+		assertTrue(c.getId() != null);
+		
+		Category c2 = new Category("Child category 2");
+		c2.setParent(c);
+		this.categoryService.save(c2);
+		assertTrue(c2.getId() != null);
+		
+		Category c3 = new Category("Child category 3");
+		c3.setParent(c);
+		this.categoryService.save(c3);
+		assertTrue(c3.getId() != null);
 	}
 }

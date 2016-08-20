@@ -23,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 /**
  * Un foyer est un ensemble de comptes associé a des utilisateur
  * 
- * @author matgou
+ * @author Mathieu GOULIN <mathieu.goulin@gadz.org>
  *
  */
 public class Account extends Pojo {

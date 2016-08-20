@@ -3,10 +3,8 @@
 	<button type="button" ng-click="handleNewClick()" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
   		Nouvelle opération
 	</button>
-	<select name="operations">
-		<option>PEL Johanna</option>
-		<option>PEL Mathieu</option>
-		<option>Compte courant</option>
+	<select ng-model="selectedAccount" ng-change="update()">
+		<option ng-repeat="account in accounts" value="{{ account.id }}">{{ account.label }}</option>
 	</select>
 	<div class="table-responsive">
 			<table class="table table-striped">

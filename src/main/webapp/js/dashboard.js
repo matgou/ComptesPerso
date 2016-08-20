@@ -25,7 +25,12 @@ config(['$locationProvider', '$routeProvider',
           templateUrl: 'tmpl/operation/list.template.html'
       }).
       when('/thirdParties', {
+          controller: 'thirdPartyController',
           templateUrl: 'tmpl/thirdParty/list.template.html'
+      }).
+      when('/categories', {
+          controller: 'CategoryController',
+          templateUrl: 'tmpl/category/list.template.html'
       }).
       otherwise('/');
   }
@@ -54,10 +59,41 @@ comptesPerso.service('Operation', ['$resource', function($resource) {
           method: 'GET',
           params: {operationId: 'transactions'},
           isArray: true
+        },
+        fromAccount: {
+          method: 'GET',
+          url: 'transactions/account/:accountId.json',
+          isArray: true
         }
 	
       });	
 }]);
+/**
+ * This service is to access on ThirdParty business ressources via rest
+ */
+comptesPerso.service('ThirdParty', ['$resource', function($resource) {
+	return $resource('thirdParty/:thirdPartyId.json', {}, {
+        query: {
+          method: 'GET',
+          params: {thirdPartyId: 'thirdParties'},
+          isArray: true
+        }
+      });	
+}]);
+
+/**
+ * This service is to access on Category business ressources via rest
+ */
+comptesPerso.service('Category', ['$resource', function($resource) {
+	return $resource('category/:categoryId.json', {}, {
+        query: {
+          method: 'GET',
+          params: {categoryId: 'categories'},
+          isArray: true
+        }
+      });	
+}]);
+
 /*
  * This service is for broadcast edit request to modal windows
  */
@@ -117,9 +153,39 @@ comptesPerso.controller('accountController', [ '$scope','Account', 'ModalService
 /**
  * This controller for operation list
  */
-comptesPerso.controller('operationController', [ '$scope','Operation', 'ModalService', function dashboardController($scope, Operation, modalService) {
+comptesPerso.controller('CategoryController', [ '$scope','Category', 'ModalService', function dashboardController($scope, Category, modalService) {
+	editModalTemplate="tmpl/category/editModal.template.html";
+    $scope.categories = Category.query();
+
+    $scope.handleEditClick = function(category) {
+    	console.log("ModalService.callModal('category', " + category + ");")
+    	modalService.callModal('category', category);
+    	$('#myModal').modal('show');
+    };
+    $scope.handleNewClick = function() {
+    	category = {};
+    	console.log("ModalService.callModal('category', " + category + ");")
+    	modalService.callModal('category', category);
+    	$('#myModal').modal('show');
+    };
+    $scope.$on('ModalClose', function() { 
+    	$scope.categories = Category.query();
+    });
+}]);
+
+
+/**
+ * This controller for operation list
+ */
+comptesPerso.controller('operationController', [ '$scope','Operation', 'Account', 'ModalService', function dashboardController($scope, Operation, Account,modalService) {
 	editModalTemplate="tmpl/operation/editModal.template.html";
     $scope.operations = Operation.query();
+    $scope.accounts = Account.query();
+
+    $scope.update = function() {
+    	console.log("selected filter account=" + $scope.selectedAccount);
+    	$scope.operations = Operation.fromAccount({accountId: $scope.selectedAccount});
+    };
     $scope.handleEditClick = function(operation) {
     	console.log("ModalService.callModal('operation', " + operation + ");")
     	modalService.callModal('operation', operation);
@@ -138,10 +204,14 @@ comptesPerso.controller('operationController', [ '$scope','Operation', 'ModalSer
 /**
  * This controller for modal view
  */
-comptesPerso.controller('editModalController', [ '$scope', 'Account', 'ModalService', function dashboardController($scope, Account, modalService) {
+comptesPerso.controller('editModalController', [ '$scope', 'Account', 'Operation', 'ThirdParty', 'Category', 'ModalService', function dashboardController($scope, Account, Operation, ThirdParty, Category, modalService) {
 	$scope.$on('ModalBroadcast', function() {
 		$scope.template="tmpl/" + modalService.objectType + "/editModal.template.html";
 		$scope.object=modalService.object;
+		$scope.accounts=Account.query();
+		$scope.thirdParties=ThirdParty.query();
+		$scope.categories=Category.query();
+		
 		$scope.update = function(object) {
 			console.log("create/update : " + modalService.objectType);
 			if(modalService.objectType == "account") {
@@ -152,7 +222,22 @@ comptesPerso.controller('editModalController', [ '$scope', 'Account', 'ModalServ
 					$('#myModal').modal('hide');
 				});
 			}
-			
+			if(modalService.objectType == "operation") {
+				var operation = new Operation(object);
+				operation.$save(function(user, putResponseHeaders) {
+					$scope.object=account;
+					modalService.closeModal();
+					$('#myModal').modal('hide');
+				});
+			}
+			if(modalService.objectType == "category") {
+				var category = new Category(object);
+				category.$save(function(user, putResponseHeaders) {
+					$scope.object=category;
+					modalService.closeModal();
+					$('#myModal').modal('hide');
+				});
+			}
 		};
 	});
 }]);

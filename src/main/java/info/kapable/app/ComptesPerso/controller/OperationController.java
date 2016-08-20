@@ -37,7 +37,7 @@ public class OperationController extends CrudController<Transaction> {
 	 * @param accountId
 	 * @return Transaction list
 	 */
-	@RequestMapping(value="/transactions/account/{accountId}", method = RequestMethod.GET)
+	@RequestMapping(value="/account/{accountId}", method = RequestMethod.GET)
 	public List<Transaction> listForAccount(@PathVariable("accountId") Long accountId) {
 		logger.info("Get transaction for account id = " + accountId);
 		Account a = accountService.get(accountId);
@@ -45,7 +45,7 @@ public class OperationController extends CrudController<Transaction> {
 	}
 
 	@Override
-	@RequestMapping(value="/transactions/{id}", method = RequestMethod.GET)
+	@RequestMapping(value="/{id}", method = RequestMethod.GET)
 	public Transaction get(@PathVariable("id") Long id) {
 		return this.transactionService.get(id);
 	}

@@ -11,15 +11,10 @@
 			</div>
 			<div class="modal-body">
 					<form novalidate class="simple-form">
-						Date : <input type="text" name="input-label" ng-model="object.date" /><br/>
-						Cat&eacute;gorie : <select ng-model="object.category.id"><option ng-repeat="category in categories" value="{{ category.id }}">{{ category.label }}</option></select><br/>
-						Tiers : <select ng-model="object.thirdParty.id"><option ng-repeat="thirdParty in thirdParties" value="{{ thirdParty.id }}">{{ thirdParty.label }}</option></select><br/>
-						Description : <input type="text" name="input-initialValue" ng-model="object.tiers" /><br/>
-						D&eacute;bit : <input type="text" name="input-initialValue" ng-model="object.debit" /><br/>
-						Cr&eacute;dit : <input type="text" name="input-initialValue" ng-model="object.credit" /><br/>
-						Compte : <select ng-model="object.account.id"><option ng-repeat="account in accounts" value="{{ account.id }}">{{ account.label }}</option></select><br />
+						Description : <input type="text" name="input-initialValue" ng-model="object.label" /><br/>
+						Parent : <select ng-model="object.parent.id"><option ng-repeat="category in categories" value="{{ category.id }}">{{ category.label }}</option></select><br />
 					</form>
-					<pre>operation = {{object | json}}</pre>
+					<pre>category = {{object | json}}</pre>
 			</div>
 			<div class="modal-footer">
 				<button type="button" ng-click="reset()" class="btn btn-default" data-dismiss="modal">Close</button>
