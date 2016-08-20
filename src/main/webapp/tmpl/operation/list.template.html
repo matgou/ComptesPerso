@@ -1,6 +1,6 @@
 	<h2 class="sub-header">Opérations</h2>
 	<!-- Button trigger modal -->
-	<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+	<button type="button" ng-click="handleNewClick()" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
   		Nouvelle opération
 	</button>
 	<select name="operations">
@@ -23,12 +23,12 @@
 			</thead>
 			<tbody>
 				<tr ng-repeat="operation in operations">
-					<td><a href="" ng-click="handleEditClick(operation)"></a></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td>&euro;</td>
-					<td>&euro;</td>
+					<td>{{ operation.date | date:'dd/MM/yyyy' }}</td>
+					<td> </td>
+					<td> </td>
+					<td><a href="" ng-click="handleEditClick(operation)">{{ operation.description }}</a></td>
+					<td>{{ operation.debit }} &euro;</td>
+					<td>{{ operation.credit }} &euro;</td>
 					<td></td>
 				</tr>
 			</tbody>

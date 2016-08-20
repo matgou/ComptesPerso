@@ -21,6 +21,7 @@ config(['$locationProvider', '$routeProvider',
           templateUrl: 'tmpl/account/list.template.html'
       }).
       when('/operations', {
+          controller: 'operationController',
           templateUrl: 'tmpl/operation/list.template.html'
       }).
       when('/thirdParties', {
@@ -39,6 +40,19 @@ comptesPerso.service('Account', ['$resource', function($resource) {
         query: {
           method: 'GET',
           params: {accountId: 'accounts'},
+          isArray: true
+        }
+	
+      });	
+}]);
+/**
+ * This service is to access on Operation business ressources via rest
+ */
+comptesPerso.service('Operation', ['$resource', function($resource) {
+	return $resource('transactions/:operationId.json', {}, {
+        query: {
+          method: 'GET',
+          params: {operationId: 'transactions'},
           isArray: true
         }
 	
@@ -99,6 +113,28 @@ comptesPerso.controller('accountController', [ '$scope','Account', 'ModalService
     	$scope.accounts = Account.query();
     });
 }]);
+
+/**
+ * This controller for operation list
+ */
+comptesPerso.controller('operationController', [ '$scope','Operation', 'ModalService', function dashboardController($scope, Operation, modalService) {
+	editModalTemplate="tmpl/operation/editModal.template.html";
+    $scope.operations = Operation.query();
+    $scope.handleEditClick = function(operation) {
+    	console.log("ModalService.callModal('operation', " + operation + ");")
+    	modalService.callModal('operation', operation);
+    	$('#myModal').modal('show');
+    };
+    $scope.handleNewClick = function() {
+    	operation = {};
+    	console.log("ModalService.callModal('operation', " + operation + ");")
+    	modalService.callModal('operation', operation);
+    	$('#myModal').modal('show');
+    };
+    $scope.$on('ModalClose', function() { 
+    	$scope.operation = Operation.query();
+    });
+}]);
 /**
  * This controller for modal view
  */
@@ -118,6 +154,5 @@ comptesPerso.controller('editModalController', [ '$scope', 'Account', 'ModalServ
 			}
 			
 		};
-		
 	});
 }]);

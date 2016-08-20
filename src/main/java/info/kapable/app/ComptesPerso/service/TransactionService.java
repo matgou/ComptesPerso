@@ -1,5 +1,8 @@
 package info.kapable.app.ComptesPerso.service;
 
+import java.util.List;
+
+import info.kapable.app.ComptesPerso.pojo.Account;
 import info.kapable.app.ComptesPerso.pojo.Transaction;
 
 /**
@@ -26,6 +29,13 @@ public interface TransactionService {
 	/**
 	 * Basic save trasaction
 	 * @param t
+	 * @return 
 	 */
-	public void save(Transaction t);
+	public Transaction save(Transaction t);
+
+	public List<Transaction> getTransactions();
+
+	public List<Transaction> getTransactionsForAccount(Account a);
+
+	public Transaction get(Long id);
 }

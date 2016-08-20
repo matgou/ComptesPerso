@@ -11,6 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
@@ -76,6 +77,7 @@ public class BusinessPojoTest {
 
 
 	@Test
+	@Rollback(false)
 	public void accountAndOperationTest() {
 		Account a = new Account();
 		a.setIntialValue(.0);
@@ -102,7 +104,7 @@ public class BusinessPojoTest {
 		assertTrue(this.accountService.getPointedBalance(a) == 0.);
 		
 		t.setPointedTransaction(true);
-		this.transactionService.updateTransaction(t);
+		this.transactionService.save(t);
 		assertTrue(this.accountService.getPointedBalance(a) == 10.);
 		
 	}

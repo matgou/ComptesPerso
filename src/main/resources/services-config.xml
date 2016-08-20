@@ -6,8 +6,7 @@
     http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
     http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
-    http://www.springframework.org/schema/data/jpa
-    http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+    http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
 	<context:component-scan base-package="info.kapable.app.ComptesPerso" />
 	<jpa:repositories base-package="info.kapable.app.ComptesPerso.dao" />
@@ -16,14 +15,6 @@
 	<mvc:default-servlet-handler />
 	<tx:annotation-driven transaction-manager="transactionManager" />
 
-	<bean id="dbProp"
-		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
-		<property name="locations">
-			<list>
-				<value>classpath:/database.properties</value>
-			</list>
-		</property>
-	</bean>
 
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -35,18 +26,6 @@
 		</property>
 	</bean>
 
-	<bean id="comptesDataSource"
-		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url"
-			value="jdbc:mysql://#{dbProp['db_host']}:#{dbProp['db_port']}/#{dbProp['db_name']}?profileSQL=true" />
-		<property name="username" value="#{dbProp['db_username']}" />
-		<property name="password" value="#{dbProp['db_password']}" />
-	</bean>
-	<bean id="comptesPersoSessionFactory"
-		class="org.springframework.orm.jpa.vendor.HibernateJpaSessionFactoryBean">
-		<property name="entityManagerFactory" ref="entityManagerFactory" />
-	</bean>
 	
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">

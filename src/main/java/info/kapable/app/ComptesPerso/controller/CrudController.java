@@ -17,7 +17,7 @@ public abstract class CrudController<T> {
      * @param id
      * @return
      */
-    public abstract T get(String id);
+    public abstract T get(Long id);
     
     /**
      * Return the saved object
