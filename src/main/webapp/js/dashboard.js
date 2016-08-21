@@ -354,6 +354,7 @@ comptesPerso.controller('editModalController', [
 						var account = new Account(object);
 						account.$save(function(user, putResponseHeaders) {
 							$scope.object = account;
+							$.notify("Sauvegarde réalisée", "info");
 							modalService.closeModal();
 							$('#myModal').modal('hide');
 						}, function() {
@@ -367,6 +368,7 @@ comptesPerso.controller('editModalController', [
 						var operation = new Operation(object);
 						operation.$save(function(user, putResponseHeaders) {
 							$scope.object = operation;
+							$.notify("Sauvegarde réalisée", "info");
 							modalService.closeModal();
 							$('#myModal').modal('hide');
 						}, function() {
@@ -380,6 +382,7 @@ comptesPerso.controller('editModalController', [
 						var category = new Category(object);
 						category.$save(function(user, putResponseHeaders) {
 							$scope.object = category;
+							$.notify("Sauvegarde réalisée", "info");
 							modalService.closeModal();
 							$('#myModal').modal('hide');
 						}, function() {
