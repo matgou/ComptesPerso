@@ -50,7 +50,7 @@ public class CategoryController extends CrudController<Category> {
 
 	@Override
 	@RequestMapping(method = RequestMethod.POST)
-	public Category save(@Valid @RequestBody Category o) {
+	public Category save(@RequestBody Category o) {
 		return this.categoryService.save(o);
 	}
 }

@@ -53,11 +53,25 @@ angular
  * This service is to access on Account business ressources via rest
  */
 function resourceErrorHandler(response) {
-	console.log(response.data)
-	$("#alertWindow").text(response.data.code + " : " + response.data.message);
-	$("#errorContent").text(response.data.code + " : " + response.data.message);
-	$("#errorModal").modal('show');
-	$("#errorModal").css("z-index", "1500");
+	console.log(response.data);
+	if(response.data.code == "InvalidEntity") {
+		list = response.data.constraintList;
+		$( ".modal-alert" ).remove();
+		for(field in list) {
+			console.log("error in : " + field + " : ");
+			for (message in list[field]) {
+				console.log(list[field][message]);
+				$( "#input-" + field ).after(function() {
+					  return "<div class=\"modal-alert alert alert-warning\">" + list[field][message] + "</div>";
+					});
+			}
+		}
+	} else {
+		$("#alertWindow").text(response.data.code + " : " + response.data.message);
+		$("#errorContent").text(response.data.code + " : " + response.data.message);
+		$("#errorModal").modal('show');
+		$("#errorModal").css("z-index", "1500");
+	}
 }
 
 comptesPerso.service('Account', [ '$resource', function($resource) {
@@ -334,14 +348,24 @@ comptesPerso.controller('editModalController', [
 							$scope.object = account;
 							modalService.closeModal();
 							$('#myModal').modal('hide');
+						}, function() {
+							if(object.id) {
+								account = Account.get({accountId: object.id});
+								modalService.closeModal();
+							}
 						});
 					}
 					if (modalService.objectType == "operation") {
 						var operation = new Operation(object);
 						operation.$save(function(user, putResponseHeaders) {
-							$scope.object = account;
+							$scope.object = operation;
 							modalService.closeModal();
 							$('#myModal').modal('hide');
+						}, function() {
+							if(object.id) {
+								operation = Operation.get({operationId: object.id});
+								modalService.closeModal();
+							}
 						});
 					}
 					if (modalService.objectType == "category") {
@@ -350,6 +374,11 @@ comptesPerso.controller('editModalController', [
 							$scope.object = category;
 							modalService.closeModal();
 							$('#myModal').modal('hide');
+						}, function() {
+							if(object.id) {
+								category = Category.get({categoryId: object.id});
+								modalService.closeModal();
+							}
 						});
 					}
 				};

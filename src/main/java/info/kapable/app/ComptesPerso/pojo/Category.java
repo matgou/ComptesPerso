@@ -33,7 +33,7 @@ public class Category extends Pojo {
 	private Long id;
 	private boolean categoryDebit = true;
 	
-	@Size(min=2, max=30) 
+	@Size(min=2, max=255, message = "{errors.label.size}") 
 	private String label;
 	@MaxCategoryLevel()
 	private Category parent;

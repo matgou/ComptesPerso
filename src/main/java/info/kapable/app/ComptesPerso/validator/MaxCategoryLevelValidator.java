@@ -20,6 +20,7 @@ public class MaxCategoryLevelValidator implements ConstraintValidator<MaxCategor
 
 	@Override
 	public boolean isValid(Category c, ConstraintValidatorContext arg1) {
+		if(c == null) return true;
         int size = 1;
         for(int i=0; i < MAX_DEPTH; i++) {
         	if (c.getParent() != null) {
