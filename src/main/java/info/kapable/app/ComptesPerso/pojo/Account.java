@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "COMPTE")
-@JsonIgnoreProperties({"transactions"})
+@JsonIgnoreProperties({"operations"})
 /**
  * Un foyer est un ensemble de comptes associé a des utilisateur
  * 

@@ -11,7 +11,6 @@ public class ErrorResource extends Pojo {
 
 	@Override
 	public Long getId() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	

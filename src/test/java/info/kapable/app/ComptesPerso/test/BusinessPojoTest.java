@@ -3,7 +3,7 @@
  */
 package info.kapable.app.ComptesPerso.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Date;
 
@@ -11,11 +11,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.context.ApplicationContext;
 
 import info.kapable.app.ComptesPerso.pojo.Account;
 import info.kapable.app.ComptesPerso.pojo.Category;
@@ -89,8 +87,6 @@ public class BusinessPojoTest {
 		
 		this.accountService.save(a);
 		assertTrue(a.getId() != null);
-		Long aId = a.getId();
-		
 		Operation t = new Operation();
 		t.setAccount(a);
 		t.setCredit(10.);
@@ -99,8 +95,6 @@ public class BusinessPojoTest {
 		t.setPointedTransaction(false);
 		this.operationService.save(t);
 		assertTrue(t.getId() != null);
-		Long tId = t.getId();
-		
 		// Verification du calcul de la balance
 		assertTrue(this.accountService.getRealBalance(a) == 10.);
 		assertTrue(this.accountService.getPointedBalance(a) == 0.);

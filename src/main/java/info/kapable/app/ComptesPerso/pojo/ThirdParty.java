@@ -27,7 +27,6 @@ public class ThirdParty extends Pojo {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Override
 	public Long getId() {
-		// TODO Auto-generated method stub
 		return this.id;
 	}
 	public void setId(Long id) {

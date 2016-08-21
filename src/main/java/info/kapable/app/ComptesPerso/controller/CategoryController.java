@@ -30,18 +30,21 @@ public class CategoryController extends CrudController<Category> {
 	@Override
     @RequestMapping(value="/categories", method = RequestMethod.GET)
 	public List<Category> list() {
+		logger.debug("Get all category");
 		return this.categoryService.getAll();
 	}
 
 	@Override
 	@RequestMapping(value="/{id}", method = RequestMethod.GET)
 	public Category get(@PathVariable("id") Long id) {
+		logger.debug("Get category id=" + id);
 		return this.categoryService.get(id);
 	}
 
 	@Override
 	@RequestMapping(method = RequestMethod.POST)
 	public Category save(@RequestBody Category o) {
+		logger.debug("Save category id=" + o.getId());
 		return this.categoryService.save(o);
 	}
 }

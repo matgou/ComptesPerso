@@ -23,18 +23,21 @@ public class ThirdPartyController extends CrudController<ThirdParty> {
 	@Override
     @RequestMapping(value="/thirdParties", method = RequestMethod.GET)
 	public List<ThirdParty> list() {
+		logger.debug("Get all thirdParties");
 		return null;
 	}
 
 	@Override
 	@RequestMapping(value="/{id}", method = RequestMethod.GET)
 	public ThirdParty get(@PathVariable("id") Long id) {
+		logger.debug("Get thirdParties id=" + id );
 		return null;
 	}
 
 	@Override
 	@RequestMapping(method = RequestMethod.POST)
 	public ThirdParty save(@Valid @RequestBody ThirdParty o) {
+		logger.debug("Save thirdParties id=" + o.getId() );
 		return null;
 	}
 }
