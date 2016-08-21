@@ -12,7 +12,9 @@
 			<div class="modal-body">
 					<form novalidate class="simple-form">
 						Description : <input type="text" name="input-initialValue" ng-model="object.label" /><br/>
-						Parent : <select ng-model="object.parent.id"><option ng-repeat="category in categories" value="{{ category.id }}">{{ category.label }}</option></select><br />
+						Parent : <select ng-model="object.parent" ng-options="category as category.label for category in categories">
+						    		<option value="">Pas de parent</option>
+								</select><br />
 					</form>
 					<pre>category = {{object | json}}</pre>
 			</div>

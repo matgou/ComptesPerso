@@ -2,15 +2,22 @@ package info.kapable.app.ComptesPerso.controller;
 
 import java.util.List;
 
+import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.context.request.WebRequest;
 
 import info.kapable.app.ComptesPerso.pojo.Category;
 import info.kapable.app.ComptesPerso.service.CategoryService;
@@ -46,5 +53,4 @@ public class CategoryController extends CrudController<Category> {
 	public Category save(@Valid @RequestBody Category o) {
 		return this.categoryService.save(o);
 	}
-
 }

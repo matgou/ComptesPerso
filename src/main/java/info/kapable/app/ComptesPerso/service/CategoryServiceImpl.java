@@ -11,9 +11,6 @@ import info.kapable.app.ComptesPerso.pojo.Category;
 
 @Service
 public class CategoryServiceImpl extends CategoryService {
-
-    @Autowired
-    private Validator validator;
     
 	@Autowired
 	protected CategoryDAO categoryDAO;
