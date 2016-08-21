@@ -3,7 +3,6 @@ package info.kapable.app.ComptesPerso.service;
 import java.util.List;
 
 import info.kapable.app.ComptesPerso.pojo.Account;
-import info.kapable.app.ComptesPerso.pojo.AccountWithBalance;
 
 /**
  * Service to access on account ressources

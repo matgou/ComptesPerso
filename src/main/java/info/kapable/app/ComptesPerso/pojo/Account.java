@@ -11,10 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 import javax.validation.constraints.Size;
-
-import org.hibernate.annotations.Proxy;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -123,19 +120,19 @@ public class Account extends Pojo {
 	}
 
 	/**
-	 * @return the transactions
+	 * @return the Operations
 	 */
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "account")
 	@OrderBy("date")
-	public List<Operation> getTransactions() {
+	public List<Operation> getOperations() {
 		return operations;
 	}
 
 	/**
 	 * @param operations
-	 *            the transactions to set
+	 *            the Operation to set
 	 */
-	public void setTransactions(List<Operation> operations) {
+	public void setOperations(List<Operation> operations) {
 		this.operations = operations;
 	}
 	
