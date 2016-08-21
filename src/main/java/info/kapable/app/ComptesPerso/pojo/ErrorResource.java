@@ -3,8 +3,6 @@ package info.kapable.app.ComptesPerso.pojo;
 import java.util.List;
 import java.util.Map;
 
-import javax.persistence.Entity;
-
 public class ErrorResource extends Pojo {
 
 	private Object code;

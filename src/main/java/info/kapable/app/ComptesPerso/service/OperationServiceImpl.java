@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import info.kapable.app.ComptesPerso.dao.OperationDAO;
 import info.kapable.app.ComptesPerso.pojo.Account;
 import info.kapable.app.ComptesPerso.pojo.Operation;
-import info.kapable.app.ComptesPerso.dao.OperationDAO;
 @Service
 public class OperationServiceImpl implements OperationService {
 
@@ -15,12 +15,12 @@ public class OperationServiceImpl implements OperationService {
 	protected OperationDAO operationDAO;
 
 	@Override
-	public Operation getTransaction(Long id) {
+	public Operation getOperation(Long id) {
 		return this.operationDAO.findOne(id);
 	}
 
 	@Override
-	public void updateTransaction(Operation operation) {
+	public void updateOperation(Operation operation) {
 		this.operationDAO.save(operation);
 	}
 
@@ -30,13 +30,13 @@ public class OperationServiceImpl implements OperationService {
 	}
 
 	@Override
-	public List<Operation> getTransactions() {
+	public List<Operation> getOperations() {
 		return this.operationDAO.findAll();
 	}
 
 	@Override
-	public List<Operation> getTransactionsForAccount(Account a) {
-		return this.operationDAO.getTransactionsFromAccount(a);
+	public List<Operation> getOperationsForAccount(Account a) {
+		return this.operationDAO.getOperationsFromAccount(a);
 	}
 
 	@Override

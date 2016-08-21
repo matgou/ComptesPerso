@@ -12,6 +12,6 @@ import info.kapable.app.ComptesPerso.pojo.Operation;
 
 @Repository
 public interface OperationDAO extends JpaRepository<Operation, Long> {
-	@Query(value = "SELECT t FROM Transaction t INNER JOIN t.account a WHERE a = :account")
-	public List<Operation> getTransactionsFromAccount(@Param("account") Account a);
+	@Query(value = "SELECT t FROM Operation t INNER JOIN t.account a WHERE a = :account")
+	public List<Operation> getOperationsFromAccount(@Param("account") Account a);
 }

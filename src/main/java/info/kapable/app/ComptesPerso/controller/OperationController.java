@@ -20,7 +20,7 @@ import info.kapable.app.ComptesPerso.service.OperationService;
  * 
  * @author Mathieu GOULIN <mathieu.goulin@gadz.org>
  */
-@RequestMapping("/transactions")
+@RequestMapping("/operations")
 @RestController
 public class OperationController extends CrudController<Operation> {
 
@@ -33,15 +33,15 @@ public class OperationController extends CrudController<Operation> {
 	AccountService accountService;
 	
 	/**
-	 * This function return transaction attached a given accountId
+	 * This function return operations attached a given accountId
 	 * @param accountId
-	 * @return Transaction list
+	 * @return Operation list
 	 */
 	@RequestMapping(value="/account/{accountId}", method = RequestMethod.GET)
 	public List<Operation> listForAccount(@PathVariable("accountId") Long accountId) {
-		logger.info("Get transaction for account id = " + accountId);
+		logger.info("Get Operation for account id = " + accountId);
 		Account a = accountService.get(accountId);
-		return this.operationService.getTransactionsForAccount(a);
+		return this.operationService.getOperationsForAccount(a);
 	}
 
 	@Override
@@ -57,9 +57,9 @@ public class OperationController extends CrudController<Operation> {
 	}
 
 	@Override
-    @RequestMapping(value="/transactions", method = RequestMethod.GET)
+    @RequestMapping(value="/operations", method = RequestMethod.GET)
 	public List<Operation> list() {
-		return this.operationService.getTransactions();
+		return this.operationService.getOperations();
 	}
 
 }

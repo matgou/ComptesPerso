@@ -11,7 +11,7 @@ public class AccountWithBalance extends Account {
 		this.setIntialValue(account.getIntialValue());
 		this.setLabel(account.getLabel());
 		this.setPointedBalance(pointedBalance);
-		this.setTransactions(account.getTransactions());
+		//this.setOperations(account.getOperations());
 		this.setType(account.getType());
 		
 	}

@@ -17,14 +17,14 @@ public interface OperationService {
 	 * @param id
 	 * @return
 	 */
-	public Operation getTransaction(Long id);
+	public Operation getOperation(Long id);
 
 	/**
 	 * Update a foyer
 	 * 
 	 * @param foyer
 	 */
-	public void updateTransaction(Operation operation);
+	public void updateOperation(Operation operation);
 
 	/**
 	 * Basic save trasaction
@@ -33,9 +33,9 @@ public interface OperationService {
 	 */
 	public Operation save(Operation t);
 
-	public List<Operation> getTransactions();
+	public List<Operation> getOperations();
 
-	public List<Operation> getTransactionsForAccount(Account a);
+	public List<Operation> getOperationsForAccount(Account a);
 
 	public Operation get(Long id);
 }

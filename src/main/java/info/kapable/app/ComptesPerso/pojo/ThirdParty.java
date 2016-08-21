@@ -28,7 +28,7 @@ public class ThirdParty extends Pojo {
 	@Override
 	public Long getId() {
 		// TODO Auto-generated method stub
-		return null;
+		return this.id;
 	}
 	public void setId(Long id) {
 		this.id = id;

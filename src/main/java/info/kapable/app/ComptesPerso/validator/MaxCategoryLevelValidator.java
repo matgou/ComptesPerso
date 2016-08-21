@@ -3,10 +3,6 @@ package info.kapable.app.ComptesPerso.validator;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-import org.springframework.validation.Errors;
-import org.springframework.validation.ValidationUtils;
-import org.springframework.validation.Validator;
-
 import info.kapable.app.ComptesPerso.pojo.Category;
 
 public class MaxCategoryLevelValidator implements ConstraintValidator<MaxCategoryLevel, Category> {

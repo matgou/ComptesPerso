@@ -10,9 +10,9 @@ import info.kapable.app.ComptesPerso.pojo.Account;
 @Repository
 public interface AccountDAO extends JpaRepository<Account, Long> {
 	
-	@Query(value = "SELECT COALESCE(sum(t.credit),0) - COALESCE(sum(t.debit),0) + a.intialValue FROM Account a INNER JOIN a.transactions t WHERE a = :account")
+	@Query(value = "SELECT COALESCE(sum(t.credit),0) - COALESCE(sum(t.debit),0) + a.intialValue FROM Account a INNER JOIN a.operations t WHERE a = :account")
 	public Double getRealBalance(@Param("account") Account a);
 	
-	@Query(value = "SELECT COALESCE(sum(t.credit),0) - COALESCE(sum(t.debit),0) + a.intialValue FROM Account a INNER JOIN a.transactions t WHERE a = :account AND t.pointedTransaction = true")
+	@Query(value = "SELECT COALESCE(sum(t.credit),0) - COALESCE(sum(t.debit),0) + a.intialValue FROM Account a INNER JOIN a.operations t WHERE a = :account AND t.pointedTransaction = true")
 	public Double getPointedBalance(@Param("account") Account a);
 }

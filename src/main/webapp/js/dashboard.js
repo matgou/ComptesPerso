@@ -99,11 +99,11 @@ comptesPerso.service('Account', [ '$resource', function($resource) {
  * This service is to access on Operation business ressources via rest
  */
 comptesPerso.service('Operation', [ '$resource', function($resource) {
-	return $resource('transactions/:operationId.json', {}, {
+	return $resource('operations/:operationId.json', {}, {
 		query : {
 			method : 'GET',
 			params : {
-				operationId : 'transactions'
+				operationId : 'operations'
 			},
 			interceptor : {
 				responseError : resourceErrorHandler

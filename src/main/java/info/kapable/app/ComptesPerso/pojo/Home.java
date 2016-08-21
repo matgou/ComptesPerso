@@ -8,8 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
-import org.hibernate.annotations.Proxy;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
