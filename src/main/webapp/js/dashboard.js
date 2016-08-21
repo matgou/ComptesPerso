@@ -192,6 +192,7 @@ comptesPerso.service('Category', [ '$resource', function($resource) {
 comptesPerso.service('ModalService', [ '$rootScope', function($rootScope) {
 	var ModalService = {};
 	ModalService.callModal = function(type, object) {
+		$( ".modal-alert" ).remove();
 		this.objectType = type;
 		this.object = object;
 		this.broadcastItem();
