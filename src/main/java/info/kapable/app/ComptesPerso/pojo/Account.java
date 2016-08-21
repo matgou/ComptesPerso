@@ -12,6 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Proxy;
 
@@ -33,13 +34,15 @@ public class Account extends Pojo {
 
 	/* Private properties */
 	private Long id;
+	
+	@Size(min=2, max=255, message = "{errors.label.size}") 
 	private String label;
 	private boolean enable = true;
 	private Integer type;
 	private Double intialValue;
 
 	/* Link to object */
-	private List<Transaction> transactions;
+	private List<Operation> operations;
 
 	/**
 	 * Getter and Setter
@@ -124,16 +127,16 @@ public class Account extends Pojo {
 	 */
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "account")
 	@OrderBy("date")
-	public List<Transaction> getTransactions() {
-		return transactions;
+	public List<Operation> getTransactions() {
+		return operations;
 	}
 
 	/**
-	 * @param transactions
+	 * @param operations
 	 *            the transactions to set
 	 */
-	public void setTransactions(List<Transaction> transactions) {
-		this.transactions = transactions;
+	public void setTransactions(List<Operation> operations) {
+		this.operations = operations;
 	}
 	
 	public String toString() {

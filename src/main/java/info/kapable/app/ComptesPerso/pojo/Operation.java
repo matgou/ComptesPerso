@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -21,13 +22,14 @@ import java.util.Date;
  * 
  * @author Mathieu GOULIN <mathieu.goulin@gadz.org>
  */
-public class Transaction extends Pojo {
+public class Operation extends Pojo {
 
 	/* Private properties */
 	private Long id;
 	private Double credit = 0.;
 	private Double debit = 0.;
 	private Date date; 
+	@Size(min=2, max=255, message = "{errors.label.size}") 
 	private String description = "";
 	private Boolean pointedTransaction = false;
 	

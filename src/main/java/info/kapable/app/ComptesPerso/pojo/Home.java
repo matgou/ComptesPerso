@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Proxy;
 
@@ -22,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  */
 public class Home extends Pojo {
 	private Long id;
+	@Size(min=2, max=255, message = "{errors.label.size}") 
 	private String name;
 
 	public Home() {

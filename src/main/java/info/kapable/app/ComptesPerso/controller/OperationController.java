@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import info.kapable.app.ComptesPerso.pojo.Account;
-import info.kapable.app.ComptesPerso.pojo.Transaction;
+import info.kapable.app.ComptesPerso.pojo.Operation;
 import info.kapable.app.ComptesPerso.service.AccountService;
-import info.kapable.app.ComptesPerso.service.TransactionService;
+import info.kapable.app.ComptesPerso.service.OperationService;
 
 /**
  * This controller manipulate trasaction or operation
@@ -22,12 +22,12 @@ import info.kapable.app.ComptesPerso.service.TransactionService;
  */
 @RequestMapping("/transactions")
 @RestController
-public class OperationController extends CrudController<Transaction> {
+public class OperationController extends CrudController<Operation> {
 
 	private static Logger logger = Logger.getLogger(OperationController.class);
 	
 	@Autowired
-	TransactionService transactionService;
+	OperationService operationService;
 
 	@Autowired
 	AccountService accountService;
@@ -38,28 +38,28 @@ public class OperationController extends CrudController<Transaction> {
 	 * @return Transaction list
 	 */
 	@RequestMapping(value="/account/{accountId}", method = RequestMethod.GET)
-	public List<Transaction> listForAccount(@PathVariable("accountId") Long accountId) {
+	public List<Operation> listForAccount(@PathVariable("accountId") Long accountId) {
 		logger.info("Get transaction for account id = " + accountId);
 		Account a = accountService.get(accountId);
-		return this.transactionService.getTransactionsForAccount(a);
+		return this.operationService.getTransactionsForAccount(a);
 	}
 
 	@Override
 	@RequestMapping(value="/{id}", method = RequestMethod.GET)
-	public Transaction get(@PathVariable("id") Long id) {
-		return this.transactionService.get(id);
+	public Operation get(@PathVariable("id") Long id) {
+		return this.operationService.get(id);
 	}
 
 	@Override
     @RequestMapping(method = RequestMethod.POST)
-	public Transaction save(@RequestBody Transaction o) {
-		return this.transactionService.save(o);
+	public Operation save(@RequestBody Operation o) {
+		return this.operationService.save(o);
 	}
 
 	@Override
     @RequestMapping(value="/transactions", method = RequestMethod.GET)
-	public List<Transaction> list() {
-		return this.transactionService.getTransactions();
+	public List<Operation> list() {
+		return this.operationService.getTransactions();
 	}
 
 }

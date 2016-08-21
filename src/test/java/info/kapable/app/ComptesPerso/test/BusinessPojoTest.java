@@ -20,11 +20,11 @@ import org.springframework.context.ApplicationContext;
 import info.kapable.app.ComptesPerso.pojo.Account;
 import info.kapable.app.ComptesPerso.pojo.Category;
 import info.kapable.app.ComptesPerso.pojo.Home;
-import info.kapable.app.ComptesPerso.pojo.Transaction;
+import info.kapable.app.ComptesPerso.pojo.Operation;
 import info.kapable.app.ComptesPerso.service.AccountService;
 import info.kapable.app.ComptesPerso.service.CategoryService;
 import info.kapable.app.ComptesPerso.service.HomeService;
-import info.kapable.app.ComptesPerso.service.TransactionService;
+import info.kapable.app.ComptesPerso.service.OperationService;
 
 /**
  * @author Mathieu
@@ -39,7 +39,7 @@ public class BusinessPojoTest {
 	@Autowired
 	AccountService accountService;
 	@Autowired
-	TransactionService transactionService;
+	OperationService operationService;
 	@Autowired
 	CategoryService categoryService;
 
@@ -91,13 +91,13 @@ public class BusinessPojoTest {
 		assertTrue(a.getId() != null);
 		Long aId = a.getId();
 		
-		Transaction t = new Transaction();
+		Operation t = new Operation();
 		t.setAccount(a);
 		t.setCredit(10.);
 		t.setDate(new Date());
 		t.setDescription("Ajout de 10 euros pour test unitaire");
 		t.setPointedTransaction(false);
-		this.transactionService.save(t);
+		this.operationService.save(t);
 		assertTrue(t.getId() != null);
 		Long tId = t.getId();
 		
@@ -106,7 +106,7 @@ public class BusinessPojoTest {
 		assertTrue(this.accountService.getPointedBalance(a) == 0.);
 		
 		t.setPointedTransaction(true);
-		this.transactionService.save(t);
+		this.operationService.save(t);
 		assertTrue(this.accountService.getPointedBalance(a) == 10.);
 		
 	}

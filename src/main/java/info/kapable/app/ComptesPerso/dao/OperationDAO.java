@@ -8,10 +8,10 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import info.kapable.app.ComptesPerso.pojo.Account;
-import info.kapable.app.ComptesPerso.pojo.Transaction;
+import info.kapable.app.ComptesPerso.pojo.Operation;
 
 @Repository
-public interface TransactionDAO extends JpaRepository<Transaction, Long> {
+public interface OperationDAO extends JpaRepository<Operation, Long> {
 	@Query(value = "SELECT t FROM Transaction t INNER JOIN t.account a WHERE a = :account")
-	public List<Transaction> getTransactionsFromAccount(@Param("account") Account a);
+	public List<Operation> getTransactionsFromAccount(@Param("account") Account a);
 }
