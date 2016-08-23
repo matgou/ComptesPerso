@@ -1,0 +1,1 @@
+web:    java -Dext.properties.dir=file:`pwd`/heroku $JAVA_OPTS -jar target/dependency/webapp-runner.jar --port $PORT target/*.war
