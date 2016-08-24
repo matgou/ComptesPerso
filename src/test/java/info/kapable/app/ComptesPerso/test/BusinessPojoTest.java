@@ -29,7 +29,7 @@ import info.kapable.app.ComptesPerso.service.OperationService;
  *
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"/services-test-config.xml"})
+@ContextConfiguration(locations = {"/services-config.xml"})
 @Transactional
 public class BusinessPojoTest {
 	@Autowired
