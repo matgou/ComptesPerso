@@ -26,7 +26,7 @@
 <link href="<%=request.getContextPath()%>/css/dashboard.css"
 	rel="stylesheet">
 	
-<base href="${fn:substring(url, 0, fn:length(url) - fn:length(uri))}${req.contextPath}/" />
+<base href="${req.scheme}://${fn:substring(url, fn:indexOf(url, ":")+3, fn:length(url) - fn:length(uri))}${req.contextPath}/" />
 <script type="text/javascript"> appliContext="<%=request.getContextPath()%>"; </script>
 </head>
 
