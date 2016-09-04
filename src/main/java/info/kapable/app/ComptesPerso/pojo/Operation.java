@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -28,6 +29,7 @@ public class Operation extends Pojo {
 	private Long id;
 	private Double credit = 0.;
 	private Double debit = 0.;
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd'T'HH:mm:ss.SSSS")
 	private Date date; 
 	@Size(min=2, max=255, message = "{errors.label.size}") 
 	private String description = "";
@@ -35,6 +37,7 @@ public class Operation extends Pojo {
 	
 	/* Link */
 	private Account account;
+	private Category category;
 	
 	/* Optional */
 	private String transfertNumber;
@@ -189,5 +192,21 @@ public class Operation extends Pojo {
 	 */
 	public void setAccount(Account account) {
 		this.account = account;
+	}
+
+	/**
+	 * @return the category
+	 */
+	@ManyToOne
+    @JoinColumn(name="CATEGORY_ID", nullable = false)
+	public Category getCategory() {
+		return category;
+	}
+
+	/**
+	 * @param category the category to set
+	 */
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 }

@@ -22,6 +22,10 @@
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-resource.js"></script>
 	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment-with-locales.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+	<script
 		src="<%=request.getContextPath()%>/js/account/account.service.js"></script>
 	<script src="<%=request.getContextPath()%>/js/dashboard.js"></script>
 </body>	

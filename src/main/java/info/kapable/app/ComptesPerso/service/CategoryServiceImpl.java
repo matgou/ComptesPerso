@@ -29,4 +29,9 @@ public class CategoryServiceImpl extends CategoryService {
 		return this.categoryDAO.save(o);
 	}
 
+	@Override
+	public long getNbCategory() {
+		return this.categoryDAO.count();
+	}
+
 }

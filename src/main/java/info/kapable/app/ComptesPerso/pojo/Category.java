@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
@@ -25,7 +26,7 @@ import info.kapable.app.ComptesPerso.validator.MaxCategoryLevel;
  */
 @Entity
 @Table(name = "CATEGORIE")
-@JsonIgnoreProperties({"child"})
+@JsonIgnoreProperties({"child", "operations"})
 public class Category extends Pojo {
 	/* STATIC PARAM */
 
@@ -40,6 +41,7 @@ public class Category extends Pojo {
 
 	/* Link to object */
 	private List<Category> child;
+	private List<Operation> operations;
 
 	public Category(String label) {
 		this.label = label;
@@ -118,6 +120,22 @@ public class Category extends Pojo {
 	 */
 	public void setChild(List<Category> child) {
 		this.child = child;
+	}
+
+	/**
+	 * @return the operations
+	 */
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "category")
+	@OrderBy("date")
+	public List<Operation> getOperations() {
+		return operations;
+	}
+
+	/**
+	 * @param operations the operations to set
+	 */
+	public void setOperations(List<Operation> operations) {
+		this.operations = operations;
 	}
 
 

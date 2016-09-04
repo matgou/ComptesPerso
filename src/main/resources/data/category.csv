@@ -1,0 +1,91 @@
+2, false, Salaire, NULL
+3, true, Alimentation, NULL
+4, true, Assurance, NULL
+5, true, Automobile, NULL
+6, true, Dons, 53
+7, true, Frais financiers, NULL
+8, true, Impôts, NULL
+9, true, Logement, NULL
+10, true, Loisirs, NULL
+11, true, Santé, NULL
+12, true, Transport, NULL
+13, true, Vacances, NULL
+14, true, Supermarché, 3
+15, true, Restaurant, 3
+16, true, Assurance automobile et habitation, 4
+18, true, Amendes, 5
+19, true, Carburant, 5
+20, true, Entretien, 5
+21, true, Stationnement, 5
+22, true, Frais bancaires, 7
+23, true, Epargne, NULL
+25, true, Virement interne, NULL
+26, true, Virement pour impôts, 25
+27, true, Abonnement internet, 9
+28, true, Abonnement téléphone, 9
+29, true, Energie, 9
+30, true, Loyer, 9
+31, true, Frais professionnels, NULL
+32, true, Frais de déplacement, 31
+33, true, Frais de cantine, 31
+34, true, Soins, NULL
+35, true, Coiffeur, 34
+36, true, Esthétique et cosmétique, 34
+37, true, Habillement, 34
+38, true, Abonnement Mettis, 12
+39, true, Transport en commun, 12
+40, true, Retrait DAB, 53
+41, true, Cadeaux, NULL
+42, false, Recette - Cadeaux, 89
+43, false, Remboursement famille, 89
+44, true, Visites, 13
+45, true, Hébergement, 13
+46, true, Transports, 13
+47, true, Meubles et équipements, 9
+48, true, Décoration, 9
+49, true, Electroménager, 9
+50, true, Bricolage, 9
+51, true, Achat avance famille, 53
+52, true, Dépense - Rbst famille, 53
+53, true, Dépenses diverses, NULL
+54, true, Affranchissement, 53
+55, true, Photo, 10
+56, true, Cantine, 31
+57, true, Vacances - restauration, 13
+58, false, Rbst frais professionnels, 89
+59, true, Boulangerie, 3
+60, true, Livraison, 3
+61, true, Informatique, 10
+62, false, Rétrocession frais bancaires, 89
+63, true, Impôts revenus, 8
+64, true, Taxe habitation, 8
+66, true, Loisirs créatifs, 10
+67, true, Musique, 10
+68, true, Vente automobile, 5
+69, true, Abonnements magazine, 10
+70, true, Fleurs, 9
+71, true, Crédit automobile, 5
+72, true, Investissement, 9
+73, true, Achat automobile, 72
+74, true, Jardinage, 9
+75, true, Sorties, 10
+76, true, Sport, 10
+77, true, Péages, 5
+78, true, Linge de maison, 9
+79, true, Vacances - péages, 13
+80, true, Vacances - stationnement, 13
+81, true, Vacances - carburant, 13
+82, false, Salaire mensuel, 2
+83, true, Médecin, 11
+84, true, Pharmacie, 11
+85, true, Epargne à terme, 23
+86, true, Epargne disponible (livret A), 23
+87, true, Dépense - cadeaux famille, 41
+88, true, Dépense - cadeaux amis, 41
+89, false, Recettes diverses, NULL
+90, false, Remboursement suite retour commande, 89
+91, true, Association d\anciens élèves, 53
+92, true, Virement mensuel (crédit), 25
+93, true, Impôts locaux, 8
+94, true, Cuisine, 10
+95, true, Virement interne, 25

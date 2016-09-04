@@ -10,15 +10,75 @@
 				<h4 class="modal-title">Edition de compte</h4>
 			</div>
 			<div class="modal-body">
-					<form novalidate class="simple-form">
-						Date : <input type="text" name="input-label" ng-model="object.date" /><br/>
-						Cat&eacute;gorie : <select ng-model="object.category.id"><option ng-repeat="category in categories" value="{{ category.id }}">{{ category.label }}</option></select><br/>
-						Tiers : <select ng-model="object.thirdParty.id"><option ng-repeat="thirdParty in thirdParties" value="{{ thirdParty.id }}">{{ thirdParty.label }}</option></select><br/>
-						Description : <input type="text" name="input-initialValue" ng-model="object.tiers" /><br/>
-						D&eacute;bit : <input type="text" name="input-initialValue" ng-model="object.debit" /><br/>
-						Cr&eacute;dit : <input type="text" name="input-initialValue" ng-model="object.credit" /><br/>
-						Compte : <select ng-model="object.account.id"><option ng-repeat="account in accounts" value="{{ account.id }}">{{ account.label }}</option></select><br />
+					<form class="form-horizontal">
+  						<div class="form-group">
+        					<div class="col-md-2 pull-left">
+								<label for="input-label">Description</label>
+       						</div>
+    						<div class="col-sm-10">
+						 		<input type="text" name="input-initialValue" ng-model="object.description" />
+							</div>
+						</div>
+  						<div class="form-group">
+        					<div class="col-md-2 pull-left">
+								<label for="input-label">Cat&eacute;gorie</label>
+       						</div>
+    						<div class="col-sm-10">
+								<select ng-model="object.category.id">
+									<option ng-repeat="category in categories" value="{{ category.id }}">{{ category.label }}</option>
+								</select>
+       						</div>
+						</div>
+  						<div class="form-group">
+        					<div class="col-md-2 pull-left">
+								<label for="input-label">Tiers</label>
+       						</div>
+    						<div class="col-sm-10">
+    							<select ng-model="object.thirdParty.id">
+    								<option ng-repeat="thirdParty in thirdParties" value="{{ thirdParty.id }}">{{ thirdParty.label }}</option>
+    							</select>
+       						</div>
+						</div>
+  						<div class="form-group">
+        					<div class="col-md-2 pull-left">
+								<label for="input-label">Date</label>
+       						</div>
+    						<div class="col-sm-10"><div class="input-group date">
+							    <input type="text" name="input-date" class="form-control datepicker" ng-model="object.date" value="{{ object.date }}" dt/>
+							    <div class="input-group-addon">
+							        <span class="glyphicon glyphicon-th"></span>
+    							</div>
+    						</div></div>
+						</div>
+  						<div class="form-group">
+        					<div class="col-md-2 pull-left">
+        						<label>Valeurs</label>
+       						</div>
+    						<div class="col-sm-10">
+	  							<table class="table">
+	  								<tr>
+	        							<th><label for="input-label">Cr&eacute;dit</label></th>
+	        							<th><label for="input-label">D&eacute;bit</label></th>
+	        						</tr>
+	        						<tr>
+	        							<td><input type="text" name="input-initialValue" ng-model="object.credit" /></td>
+	        							<td><input type="text" name="input-initialValue" ng-model="object.debit" /></td>
+	        						</tr>
+	       						</table>
+       						</div>
+						</div>
+  						<div class="form-group">
+        					<div class="col-md-2 pull-left">
+        						<label for="input-label">Compte</label>
+       						</div>
+    						<div class="col-sm-10">
+    							<select ng-model="object.account.id">
+    								<option ng-repeat="account in accounts" value="{{ account.id }}">{{ account.label }}</option>
+    							</select>
+       						</div>
+						</div>
 					</form>
+				
 					<pre>operation = {{object | json}}</pre>
 			</div>
 			<div class="modal-footer">
@@ -34,4 +94,7 @@
 <script language="text/javascript">
 $('#myModal').modal('handleUpdate');
 $('#myModal').modal('show');
+$('.datepicker').datetimepicker({
+	locale: 'fr'
+});
 </script>
