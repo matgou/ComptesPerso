@@ -36,6 +36,9 @@ public class LoadDataOnStartImpl implements LoadDataOnStart {
 			} catch (IOException e) {
 				logger.error(e);
 				e.printStackTrace();
+			} catch (NullPointerException e) {
+				logger.error(e);
+				e.printStackTrace();
 			}
 		}
 	}
