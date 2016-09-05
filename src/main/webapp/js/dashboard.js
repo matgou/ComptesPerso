@@ -257,6 +257,8 @@ comptesPerso.service('ModalService', [ '$rootScope', function($rootScope) {
 	};
 	ModalService.closeModal = function() {
 		$rootScope.$broadcast('ModalClose');
+		this.object = "";
+		this.objectType = "";
 	};
 
 	ModalService.broadcastItem = function() {
@@ -299,14 +301,12 @@ comptesPerso.controller('accountController', [
 				console.log("ModalService.callModal('account', " + account
 						+ ");")
 				modalService.callModal('account', account);
-				$('#myModal').modal('show');
 			};
 			$scope.handleNewClick = function() {
 				account = {};
 				console.log("ModalService.callModal('account', " + account
 						+ ");")
 				modalService.callModal('account', account);
-				$('#myModal').modal('show');
 			};
 			$scope.$on('ModalClose', function() {
 				$scope.accounts = Account.query();
@@ -328,14 +328,12 @@ comptesPerso.controller('CategoryController', [
 				console.log("ModalService.callModal('category', " + category
 						+ ");")
 				modalService.callModal('category', category);
-				$('#myModal').modal('show');
 			};
 			$scope.handleNewClick = function() {
 				category = {};
 				console.log("ModalService.callModal('category', " + category
 						+ ");")
 				modalService.callModal('category', category);
-				$('#myModal').modal('show');
 			};
 			$scope.$on('ModalClose', function() {
 				$scope.categories = Category.query();
@@ -367,14 +365,12 @@ comptesPerso.controller('operationController', [
 				console.log("ModalService.callModal('operation', " + operation
 						+ ");")
 				modalService.callModal('operation', operation);
-				$('#myModal').modal('show');
 			};
 			$scope.handleNewClick = function() {
 				operation = {};
 				console.log("ModalService.callModal('operation', " + operation
 						+ ");")
 				modalService.callModal('operation', operation);
-				$('#myModal').modal('show');
 			};
 			$scope.$on('ModalClose', function() {
 				$scope.operation = Operation.query();
@@ -403,14 +399,13 @@ comptesPerso.controller('thirdPartyController', [
 				console.log("ModalService.callModal('thirdParty', " + thirdParty
 						+ ");")
 				modalService.callModal('thirdParty', thirdParty);
-				$('#myModal').modal('show');
 			};
 			$scope.handleNewClick = function() {
 				thirdParty = {};
 				console.log("ModalService.callModal('thirdParty', " + thirdParty
 						+ ");")
+						
 				modalService.callModal('thirdParty', thirdParty);
-				$('#myModal').modal('show');
 			};
 			$scope.$on('ModalClose', function() {
 				$scope.thirdParties = ThirdParty.query();
@@ -435,7 +430,9 @@ comptesPerso.controller('editModalController', [
 				$scope.accounts = Account.query();
 				$scope.thirdParties = ThirdParty.query();
 				$scope.categories = Category.query();
-
+				$scope.reset = function(object) {
+					$('#myModal').modal('hide');
+				};
 				$scope.update = function(object) {
 					console.log("create/update : " + modalService.objectType);
 					if (modalService.objectType == "account") {
@@ -495,5 +492,6 @@ comptesPerso.controller('editModalController', [
 						});
 					}
 				};
+				$('#myModal').modal('show');
 			});
 		} ]);
