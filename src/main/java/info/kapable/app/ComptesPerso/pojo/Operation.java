@@ -38,6 +38,7 @@ public class Operation extends Pojo {
 	/* Link */
 	private Account account;
 	private Category category;
+	private ThirdParty thirdParty;
 	
 	/* Optional */
 	private String transfertNumber;
@@ -208,5 +209,21 @@ public class Operation extends Pojo {
 	 */
 	public void setCategory(Category category) {
 		this.category = category;
+	}
+
+	/**
+	 * @return the thirdParty
+	 */
+	@ManyToOne
+    @JoinColumn(name="TIERS_ID", nullable = false)
+	public ThirdParty getThirdParty() {
+		return thirdParty;
+	}
+
+	/**
+	 * @param thirdParty the thirdParty to set
+	 */
+	public void setThirdParty(ThirdParty thirdParty) {
+		this.thirdParty = thirdParty;
 	}
 }

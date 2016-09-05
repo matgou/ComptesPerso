@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,32 +13,36 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import info.kapable.app.ComptesPerso.pojo.ThirdParty;
+import info.kapable.app.ComptesPerso.service.CategoryService;
+import info.kapable.app.ComptesPerso.service.ThirdPartyService;
 
 @RequestMapping("/thirdParty")
 @RestController
 public class ThirdPartyController extends CrudController<ThirdParty> {
 
 	private static Logger logger = Logger.getLogger(ThirdPartyController.class);
-	
+
+	@Autowired
+	private ThirdPartyService thirdPartyService;
 	
 	@Override
     @RequestMapping(value="/thirdParties", method = RequestMethod.GET)
 	public List<ThirdParty> list() {
 		logger.debug("Get all thirdParties");
-		return null;
+		return thirdPartyService.getThirdParties();
 	}
 
 	@Override
 	@RequestMapping(value="/{id}", method = RequestMethod.GET)
 	public ThirdParty get(@PathVariable("id") Long id) {
 		logger.debug("Get thirdParties id=" + id );
-		return null;
+		return thirdPartyService.get(id);
 	}
 
 	@Override
 	@RequestMapping(method = RequestMethod.POST)
 	public ThirdParty save(@Valid @RequestBody ThirdParty o) {
 		logger.debug("Save thirdParties id=" + o.getId() );
-		return null;
+		return thirdPartyService.save(o);
 	}
 }

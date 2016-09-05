@@ -1,6 +1,6 @@
 	<h2 class="sub-header">Tiers</h2>
 	<!-- Button trigger modal -->
-	<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+	<button type="button" ng-click="handleNewClick()" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
   		Nouveau tiers
 	</button>
 	<div class="table-responsive">
@@ -8,13 +8,11 @@
 			<thead>
 				<tr>
 					<th>Nom</th>
-					<th>Description</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr ng-repeat="thirdParty in thirdParties">
-					<td><a href="" ng-click="handleEditClick(thirdParty)"></a></td>
-					<td></td>
+					<td><a href="" ng-click="handleEditClick(thirdParty)">{{ thirdParty.label }}</a></td>
 				</tr>
 			</tbody>
 		</table>

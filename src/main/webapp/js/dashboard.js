@@ -381,6 +381,42 @@ comptesPerso.controller('operationController', [
 			});
 		} ]);
 /**
+ * This controller for operation list
+ */
+comptesPerso.controller('thirdPartyController', [
+		'$scope',
+		'ThirdParty',
+		'ModalService',
+		function dashboardController($scope, ThirdParty, modalService) {
+			editModalTemplate = "tmpl/thirdParty/editModal.template.html";
+			$scope.thirdParties = ThirdParty.query();
+
+			$scope.update = function() {
+				console
+						.log("selected filter account="
+								+ $scope.selectedAccount);
+				$scope.operations = Operation.fromAccount({
+					accountId : $scope.selectedAccount
+				});
+			};
+			$scope.handleEditClick = function(thirdParty) {
+				console.log("ModalService.callModal('thirdParty', " + thirdParty
+						+ ");")
+				modalService.callModal('thirdParty', thirdParty);
+				$('#myModal').modal('show');
+			};
+			$scope.handleNewClick = function() {
+				thirdParty = {};
+				console.log("ModalService.callModal('thirdParty', " + thirdParty
+						+ ");")
+				modalService.callModal('thirdParty', thirdParty);
+				$('#myModal').modal('show');
+			};
+			$scope.$on('ModalClose', function() {
+				$scope.thirdParties = ThirdParty.query();
+			});
+		} ]);
+/**
  * This controller for modal view
  */
 comptesPerso.controller('editModalController', [
@@ -440,6 +476,20 @@ comptesPerso.controller('editModalController', [
 						}, function() {
 							if(object.id) {
 								category = Category.get({categoryId: object.id});
+								modalService.closeModal();
+							}
+						});
+					}
+					if (modalService.objectType == "thirdParty") {
+						var thirdParty = new ThirdParty(object);
+						thirdParty.$save(function(user, putResponseHeaders) {
+							$scope.object = category;
+							$.notify("Sauvegarde réalisée", "info");
+							modalService.closeModal();
+							$('#myModal').modal('hide');
+						}, function() {
+							if(object.id) {
+								thirdParty = ThirdParty.get({thirdPartyId: object.id});
 								modalService.closeModal();
 							}
 						});
