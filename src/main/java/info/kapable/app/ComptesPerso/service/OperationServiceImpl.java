@@ -26,7 +26,9 @@ public class OperationServiceImpl implements OperationService {
 
 	@Override
 	public Operation save(Operation operation) {
-		return this.operationDAO.save(operation);
+		Operation opeReturn = this.operationDAO.save(operation);
+		this.operationDAO.flush();
+		return opeReturn;
 	}
 
 	@Override

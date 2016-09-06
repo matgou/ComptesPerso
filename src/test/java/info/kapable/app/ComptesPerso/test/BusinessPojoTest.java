@@ -19,10 +19,12 @@ import info.kapable.app.ComptesPerso.pojo.Account;
 import info.kapable.app.ComptesPerso.pojo.Category;
 import info.kapable.app.ComptesPerso.pojo.Home;
 import info.kapable.app.ComptesPerso.pojo.Operation;
+import info.kapable.app.ComptesPerso.pojo.ThirdParty;
 import info.kapable.app.ComptesPerso.service.AccountService;
 import info.kapable.app.ComptesPerso.service.CategoryService;
 import info.kapable.app.ComptesPerso.service.HomeService;
 import info.kapable.app.ComptesPerso.service.OperationService;
+import info.kapable.app.ComptesPerso.service.ThirdPartyService;
 
 /**
  * @author Mathieu
@@ -40,6 +42,9 @@ public class BusinessPojoTest {
 	OperationService operationService;
 	@Autowired
 	CategoryService categoryService;
+	@Autowired
+	ThirdPartyService thirdPartyService;
+
 
 	/**
 	 * @throws java.lang.Exception
@@ -87,12 +92,24 @@ public class BusinessPojoTest {
 		
 		this.accountService.save(a);
 		assertTrue(a.getId() != null);
+		
+		Category c = new Category();
+		c.setLabel("test");
+		categoryService.save(c);
+		assertTrue(c.getId() != null);
+		
+		ThirdParty tp = new ThirdParty();
+		tp.setLabel("test");
+		this.thirdPartyService.save(tp);
+		
 		Operation t = new Operation();
 		t.setAccount(a);
 		t.setCredit(10.);
 		t.setDate(new Date());
 		t.setDescription("Ajout de 10 euros pour test unitaire");
 		t.setPointedTransaction(false);
+		t.setCategory(c);
+		t.setThirdParty(tp);
 		this.operationService.save(t);
 		assertTrue(t.getId() != null);
 		// Verification du calcul de la balance
