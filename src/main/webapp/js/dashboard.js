@@ -439,7 +439,7 @@ comptesPerso.controller('editModalController', [
 						var account = new Account(object);
 						account.$save(function(user, putResponseHeaders) {
 							$scope.object = account;
-							$.notify("Sauvegarde réalisée", "info");
+							$.notify("Sauvegarde r\u00E9alis\u00E9e", "info");
 							modalService.closeModal();
 							$('#myModal').modal('hide');
 						}, function() {
@@ -453,7 +453,7 @@ comptesPerso.controller('editModalController', [
 						var operation = new Operation(object);
 						operation.$save(function(user, putResponseHeaders) {
 							$scope.object = operation;
-							$.notify("Sauvegarde réalisée", "info");
+							$.notify("Sauvegarde r\u00E9alis\u00E9e", "info");
 							modalService.closeModal();
 							$('#myModal').modal('hide');
 						}, function() {
@@ -467,7 +467,7 @@ comptesPerso.controller('editModalController', [
 						var category = new Category(object);
 						category.$save(function(user, putResponseHeaders) {
 							$scope.object = category;
-							$.notify("Sauvegarde réalisée", "info");
+							$.notify("Sauvegarde r\u00E9alis\u00E9e", "info");
 							modalService.closeModal();
 							$('#myModal').modal('hide');
 						}, function() {
@@ -481,7 +481,7 @@ comptesPerso.controller('editModalController', [
 						var thirdParty = new ThirdParty(object);
 						thirdParty.$save(function(user, putResponseHeaders) {
 							$scope.object = category;
-							$.notify("Sauvegarde réalisée", "info");
+							$.notify("Sauvegarde r\u00E9alis\u00E9e", "info");
 							modalService.closeModal();
 							$('#myModal').modal('hide');
 						}, function() {
