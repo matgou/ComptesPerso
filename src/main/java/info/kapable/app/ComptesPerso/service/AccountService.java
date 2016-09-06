@@ -3,6 +3,7 @@ package info.kapable.app.ComptesPerso.service;
 import java.util.List;
 
 import info.kapable.app.ComptesPerso.pojo.Account;
+import info.kapable.app.ComptesPerso.pojo.AccountWithBalance;
 
 /**
  * Service to access on account ressources
@@ -10,7 +11,7 @@ import info.kapable.app.ComptesPerso.pojo.Account;
  */
 public interface AccountService {
 
-	List<Account> getAccountForUser(String username);
+	List<AccountWithBalance> getAccountForUser(String username);
 
 	Account get(Long id);
 

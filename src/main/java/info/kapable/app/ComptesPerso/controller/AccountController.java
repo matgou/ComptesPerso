@@ -1,5 +1,6 @@
 package info.kapable.app.ComptesPerso.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import info.kapable.app.ComptesPerso.pojo.Account;
+import info.kapable.app.ComptesPerso.pojo.AccountWithBalance;
 import info.kapable.app.ComptesPerso.service.AccountService;
 
 /**
@@ -26,10 +28,9 @@ public class AccountController extends CrudController<Account> {
 	@Autowired
 	AccountService accountService;
 	
-	@Override
-    @RequestMapping(value="/accounts", method = RequestMethod.GET)
-    public List<Account> list() {
-    	List<Account> accounts = this.accountService.getAccountForUser("matgou");
+	@RequestMapping(value="/accounts", method = RequestMethod.GET)
+    public List<AccountWithBalance> listAll() {
+    	List<AccountWithBalance> accounts = this.accountService.getAccountForUser("matgou");
     	return accounts;
     }
     
@@ -45,5 +46,15 @@ public class AccountController extends CrudController<Account> {
     @RequestMapping("/{id}")
 	public Account get(@PathVariable("id") Long id) {
 		return this.accountService.get(Long.valueOf(id));
+	}
+
+	@Override
+	public List<Account> list() {
+    	List<AccountWithBalance> accounts = this.accountService.getAccountForUser("matgou");
+    	List<Account> returnList = new ArrayList<Account>();
+    	for(AccountWithBalance a: accounts) {
+    		returnList.add(a);
+    	}
+		return returnList;
 	}
 }

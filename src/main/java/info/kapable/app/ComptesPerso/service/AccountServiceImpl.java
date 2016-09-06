@@ -17,8 +17,8 @@ public class AccountServiceImpl implements AccountService {
 	protected AccountDAO accountDAO;
 
 	@Override
-	public List<Account> getAccountForUser(String username) {
-		List<Account> returnList = new ArrayList<Account>();
+	public List<AccountWithBalance> getAccountForUser(String username) {
+		List<AccountWithBalance> returnList = new ArrayList<AccountWithBalance>();
 		List<Account> accountList = this.accountDAO.findAll();
 		for(Account account: accountList)
 		{

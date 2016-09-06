@@ -1,25 +1,31 @@
 package info.kapable.app.ComptesPerso.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Date;
 import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.HeuristicMixedException;
+import javax.transaction.HeuristicRollbackException;
+import javax.transaction.RollbackException;
+import javax.transaction.SystemException;
+import javax.transaction.TransactionManager;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.annotation.Commit;
+import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.ui.ModelMap;
 
 import info.kapable.app.ComptesPerso.controller.AccountController;
 import info.kapable.app.ComptesPerso.controller.CategoryController;
 import info.kapable.app.ComptesPerso.controller.OperationController;
-import info.kapable.app.ComptesPerso.controller.StatusController;
 import info.kapable.app.ComptesPerso.controller.ThirdPartyController;
 import info.kapable.app.ComptesPerso.pojo.Account;
 import info.kapable.app.ComptesPerso.pojo.AccountWithBalance;
@@ -42,26 +48,27 @@ public class AccountControllerTest {
 
 	@Autowired
 	private ThirdPartyController thirdPartyController;
+
+	private Account a;
+
+	private Account a2;
 	
 	@Before
 	public void setUp() throws Exception {
-	}
-	
-	@Test
-	@Rollback(false)
-	public void test() {
-		Account a = new Account();
+		a = new Account();
 		a.setLabel("Compte test");
 		a.setIntialValue(10.);
 		a.setType(Account.TYPE_COMPTE_COURANT);
 		this.controller.save(a);
 		
-		List<Account> l = this.controller.list();
-		assertTrue(l.size() > 0);
-		AccountWithBalance awb = (AccountWithBalance) l.get(0);
-		assertTrue(awb.getRealBalance() == 10.);
-		assertTrue(awb.getPointedBalance() == 10.);
+
+		a2 = new Account();
+		a2.setLabel("Compte test sans opération");
+		a2.setIntialValue(10.);
+		a2.setType(Account.TYPE_COMPTE_COURANT);
+		this.controller.save(a2);
 		
+
 		Category c = new Category();
 		c.setLabel("test");
 		categoryController.save(c);
@@ -69,8 +76,7 @@ public class AccountControllerTest {
 		ThirdParty tp = new ThirdParty();
 		tp.setLabel("test");
 		this.thirdPartyController.save(tp);
-		assertTrue(tp.getId() != null);
-		
+
 		Operation t = new Operation();
 		t.setAccount(a);
 		t.setDate(new Date());
@@ -79,13 +85,33 @@ public class AccountControllerTest {
 		t.setCategory(c);
 		t.setThirdParty(tp);
 		this.operationController.save(t);
-		List<Account> l2 = this.controller.list();
+	}
+	
+	@Test
+	public void test() {
+		List<AccountWithBalance> l = this.controller.listAll();
+		assertTrue(l.size() > 0);
+		AccountWithBalance awb = null;
+		for(AccountWithBalance a_temp: l) {
+			if(a2.getId() == a_temp.getId()) {
+				awb = a_temp;
+			}
+		}
+		assertTrue(awb.getRealBalance() == 10.);
+		assertTrue(awb.getPointedBalance() == 10.);
+		
+		List<AccountWithBalance> l2 = this.controller.listAll();
 		assertTrue(l2.size() > 0);
-		AccountWithBalance awb2 = (AccountWithBalance) l.get(0);
+
+		AccountWithBalance awb2 = null;
+		for(AccountWithBalance a_temp: l) {
+			if(a.getId() == a_temp.getId()) {
+				awb2 = a_temp;
+			}
+		}
 		Double rb = awb2.getRealBalance();
 		Double pb = awb2.getPointedBalance();
-		// Comment this test becose transaction operation is not commit yes
-		// assertTrue(rb == 0.);
+		assertTrue(rb == 0.);
 		assertTrue(pb == 10.);
 		
 		
