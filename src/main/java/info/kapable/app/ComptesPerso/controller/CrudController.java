@@ -2,6 +2,8 @@ package info.kapable.app.ComptesPerso.controller;
 
 import java.util.List;
 
+import info.kapable.app.ComptesPerso.pojo.Category;
+
 public abstract class CrudController<T> {
 
 	/**
@@ -26,4 +28,6 @@ public abstract class CrudController<T> {
      * @return
      */
     public abstract T save(T o);
+
+	public abstract void delete(Long id);
 }

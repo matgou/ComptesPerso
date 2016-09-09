@@ -34,4 +34,9 @@ public class CategoryServiceImpl extends CategoryService {
 		return this.categoryDAO.count();
 	}
 
+	@Override
+	public void remove(Category o) {
+		this.categoryDAO.delete(o);
+	}
+
 }

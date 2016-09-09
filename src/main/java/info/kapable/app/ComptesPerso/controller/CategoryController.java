@@ -47,4 +47,10 @@ public class CategoryController extends CrudController<Category> {
 		logger.debug("Save category id=" + o.getId());
 		return this.categoryService.save(o);
 	}
+
+	@RequestMapping(path="/{id}", method = RequestMethod.DELETE)
+	public void delete(@PathVariable("id") Long id) {
+		logger.debug("delete category id=" + id);
+		this.categoryService.remove(this.get(id));
+	}
 }

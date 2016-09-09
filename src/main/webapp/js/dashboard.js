@@ -147,6 +147,11 @@ comptesPerso.service('Account', [ '$resource', function($resource) {
             interceptor : {responseError : resourceErrorHandler},
 			isArray : true
 		},
+		remove: {
+			method : 'DELETE',
+            params: {accountId: '@id'},
+            interceptor : {responseError : resourceErrorHandler}
+		},
         get: {
             method:'GET', 
             interceptor : {responseError : resourceErrorHandler}
@@ -172,6 +177,11 @@ comptesPerso.service('Operation', [ '$resource', function($resource) {
 				responseError : resourceErrorHandler
 			},
 			isArray : true
+		},
+		remove: {
+			method : 'DELETE',
+            params: {operationId: '@id'},
+            interceptor : {responseError : resourceErrorHandler}
 		},
 		get : {
 			method : 'GET',
@@ -206,6 +216,11 @@ comptesPerso.service('ThirdParty', [ '$resource', function($resource) {
             interceptor : {responseError : resourceErrorHandler},
 			isArray : true
 		},
+		remove: {
+			method : 'DELETE',
+            params: {thirdPartyId: '@id'},
+            interceptor : {responseError : resourceErrorHandler}
+		},
 		get : {
 			method : 'GET',
 			interceptor : {
@@ -233,6 +248,11 @@ comptesPerso.service('Category', [ '$resource', function($resource) {
 			},
             interceptor : {responseError : resourceErrorHandler},
 			isArray : true
+		},
+		remove: {
+			method : 'DELETE',
+            params: {categoryId: '@id'},
+            interceptor : {responseError : resourceErrorHandler}
 		},
 		get : {
 			method : 'GET',
@@ -269,6 +289,12 @@ comptesPerso.service('ModalService', [ '$rootScope', function($rootScope) {
 	ModalService.broadcastItem = function() {
 		$rootScope.$broadcast('ModalBroadcast');
 	};
+	
+	ModalService.callDropModal = function (type, objectsToDelete) {
+		this.objectType = type;
+		this.object = objectsToDelete;
+		$rootScope.$broadcast('ModalDeleteBroadcast');
+	}
 
 	return ModalService;
 } ]);
@@ -339,12 +365,45 @@ comptesPerso.controller('CategoryController', [
 		function dashboardController($scope, Category, modalService) {
 			editModalTemplate = "tmpl/category/editModal.template.html";
 			$scope.categories = Category.query();
+			$scope.selected = new Array();
+			
+			// init view nothing selected
+			$scope.categories.forEach(function(c) {
+				$scope.selected[c.id] = false;
+			});
+			
+			$scope.change = function(id) {
+		        if($scope.selected[id]) {
+		        	$scope.selected[id] = true;
+		        } else {
+		        	$scope.selected[id] = false;
+		        }
+		      };
+		      
+		    $scope.askDelete = function() {
+				categoriesToDelete = new Array();
+				$scope.categories.forEach(function(c) {
+					if($scope.selected[c.id]) {
+						categoriesToDelete.push(c);
+					}
+				});
+				
+		    	console.log("ModalService.callDropModal('category', " + categoriesToDelete
+						+ ");")
+				modalService.callDropModal('category', categoriesToDelete);
+		    }
+		    $scope.selectAll = function() {
+				$scope.categories.forEach(function(c) {
+					$scope.selected[c.id] = true;
+				});
+		      };
 
 			$scope.handleEditClick = function(category) {
 				console.log("ModalService.callModal('category', " + category
 						+ ");")
 				modalService.callModal('category', category);
 			};
+			
 			$scope.handleNewClick = function() {
 				category = {};
 				console.log("ModalService.callModal('category', " + category
@@ -507,6 +566,31 @@ comptesPerso.controller('editModalController', [
 							}
 						});
 					}
+				};
+				$('#myModal').modal('show');
+			});
+			
+			$scope.$on('ModalDeleteBroadcast', function() {
+				$scope.template = "tmpl/" + modalService.objectType
+						+ "/delete.template.html";
+				$scope.object = modalService.object;
+				
+				$scope.reset = function(object) {
+					$('#myModal').modal('hide');
+				};
+				$scope.confirm = function(object) {
+					console.log("delete : " + modalService.objectType);
+					$scope.object.forEach(function(c) {
+						console.log("delete : " + c);
+
+						var category = new Category(c);
+						category.$remove(function(user, header) {
+							$.notify("Suppression OK", "info");
+							modalService.closeModal();
+							$('#myModal').modal('hide');
+						}, function() {
+						});
+					});
 				};
 				$('#myModal').modal('show');
 			});

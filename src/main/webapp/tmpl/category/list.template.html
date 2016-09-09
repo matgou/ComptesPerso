@@ -3,16 +3,22 @@
 	<button type="button" ng-click="handleNewClick()" class="btn btn-primary btn-lg">
   		Nouvelle categorie
 	</button>
+	
+	<button type="button" ng-click="askDelete()" class="btn btn-danger btn-lg">
+		Supprimer
+	</button>
 	<div class="table-responsive">
 			<table class="table table-striped">
 			<thead>
 				<tr>
+					<th><button class="btn" ng-click="selectAll()">Select all</button></th>
 					<th>Description</th>
 					<th>Parent</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr ng-repeat="category in categories">
+					<td><input ng-model="selected[category.id]" type="checkbox" name="select-{{ category.id }}" style="margin-left:auto; margin-right:auto;"></td>
 					<td><a href="" ng-click="handleEditClick(category)">{{ category.label }}</a></td>
 					<td>{{ category.parent.label}}</td>
 				</tr>

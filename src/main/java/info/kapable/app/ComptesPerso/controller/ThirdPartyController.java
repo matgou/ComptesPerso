@@ -29,7 +29,7 @@ public class ThirdPartyController extends CrudController<ThirdParty> {
     @RequestMapping(value="/thirdParties", method = RequestMethod.GET)
 	public List<ThirdParty> list() {
 		logger.debug("Get all thirdParties");
-		return thirdPartyService.getThirdParties();
+		return thirdPartyService.getAll();
 	}
 
 	@Override
@@ -44,5 +44,12 @@ public class ThirdPartyController extends CrudController<ThirdParty> {
 	public ThirdParty save(@Valid @RequestBody ThirdParty o) {
 		logger.debug("Save thirdParties id=" + o.getId() );
 		return thirdPartyService.save(o);
+	}
+
+
+	@RequestMapping(path="/{id}", method = RequestMethod.DELETE)
+	public void delete(@PathVariable("id") Long id) {
+		logger.debug("Delete thirdParties id=" + id);
+		thirdPartyService.remove(this.get(id));
 	}
 }

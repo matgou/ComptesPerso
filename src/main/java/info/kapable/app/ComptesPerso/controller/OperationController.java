@@ -59,7 +59,12 @@ public class OperationController extends CrudController<Operation> {
 	@Override
     @RequestMapping(value="/operations", method = RequestMethod.GET)
 	public List<Operation> list() {
-		return this.operationService.getOperations();
+		return this.operationService.getAll();
+	}
+
+	@RequestMapping(path="/{id}", method = RequestMethod.DELETE)
+	public void delete(@PathVariable("id") Long id) {
+		this.operationService.remove(this.get(id));
 	}
 
 }

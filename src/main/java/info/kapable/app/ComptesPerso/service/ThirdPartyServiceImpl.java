@@ -10,29 +10,13 @@ import info.kapable.app.ComptesPerso.dao.ThirdPartyDAO;
 import info.kapable.app.ComptesPerso.pojo.ThirdParty;
 
 @Service
-@Transactional(rollbackFor = {RuntimeException.class})
-public class ThirdPartyServiceImpl implements ThirdPartyService {
+public class ThirdPartyServiceImpl extends ThirdPartyService {
 
 	@Autowired
 	protected ThirdPartyDAO thirdPartyDAO;
 
 	@Override
-	public ThirdParty getThirdParty(Long id) {
-		return this.thirdPartyDAO.findOne(id);
-	}
-
-	@Override
-	public void updateThirdParty(ThirdParty thirdParty) {
-		this.thirdPartyDAO.save(thirdParty);
-	}
-
-	@Override
-	public ThirdParty save(ThirdParty t) {
-		return this.thirdPartyDAO.save(t);
-	}
-
-	@Override
-	public List<ThirdParty> getThirdParties() {
+	public List<ThirdParty> getAll() {
 		return this.thirdPartyDAO.findAll();
 	}
 
@@ -40,5 +24,14 @@ public class ThirdPartyServiceImpl implements ThirdPartyService {
 	public ThirdParty get(Long id) {
 		return this.thirdPartyDAO.findOne(id);
 	}
-	
+
+	@Override
+	public ThirdParty save(ThirdParty o) {
+		return this.thirdPartyDAO.save(o);
+	}
+
+	@Override
+	public void remove(ThirdParty o) {
+		this.thirdPartyDAO.delete(o);
+	}
 }

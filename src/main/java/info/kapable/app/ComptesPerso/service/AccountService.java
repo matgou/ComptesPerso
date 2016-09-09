@@ -9,15 +9,11 @@ import info.kapable.app.ComptesPerso.pojo.AccountWithBalance;
  * Service to access on account ressources
  * @author matgou
  */
-public interface AccountService {
+public abstract class AccountService implements BasicService<Account>{
 
-	List<AccountWithBalance> getAccountForUser(String username);
+	public abstract List<AccountWithBalance> getAccountForUser(String username);
+	
+	public abstract double getRealBalance(Account a);
 
-	Account get(Long id);
-
-	void save(Account a);
-
-	double getRealBalance(Account a);
-
-	double getPointedBalance(Account a);
+	public abstract double getPointedBalance(Account a);
 }

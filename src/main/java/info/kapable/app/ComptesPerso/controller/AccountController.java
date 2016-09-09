@@ -57,4 +57,9 @@ public class AccountController extends CrudController<Account> {
     	}
 		return returnList;
 	}
+
+	@RequestMapping(path="/{id}", method = RequestMethod.DELETE)
+	public void delete(@PathVariable("id") Long id) {
+		this.accountService.remove(this.get(id));
+	}
 }

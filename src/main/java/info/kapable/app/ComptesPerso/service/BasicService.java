@@ -2,6 +2,8 @@ package info.kapable.app.ComptesPerso.service;
 
 import java.util.List;
 
+import info.kapable.app.ComptesPerso.pojo.Category;
+
 public interface BasicService<T> {
 
 	/**
@@ -23,5 +25,11 @@ public interface BasicService<T> {
 	 * @return
 	 */
 	public abstract T save(T o);
+
+	/**
+	 * delete object
+	 * @return
+	 */
+	public abstract void remove(T o);
 
 }
