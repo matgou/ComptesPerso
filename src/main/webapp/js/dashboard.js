@@ -20,31 +20,36 @@ angular
 											'/',
 											{
 												controller : 'indexDashboardController',
-												templateUrl : 'tmpl/dashboard/indexDashboard.template.html'
+												templateUrl : 'tmpl/dashboard/indexDashboard.template.html',
+												activetab: 'dashboard'
 											})
 									.when(
 											'/accounts',
 											{
 												controller : 'accountController',
-												templateUrl : 'tmpl/account/list.template.html'
+												templateUrl : 'tmpl/account/list.template.html',
+												activetab: 'account'
 											})
 									.when(
 											'/operations',
 											{
 												controller : 'operationController',
-												templateUrl : 'tmpl/operation/list.template.html'
+												templateUrl : 'tmpl/operation/list.template.html',
+												activetab: 'operation'
 											})
 									.when(
 											'/thirdParties',
 											{
 												controller : 'thirdPartyController',
-												templateUrl : 'tmpl/thirdParty/list.template.html'
+												templateUrl : 'tmpl/thirdParty/list.template.html',
+												activetab: 'thirdParty'
 											})
 									.when(
 											'/categories',
 											{
 												controller : 'CategoryController',
-												templateUrl : 'tmpl/category/list.template.html'
+												templateUrl : 'tmpl/category/list.template.html',
+												activetab: 'category'
 											}).otherwise('/');
 						} ]);
 
@@ -287,6 +292,17 @@ comptesPerso.controller('indexDashboardController', [
 				$('#myModal').modal('show');
 			};
 		} ]);
+
+
+/**
+ * This controller for menu and bar
+ */
+comptesPerso.controller('MainController', function($scope, $route, $routeParams, $location) {
+    $scope.$route = $route;
+    $scope.$location = $location;
+    $scope.$routeParams = $routeParams;
+})
+
 /**
  * This controller for account list
  */

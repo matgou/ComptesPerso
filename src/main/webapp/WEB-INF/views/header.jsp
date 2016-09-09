@@ -97,15 +97,14 @@
 	</div>
 	</nav>
 
-	<div class="container-fluid">
+	<div class="container-fluid" ng-controller="MainController">
 		<div class="row">
 			<div class="col-sm-3 col-md-2 sidebar">
 				<ul class="nav nav-sidebar">
-					<li class="active"><a href="#!/">Synthèse<span
-							class="sr-only">(current)</span></a></li>
-					<li><a href="#!/operations">Opérations</a></li>
-					<li><a href="#">Echéances</a></li>
-					<li><a href="#!/thirdParties">Tiers</a></li>
+					<li ng-class="{'active': $route.current.activetab == 'dashboard'}"><a href="#!/">Synthèse</a></li>
+					<li ng-class="{'active': $route.current.activetab == 'operation'}"><a href="#!/operations">Opérations</a></li>
+					<li ng-class="{'active': $route.current.activetab == 'deadline'}"><a href="#">Echéances</a></li>
+					<li ng-class="{'active': $route.current.activetab == 'thirdParty'}"><a href="#!/thirdParties">Tiers</a></li>
 				</ul>		
 			</div>
 			
