@@ -54,7 +54,7 @@
                   <ul class="dropdown-menu">
                   	<li class="dropdown-header">COMPTES</li>
                     <li><a href="#!/accounts">Liste des comptes</a></li>
-                    <li><a href="#">Moyens de paiement</a></li>
+                    <li><a href="#!/paymentMethods">Moyens de paiement</a></li>
                     <li><a href="#">Rapprochements</a></li> 
                     <li role="separator" class="divider"></li>
                     <li class="dropdown-header">APPLICATION</li>
