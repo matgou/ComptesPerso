@@ -1,8 +1,15 @@
 package info.kapable.app.ComptesPerso.service;
 
 import java.util.List;
+import java.util.Map;
+
+import javax.persistence.criteria.Expression;
+
+import org.springframework.data.domain.Page;
 
 import info.kapable.app.ComptesPerso.pojo.Category;
+import info.kapable.app.ComptesPerso.pojo.Operation;
+import info.kapable.app.ComptesPerso.pojo.ThirdParty;
 
 public interface BasicService<T> {
 
@@ -10,7 +17,8 @@ public interface BasicService<T> {
 	 * Return all object
 	 * @return
 	 */
-	public abstract List<T> getAll();
+	Page<T> getAll();
+	Page<T> getAll(int pageSize, int pageNumber);
 	
 	/**
 	 * Return object of given id
@@ -32,4 +40,11 @@ public interface BasicService<T> {
 	 */
 	public abstract void remove(T o);
 
+	/**
+	 * Find object with given label
+	 * @param searchLabel
+	 * @return
+	 */
+	// public abstract 
+	Page<T> find(int pageSize, int pageNumber, Map<String, Object> criterias);
 }

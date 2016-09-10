@@ -2,13 +2,17 @@ package info.kapable.app.ComptesPerso.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import info.kapable.app.ComptesPerso.dao.AccountDAO;
 import info.kapable.app.ComptesPerso.pojo.Account;
 import info.kapable.app.ComptesPerso.pojo.AccountWithBalance;
+import info.kapable.app.ComptesPerso.pojo.Category;
 
 @Service
 public class AccountServiceImpl extends AccountService {
@@ -44,10 +48,15 @@ public class AccountServiceImpl extends AccountService {
 	}
 
 	@Override
-	public List<Account> getAll() {
-		return this.accountDAO.findAll();
+	public Page<Account> getAll() {
+		return this.getAll(1,10);
 	}
 
+	public Page<Account> getAll(int pageSize, int pageNumber) {
+		PageRequest page = new PageRequest(pageSize, pageNumber);
+		return this.accountDAO.findAll(page);
+	}
+	
 	@Override
 	public Account get(Long id) {
 		return this.accountDAO.findOne(id);
@@ -61,5 +70,11 @@ public class AccountServiceImpl extends AccountService {
 	@Override
 	public void remove(Account o) {
 		this.accountDAO.delete(o);
+	}
+
+	@Override
+	public Page<Account> find(int pageSize, int pageNumber, Map<String, Object> criterias) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

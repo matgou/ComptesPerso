@@ -1,16 +1,23 @@
 package info.kapable.app.ComptesPerso.controller;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.Expression;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import info.kapable.app.ComptesPerso.pojo.Category;
+import info.kapable.app.ComptesPerso.pojo.ThirdParty;
 import info.kapable.app.ComptesPerso.service.CategoryService;
 
 /**
@@ -29,7 +36,7 @@ public class CategoryController extends CrudController<Category> {
 	
 	@Override
     @RequestMapping(value="/categories", method = RequestMethod.GET)
-	public List<Category> list() {
+	public Page<Category> list() {
 		logger.debug("Get all category");
 		return this.categoryService.getAll();
 	}
@@ -52,5 +59,11 @@ public class CategoryController extends CrudController<Category> {
 	public void delete(@PathVariable("id") Long id) {
 		logger.debug("delete category id=" + id);
 		this.categoryService.remove(this.get(id));
+	}
+	
+	@Override
+    @RequestMapping(value="/search", method = RequestMethod.GET)
+	public Page<Category> search(@RequestParam(value = "label", required = false) String searchLabel) {
+	    return null;
 	}
 }

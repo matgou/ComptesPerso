@@ -1,13 +1,17 @@
 package info.kapable.app.ComptesPerso.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import info.kapable.app.ComptesPerso.pojo.Account;
@@ -58,13 +62,21 @@ public class OperationController extends CrudController<Operation> {
 
 	@Override
     @RequestMapping(value="/operations", method = RequestMethod.GET)
-	public List<Operation> list() {
+	public Page<Operation> list() {
 		return this.operationService.getAll();
 	}
 
 	@RequestMapping(path="/{id}", method = RequestMethod.DELETE)
 	public void delete(@PathVariable("id") Long id) {
 		this.operationService.remove(this.get(id));
+	}
+	
+	@Override
+    @RequestMapping(value="/search", method = RequestMethod.GET)
+	public Page<Operation> search(@RequestParam(value = "label", required = false) String searchLabel) {
+		Map<String, Object> criterias = new HashMap<String, Object>();
+		criterias.put("label", searchLabel);
+		return this.operationService.find(1, 10, criterias);
 	}
 
 }

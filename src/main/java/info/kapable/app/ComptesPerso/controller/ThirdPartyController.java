@@ -6,12 +6,15 @@ import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import info.kapable.app.ComptesPerso.pojo.Operation;
 import info.kapable.app.ComptesPerso.pojo.ThirdParty;
 import info.kapable.app.ComptesPerso.service.CategoryService;
 import info.kapable.app.ComptesPerso.service.ThirdPartyService;
@@ -27,7 +30,7 @@ public class ThirdPartyController extends CrudController<ThirdParty> {
 	
 	@Override
     @RequestMapping(value="/thirdParties", method = RequestMethod.GET)
-	public List<ThirdParty> list() {
+	public Page<ThirdParty> list() {
 		logger.debug("Get all thirdParties");
 		return thirdPartyService.getAll();
 	}
@@ -51,5 +54,11 @@ public class ThirdPartyController extends CrudController<ThirdParty> {
 	public void delete(@PathVariable("id") Long id) {
 		logger.debug("Delete thirdParties id=" + id);
 		thirdPartyService.remove(this.get(id));
+	}
+	
+	@Override
+    @RequestMapping(value="/search", method = RequestMethod.GET)
+	public Page<ThirdParty> search(@RequestParam(value = "label", required = false) String searchLabel) {
+		return null;
 	}
 }

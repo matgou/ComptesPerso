@@ -5,14 +5,18 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import info.kapable.app.ComptesPerso.pojo.Account;
 import info.kapable.app.ComptesPerso.pojo.AccountWithBalance;
+import info.kapable.app.ComptesPerso.pojo.Category;
 import info.kapable.app.ComptesPerso.service.AccountService;
 
 /**
@@ -49,17 +53,23 @@ public class AccountController extends CrudController<Account> {
 	}
 
 	@Override
-	public List<Account> list() {
+	public Page<Account> list() {
     	List<AccountWithBalance> accounts = this.accountService.getAccountForUser("matgou");
-    	List<Account> returnList = new ArrayList<Account>();
+    	ArrayList<Account> returnList = new ArrayList<Account>();
     	for(AccountWithBalance a: accounts) {
     		returnList.add(a);
     	}
-		return returnList;
+    	return new PageImpl<Account>(returnList);
 	}
 
 	@RequestMapping(path="/{id}", method = RequestMethod.DELETE)
 	public void delete(@PathVariable("id") Long id) {
 		this.accountService.remove(this.get(id));
+	}
+	
+	@Override
+    @RequestMapping(value="/search", method = RequestMethod.GET)
+	public Page<Account> search(@RequestParam(value = "label", required = false) String searchLabel) {
+		return null;
 	}
 }

@@ -1,10 +1,11 @@
 package info.kapable.app.ComptesPerso.service;
 
-import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import info.kapable.app.ComptesPerso.dao.ThirdPartyDAO;
 import info.kapable.app.ComptesPerso.pojo.ThirdParty;
@@ -16,8 +17,13 @@ public class ThirdPartyServiceImpl extends ThirdPartyService {
 	protected ThirdPartyDAO thirdPartyDAO;
 
 	@Override
-	public List<ThirdParty> getAll() {
-		return this.thirdPartyDAO.findAll();
+	public Page<ThirdParty> getAll() {
+		return this.getAll(1, 10);
+	}
+	
+	public Page<ThirdParty> getAll(int pageSize, int pageNumber) {
+		PageRequest page = new PageRequest(pageSize, pageNumber);
+		return this.thirdPartyDAO.findAll(page);
 	}
 
 	@Override
@@ -33,5 +39,11 @@ public class ThirdPartyServiceImpl extends ThirdPartyService {
 	@Override
 	public void remove(ThirdParty o) {
 		this.thirdPartyDAO.delete(o);
+	}
+
+	@Override
+	public Page<ThirdParty> find(int pageSize, int pageNumber, Map<String, Object> criterias) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

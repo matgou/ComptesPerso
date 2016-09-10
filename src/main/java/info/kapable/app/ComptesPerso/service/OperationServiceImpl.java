@@ -1,8 +1,10 @@
 package info.kapable.app.ComptesPerso.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import info.kapable.app.ComptesPerso.dao.OperationDAO;
@@ -29,12 +31,24 @@ public class OperationServiceImpl extends OperationService {
 	}
 
 	@Override
-	public List<Operation> getAll() {
-		return this.operationDAO.findAll();
+	public void remove(Operation o) {
+		this.operationDAO.delete(o);
 	}
 
 	@Override
-	public void remove(Operation o) {
-		this.operationDAO.delete(o);
+	public Page<Operation> getAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Page<Operation> getAll(int pageSize, int pageNumber) {
+		return null;
+	}
+
+	@Override
+	public Page<Operation> find(int pageSize, int pageNumber, Map<String, Object> criterias) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

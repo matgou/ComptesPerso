@@ -1,8 +1,6 @@
 package info.kapable.app.ComptesPerso.controller;
 
-import java.util.List;
-
-import info.kapable.app.ComptesPerso.pojo.Category;
+import org.springframework.data.domain.Page;
 
 public abstract class CrudController<T> {
 
@@ -11,7 +9,7 @@ public abstract class CrudController<T> {
 	 * 
 	 * @return
 	 */
-    public abstract List<T> list();
+    public abstract Page<T> list();
     
     /**
      * Return the object of given id
@@ -29,5 +27,18 @@ public abstract class CrudController<T> {
      */
     public abstract T save(T o);
 
+    /**
+     * Delete an object with given id
+     * 
+     * @param id
+     */
 	public abstract void delete(Long id);
+
+	/**
+	 * Get operation with specified label
+	 * 
+	 * @param searchLabel
+	 * @return
+	 */
+	public abstract Page<T> search(String searchLabel);
 }
