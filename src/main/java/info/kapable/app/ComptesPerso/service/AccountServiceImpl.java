@@ -49,11 +49,11 @@ public class AccountServiceImpl extends AccountService {
 
 	@Override
 	public Page<Account> getAll() {
-		return this.getAll(1,10);
+		return this.getAll(0, 10);
 	}
 
-	public Page<Account> getAll(int pageSize, int pageNumber) {
-		PageRequest page = new PageRequest(pageSize, pageNumber);
+	public Page<Account> getAll(int pageNumber, int pageSize) {
+		PageRequest page = new PageRequest(pageNumber, pageSize);
 		return this.accountDAO.findAll(page);
 	}
 	

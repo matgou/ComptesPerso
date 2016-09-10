@@ -18,12 +18,13 @@ public class ThirdPartyServiceImpl extends ThirdPartyService {
 
 	@Override
 	public Page<ThirdParty> getAll() {
-		return this.getAll(1, 10);
+		return this.getAll(0, 10);
 	}
 	
-	public Page<ThirdParty> getAll(int pageSize, int pageNumber) {
-		PageRequest page = new PageRequest(pageSize, pageNumber);
-		return this.thirdPartyDAO.findAll(page);
+	public Page<ThirdParty> getAll(int pageNumber, int pageSize) {
+		PageRequest page = new PageRequest(pageNumber, pageSize);
+		Page<ThirdParty> t = this.thirdPartyDAO.findAll(page);
+		return t;
 	}
 
 	@Override

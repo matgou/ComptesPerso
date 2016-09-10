@@ -24,11 +24,11 @@ public class CategoryServiceImpl extends CategoryService {
 	
 	@Override
 	public Page<Category> getAll() {
-		return this.getAll(1, 10);
+		return this.getAll(0, 10);
 	}
 	
-	public Page<Category> getAll(int pageSize, int pageNumber) {
-		PageRequest page = new PageRequest(pageSize, pageNumber);
+	public Page<Category> getAll(int pageNumber, int pageSize) {
+		PageRequest page = new PageRequest(pageNumber, pageSize);
 		return this.categoryDAO.findAll(page);
 	}
 

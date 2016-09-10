@@ -39,11 +39,11 @@ public class OperationServiceImpl extends OperationService {
 
 	@Override
 	public Page<Operation> getAll() {
-		return this.getAll(1, 10);
+		return this.getAll(0, 10);
 	}
 	
-	public Page<Operation> getAll(int pageSize, int pageNumber) {
-		PageRequest page = new PageRequest(pageSize, pageNumber);
+	public Page<Operation> getAll(int pageNumber, int pageSize) {
+		PageRequest page = new PageRequest(pageNumber, pageSize);
 		return this.operationDAO.findAll(page);
 	}
 

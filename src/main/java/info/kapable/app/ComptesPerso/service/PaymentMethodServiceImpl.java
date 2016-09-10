@@ -11,17 +11,17 @@ import info.kapable.app.ComptesPerso.dao.PaymentMethodDAO;
 import info.kapable.app.ComptesPerso.pojo.PaymentMethod;
 
 @Service
-public class PaymentMethodImpl extends PaymentMethodService {
+public class PaymentMethodServiceImpl extends PaymentMethodService {
 
 	@Autowired
 	protected PaymentMethodDAO paymentMethodDAO;
 
 	public Page<PaymentMethod> getAll() {
-		return this.getAll(1, 10);
+		return this.getAll(0, 10);
 	}
 	
-	public Page<PaymentMethod> getAll(int pageSize, int pageNumber) {
-		PageRequest page = new PageRequest(pageSize, pageNumber);
+	public Page<PaymentMethod> getAll(int pageNumber, int pageSize) {
+		PageRequest page = new PageRequest(pageNumber, pageSize);
 		return this.paymentMethodDAO.findAll(page);
 	}
 

@@ -32,7 +32,8 @@ public class ThirdPartyController extends CrudController<ThirdParty> {
 
 	public List<ThirdParty> list() {
 		logger.debug("Get all thirdParties");
-		return thirdPartyService.getAll().getContent();
+		List<ThirdParty> t = thirdPartyService.getAll().getContent();
+		return t;
 	}
 
 	@Override
