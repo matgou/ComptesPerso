@@ -2,6 +2,29 @@
 		</div>
 	</div>
 
+
+	<div class="modal modal-message" id="errorModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+                <div class="modal-header modal-danger">
+                	<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title"><i class="glyphicon glyphicon-fire"></i> Oup's une erreur est survenue !</h4>                
+                </div>
+				<div class="container"></div>
+				<div class="modal-body" id="errorContent">Content for the
+					dialog / modal goes here.</div>
+				<div class="modal-footer">
+					<a href="#" data-dismiss="modal" class="btn">Close</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div ng-controller="editModalController"><div ng-include="template"></div></div>
+	
 	<!-- Bootstrap core JavaScript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
@@ -28,5 +51,15 @@
 	<script
 		src="<%=request.getContextPath()%>/js/account/account.service.js"></script>
 	<script src="<%=request.getContextPath()%>/js/dashboard.js"></script>
+	
+	<script>
+	$('#errorModal').on('shown.bs.modal', function() {
+		  console.log("errorModal => hide");
+		  //Make sure the modal and backdrop are siblings (changes the DOM)
+		  $(this).before($('.modal-backdrop'));
+		  //Make sure the z-index is higher than the backdrop
+		  $(this).css("z-index", parseInt($('.modal-backdrop').css('z-index')) + 1);
+		});
+	</script>
 </body>	
 </html>

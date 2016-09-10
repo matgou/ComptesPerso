@@ -284,6 +284,12 @@ comptesPerso.service('ModalService', [ '$rootScope', function($rootScope) {
 		$rootScope.$broadcast('ModalClose');
 		this.object = "";
 		this.objectType = "";
+
+		console.log("force modal => hide");
+		
+		//Make sure the z-index is higher than the backdrop
+		$('.modal-backdrop').remove();
+		
 	};
 
 	ModalService.broadcastItem = function() {
@@ -506,7 +512,7 @@ comptesPerso.controller('editModalController', [
 				$scope.thirdParties = ThirdParty.query();
 				$scope.categories = Category.query();
 				$scope.reset = function(object) {
-					$('#myModal').modal('hide');
+					modalService.closeModal();
 				};
 				$scope.update = function(object) {
 					console.log("create/update : " + modalService.objectType);
@@ -574,9 +580,9 @@ comptesPerso.controller('editModalController', [
 				$scope.template = "tmpl/" + modalService.objectType
 						+ "/delete.template.html";
 				$scope.object = modalService.object;
-				
+
 				$scope.reset = function(object) {
-					$('#myModal').modal('hide');
+					modalService.closeModal();
 				};
 				$scope.confirm = function(object) {
 					console.log("delete : " + modalService.objectType);
