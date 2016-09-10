@@ -27,7 +27,6 @@ public class LoadDataOnStartImpl implements LoadDataOnStart {
 	
 	@PostConstruct
 	public void init(){
-		/*
 		if(this.categoryService.getNbCategory() <= 0) {
 			try {
 				this.loadCategory();
@@ -42,12 +41,11 @@ public class LoadDataOnStartImpl implements LoadDataOnStart {
 				e.printStackTrace();
 			}
 		}
-		*/
 	}
 
 	private void loadCategory() throws NumberFormatException, IOException {
 		ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-		InputStream is = classloader.getResourceAsStream("category.csv");
+		InputStream is = classloader.getResourceAsStream("data/category.csv");
 
         BufferedReader br = new BufferedReader(new InputStreamReader(is, "UTF-8"));
         String line;
