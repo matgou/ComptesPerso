@@ -53,13 +53,13 @@ public class AccountController extends CrudController<Account> {
 	}
 
 	@Override
-	public Page<Account> list() {
+	public List<Account> list() {
     	List<AccountWithBalance> accounts = this.accountService.getAccountForUser("matgou");
     	ArrayList<Account> returnList = new ArrayList<Account>();
     	for(AccountWithBalance a: accounts) {
     		returnList.add(a);
     	}
-    	return new PageImpl<Account>(returnList);
+    	return returnList;
 	}
 
 	@RequestMapping(path="/{id}", method = RequestMethod.DELETE)
@@ -69,7 +69,7 @@ public class AccountController extends CrudController<Account> {
 	
 	@Override
     @RequestMapping(value="/search", method = RequestMethod.GET)
-	public Page<Account> search(@RequestParam(value = "label", required = false) String searchLabel) {
+	public List<Account> search(@RequestParam(value = "label", required = false) String searchLabel) {
 		return null;
 	}
 }

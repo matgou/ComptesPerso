@@ -62,8 +62,8 @@ public class OperationController extends CrudController<Operation> {
 
 	@Override
     @RequestMapping(value="/operations", method = RequestMethod.GET)
-	public Page<Operation> list() {
-		return this.operationService.getAll();
+	public List<Operation> list() {
+		return this.operationService.getAll().getContent();
 	}
 
 	@RequestMapping(path="/{id}", method = RequestMethod.DELETE)
@@ -73,10 +73,10 @@ public class OperationController extends CrudController<Operation> {
 	
 	@Override
     @RequestMapping(value="/search", method = RequestMethod.GET)
-	public Page<Operation> search(@RequestParam(value = "label", required = false) String searchLabel) {
+	public List<Operation> search(@RequestParam(value = "label", required = false) String searchLabel) {
 		Map<String, Object> criterias = new HashMap<String, Object>();
 		criterias.put("label", searchLabel);
-		return this.operationService.find(1, 10, criterias);
+		return this.operationService.find(1, 10, criterias).getContent();
 	}
 
 }

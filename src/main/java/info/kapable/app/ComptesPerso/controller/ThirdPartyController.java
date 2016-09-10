@@ -30,9 +30,9 @@ public class ThirdPartyController extends CrudController<ThirdParty> {
 	@Override
     @RequestMapping(value="/thirdParties", method = RequestMethod.GET)
 
-	public Page<ThirdParty> list() {
+	public List<ThirdParty> list() {
 		logger.debug("Get all thirdParties");
-		return thirdPartyService.getAll();
+		return thirdPartyService.getAll().getContent();
 	}
 
 	@Override
@@ -58,7 +58,7 @@ public class ThirdPartyController extends CrudController<ThirdParty> {
 	
 	@Override
     @RequestMapping(value="/search", method = RequestMethod.GET)
-	public Page<ThirdParty> search(@RequestParam(value = "label", required = false) String searchLabel) {
+	public List<ThirdParty> search(@RequestParam(value = "label", required = false) String searchLabel) {
 		return null;
 	}
 }

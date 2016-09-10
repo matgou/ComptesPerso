@@ -1,6 +1,6 @@
 package info.kapable.app.ComptesPerso.controller;
 
-import org.springframework.data.domain.Page;
+import java.util.List;
 
 public abstract class CrudController<T> {
 
@@ -9,7 +9,7 @@ public abstract class CrudController<T> {
 	 * 
 	 * @return
 	 */
-    public abstract Page<T> list();
+    public abstract List<T> list();
     
     /**
      * Return the object of given id
@@ -40,5 +40,5 @@ public abstract class CrudController<T> {
 	 * @param searchLabel
 	 * @return
 	 */
-	public abstract Page<T> search(String searchLabel);
+	public abstract List<T> search(String searchLabel);
 }

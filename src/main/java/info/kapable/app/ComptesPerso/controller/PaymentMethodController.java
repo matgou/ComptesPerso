@@ -27,9 +27,9 @@ public class PaymentMethodController extends CrudController<PaymentMethod> {
 	
 	@Override
     @RequestMapping(value="/paymentMethods", method = RequestMethod.GET)
-	public Page<PaymentMethod> list() {
+	public List<PaymentMethod> list() {
 		logger.debug("Get all paymentMethods");
-		return paymentMethodService.getAll();
+		return paymentMethodService.getAll().getContent();
 	}
 
 	@Override
@@ -54,7 +54,7 @@ public class PaymentMethodController extends CrudController<PaymentMethod> {
 	}
 
 	@Override
-	public Page<PaymentMethod> search(String searchLabel) {
+	public List<PaymentMethod> search(String searchLabel) {
 		// TODO Auto-generated method stub
 		return null;
 	}
