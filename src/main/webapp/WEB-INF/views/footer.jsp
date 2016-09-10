@@ -48,9 +48,35 @@
 		src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment-with-locales.min.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/js/account/account.service.js"></script>
-	<script src="<%=request.getContextPath()%>/js/dashboard.js"></script>
+		
+	<!-- Main Angular definition -->
+	<script src="<%=request.getContextPath()%>/js/config/routing.js"></script>
+	
+	<!-- Application spécific extention -->
+	<script src="<%=request.getContextPath()%>/js/extentions/dt_timepicker.js"></script>
+	<script src="<%=request.getContextPath()%>/js/extentions/ModalService.js"></script>
+	<script src="<%=request.getContextPath()%>/js/extentions/resourceErrorHandler.js"></script>
+	
+	<!-- Ressources -->
+	<script src="<%=request.getContextPath()%>/js/ressources/account.js"></script>
+	<script src="<%=request.getContextPath()%>/js/ressources/category.js"></script>
+	<script src="<%=request.getContextPath()%>/js/ressources/operation.js"></script>
+	<script src="<%=request.getContextPath()%>/js/ressources/thirdParty.js"></script>
+	
+	<!-- Controllers -->
+	<script src="<%=request.getContextPath()%>/js/controllers/accountController.js"></script>
+	<script src="<%=request.getContextPath()%>/js/controllers/categoryController.js"></script>
+	<script src="<%=request.getContextPath()%>/js/controllers/editModalController.js"></script>
+	<script src="<%=request.getContextPath()%>/js/controllers/indexController.js"></script>
+	<script src="<%=request.getContextPath()%>/js/controllers/mainController.js"></script>
+	<script src="<%=request.getContextPath()%>/js/controllers/operationController.js"></script>
+	<script src="<%=request.getContextPath()%>/js/controllers/thirdPartyController.js"></script>
+	
+	
+	<script src="<%=request.getContextPath()%>/js/all.js"></script>
+	
+	
+	
 	
 	<script>
 	$('#errorModal').on('shown.bs.modal', function() {
