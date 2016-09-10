@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import info.kapable.app.ComptesPerso.pojo.Operation;
 import info.kapable.app.ComptesPerso.pojo.ThirdParty;
-import info.kapable.app.ComptesPerso.service.CategoryService;
 import info.kapable.app.ComptesPerso.service.ThirdPartyService;
 
 @RequestMapping("/thirdParty")
@@ -30,6 +29,7 @@ public class ThirdPartyController extends CrudController<ThirdParty> {
 	
 	@Override
     @RequestMapping(value="/thirdParties", method = RequestMethod.GET)
+
 	public Page<ThirdParty> list() {
 		logger.debug("Get all thirdParties");
 		return thirdPartyService.getAll();

@@ -27,7 +27,7 @@ public class LoadDataOnStartImpl implements LoadDataOnStart {
 	
 	@PostConstruct
 	public void init(){
-		if(this.categoryService.getNbCategory() <= 0) {
+		/*if(this.categoryService.getNbCategory() <= 0) {
 			try {
 				this.loadCategory();
 			} catch (NumberFormatException e) {
@@ -40,7 +40,7 @@ public class LoadDataOnStartImpl implements LoadDataOnStart {
 				logger.error(e);
 				e.printStackTrace();
 			}
-		}
+		}*/
 	}
 
 	private void loadCategory() throws NumberFormatException, IOException {

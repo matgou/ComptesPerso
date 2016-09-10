@@ -1,28 +1,50 @@
-	<h2 class="sub-header">Categorie</h2>
-	<!-- Button trigger modal -->
-	<button type="button" ng-click="handleNewClick()" class="btn btn-primary btn-lg">
-  		Nouvelle categorie
-	</button>
-	
-	<button type="button" ng-click="askDelete()" class="btn btn-danger btn-lg">
-		Supprimer
-	</button>
-	<div class="table-responsive">
-			<table class="table table-striped">
-			<thead>
-				<tr>
-					<th><button class="btn" ng-click="selectAll()">Select all</button></th>
-					<th>Description</th>
-					<th>Parent</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr ng-repeat="category in categories">
-					<td><input ng-model="selected[category.id]" type="checkbox" name="select-{{ category.id }}" style="margin-left:auto; margin-right:auto;"></td>
-					<td><a href="" ng-click="handleEditClick(category)">{{ category.label }}</a></td>
-					<td>{{ category.parent.label}}</td>
-				</tr>
-			</tbody>
-		</table>
+<div class="row">
+	<h2>
+		<div class="col-md-8 col-xs-8">Cat&eacute;gories</div>
+	</h2>
+	<div class="col-md-4 col-xs-4">
+		<div class="manage-control">
+			<button type="button" ng-click="handleNewClick()"
+				class="btn btn-default btn-lg" role="button">
+				<span class="glyphicon glyphicon-plus"></span>
+			</button>
+			<button type="button" ng-click="askDelete()"
+				class="btn btn-default btn-lg" role="button">
+				<span class="glyphicon glyphicon-trash"></span>
+			</button>
+		</div>
 	</div>
-		
+</div>
+<br />
+
+
+<div class="table-responsive">
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th style="padding-left: 0;"><div class="btn-group"
+						role="group">
+						<button type="button" class="btn btn-default btn-sm"
+							ng-click="selectAll()">
+							<span class="glyphicon glyphicon-check"></span>
+						</button>
+						<button class="btn btn-default btn-sm" ng-click="unselectAll()">
+							<span class="glyphicon glyphicon-unchecked"></span>
+						</button>
+					</div></th>
+				<th>description</th>
+				<th>cat&eacute;gorie m&egrave;re</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="category in categories">
+				<td><input ng-model="selected[category.id]" type="checkbox"
+					name="select-{{ category.id }}"
+					style="margin-left: auto; margin-right: auto;"></td>
+				<td><a href="" ng-click="handleEditClick(category)">{{
+						category.label }}</a></td>
+				<td>{{ category.parent.label}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

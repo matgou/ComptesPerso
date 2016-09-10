@@ -107,3 +107,12 @@ body {
 .modal-danger {
   background-color: red;
 }
+
+.manage-control {
+	position: absolute;
+	right:0;
+}
+
+.btn-table {
+	padding-left:0;
+}
