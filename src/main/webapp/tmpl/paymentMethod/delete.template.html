@@ -7,12 +7,12 @@
 					aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
-				<h4 class="modal-title">suppression de tiers</h4>
+				<h4 class="modal-title">suppression de moyens de paiement</h4>
 			</div>
 			<div class="modal-body">
-					Souhaitez-vous r&eacute;ellement supprimer le(s) tiers suivant(s) ?
+					Souhaitez-vous r&eacute;ellement supprimer le(s) moyen(s) de paiement suivant(s) ?
 					<ul>
-						<li ng-repeat="thirdParty in object">{{thirdParty.label}}</li>
+						<li ng-repeat="paymentMethod in object">{{paymentMethod.label}}</li>
 					</ul>
 			</div>
 			<div class="modal-footer">
