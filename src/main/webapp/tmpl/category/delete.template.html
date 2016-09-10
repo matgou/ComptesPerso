@@ -7,14 +7,17 @@
 					aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
-				<h4 class="modal-title">Suppression des cat&eacute;gorie</h4>
+				<h4 class="modal-title">Suppression des cat&eacute;gories</h4>
 			</div>
 			<div class="modal-body">
-					<pre>category = {{object | json}}</pre>
+					Souhaitez-vous r&eacute;ellement supprimer les cat&eacute;gories suivantes :
+					<ul>
+						<li ng-repeat="categorie in object">{{categorie.label}}</li>
+					</ul>
 			</div>
 			<div class="modal-footer">
-				<button type="button" ng-click="reset()" class="btn btn-default" data-dismiss="modal">Close</button>
-				<button type="button" ng-click="confirm()" class="btn btn-danger">Confirmer</button>
+				<button type="button" ng-click="reset()" class="btn btn-default" data-dismiss="modal">fermer</button>
+				<button type="button" ng-click="confirm()" class="btn btn-danger">confirmer</button>
 			</div>
 		</div>
 		<!-- /.modal-content -->

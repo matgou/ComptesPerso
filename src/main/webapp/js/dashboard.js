@@ -397,6 +397,12 @@ comptesPerso.controller('CategoryController', [
 					$scope.selected[c.id] = true;
 				});
 		      };
+		      
+		    $scope.unselectAll = function() {
+		    	$scope.categories.forEach(function(c) {
+		    		$scope.selected[c.id] = false;
+		    	});
+		    }
 
 			$scope.handleEditClick = function(category) {
 				console.log("ModalService.callModal('category', " + category
