@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import info.kapable.app.ComptesPerso.pojo.ThirdParty;
-import info.kapable.app.ComptesPerso.service.CategoryService;
 import info.kapable.app.ComptesPerso.service.ThirdPartyService;
 
 @RequestMapping("/thirdParty")
@@ -28,7 +27,7 @@ public class ThirdPartyController extends CrudController<ThirdParty> {
 	@Override
     @RequestMapping(value="/thirdParties", method = RequestMethod.GET)
 	public List<ThirdParty> list() {
-		logger.debug("Get all thirdParties");
+		logger.debug("Get all paymentMethods");
 		return thirdPartyService.getAll();
 	}
 

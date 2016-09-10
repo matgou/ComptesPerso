@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Table(name = "COMPTE")
 @JsonIgnoreProperties({"operations"})
 /**
- * Un foyer est un ensemble de comptes associ� a des utilisateur
+ * Un compte représente un compte en banque (livret épargne, compte courant)
  * 
  * @author Mathieu GOULIN <mathieu.goulin@gadz.org>
  *
@@ -28,6 +28,8 @@ public class Account extends Pojo {
 
 	/* STATIC PARAM */
 	public static final Integer TYPE_COMPTE_COURANT = 1;
+	public static final Integer TYPE_EPARGNE_DISPO = 2;
+	public static final Integer TYPE_EPARGNE_TERME = 3;
 
 	/* Private properties */
 	private Long id;

@@ -2,8 +2,6 @@ package info.kapable.app.ComptesPerso.controller;
 
 import java.util.List;
 
-import info.kapable.app.ComptesPerso.pojo.Category;
-
 public abstract class CrudController<T> {
 
 	/**
