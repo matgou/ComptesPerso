@@ -5,11 +5,13 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import info.kapable.app.ComptesPerso.dao.OperationDAO;
 import info.kapable.app.ComptesPerso.pojo.Account;
 import info.kapable.app.ComptesPerso.pojo.Operation;
+import info.kapable.app.ComptesPerso.pojo.PaymentMethod;
 @Service
 public class OperationServiceImpl extends OperationService {
 
@@ -37,13 +39,12 @@ public class OperationServiceImpl extends OperationService {
 
 	@Override
 	public Page<Operation> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.getAll(1, 10);
 	}
-
-	@Override
+	
 	public Page<Operation> getAll(int pageSize, int pageNumber) {
-		return null;
+		PageRequest page = new PageRequest(pageSize, pageNumber);
+		return this.operationDAO.findAll(page);
 	}
 
 	@Override
