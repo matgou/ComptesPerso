@@ -8,7 +8,7 @@
 				class="btn btn-default btn-lg" role="button">
 				<span class="glyphicon glyphicon-plus"></span>
 			</button>
-			<button type="button" ng-if="!disableEditMode" ng-click="askDelete()"
+			<button type="button" ng-if="!disableEditMode" ng-click="askDelete(accounts)"
 				class="btn btn-default btn-lg" role="button">
 				<span class="glyphicon glyphicon-trash"></span>
 			</button>
@@ -25,10 +25,10 @@
 				<th ng-if="!disableEditMode" style="padding-left: 0;"><div class="btn-group"
 						role="group">
 						<button type="button" class="btn btn-default btn-sm"
-							ng-click="selectAll()">
+							ng-click="selectAll(accounts)">
 							<span class="glyphicon glyphicon-check"></span>
 						</button>
-						<button class="btn btn-default btn-sm" ng-click="unselectAll()">
+						<button class="btn btn-default btn-sm" ng-click="unselectAll(accounts)">
 							<span class="glyphicon glyphicon-unchecked"></span>
 						</button>
 					</div></th>

@@ -53,9 +53,10 @@
 	<script src="<%=request.getContextPath()%>/js/config/routing.js"></script>
 	
 	<!-- Application spécific extention -->
-	<script src="<%=request.getContextPath()%>/js/extentions/dt_timepicker.js"></script>
-	<script src="<%=request.getContextPath()%>/js/extentions/ModalService.js"></script>
-	<script src="<%=request.getContextPath()%>/js/extentions/resourceErrorHandler.js"></script>
+	<script src="<%=request.getContextPath()%>/js/extensions/dt_timepicker.js"></script>
+	<script src="<%=request.getContextPath()%>/js/extensions/ModalService.js"></script>
+	<script src="<%=request.getContextPath()%>/js/extensions/resourceErrorHandler.js"></script>
+	<script src="<%=request.getContextPath()%>/js/extensions/list_helpers.js"></script>
 	
 	<!-- Ressources -->
 	<script src="<%=request.getContextPath()%>/js/ressources/account.js"></script>

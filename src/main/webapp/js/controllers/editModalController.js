@@ -10,9 +10,26 @@ comptesPerso.controller('editModalController', [
 		'ModalService',
 		function dashboardController($scope, Account, Operation, ThirdParty,
 				Category, modalService) {
+
+			/**
+			 * @param strClass:
+			 *          class name
+			 * @param optionals:
+			 *          constructor arguments
+			 */
+			ReflectUtilNewInstance = function(strClass) {
+			    var args = Array.prototype.slice.call(arguments, 1);
+			    var clsClass = eval(strClass);
+			    function F() {
+			        return clsClass.apply(this, args);
+			    }
+			    F.prototype = clsClass.prototype;
+			    return new F();
+			};
+			
 			$scope.$on('ModalBroadcast', function() {
-				$scope.template = "tmpl/" + modalService.objectType
-						+ "/editModal.template.html";
+				templateDirectory = modalService.objectType.charAt(0).toLowerCase() + modalService.objectType.substring(1);
+				$scope.template = "tmpl/" + templateDirectory + "/editModal.template.html";
 				$scope.object = modalService.object;
 				$scope.accounts = Account.query();
 				$scope.thirdParties = ThirdParty.query();
@@ -20,71 +37,28 @@ comptesPerso.controller('editModalController', [
 				$scope.reset = function(object) {
 					modalService.closeModal();
 				};
+
 				$scope.update = function(object) {
 					console.log("create/update : " + modalService.objectType);
-					if (modalService.objectType == "account") {
-						var account = new Account(object);
-						account.$save(function(user, putResponseHeaders) {
-							$scope.object = account;
-							$.notify("Sauvegarde r\u00E9alis\u00E9e", "info");
+					var instance = ReflectUtilNewInstance(modalService.objectType, object);
+					
+					instance.$save(function(user, putResponseHeaders) {
+						$scope.object = instance;
+						$.notify("Sauvegarde r\u00E9alis\u00E9e", "info");
+						modalService.closeModal();
+						$('#myModal').modal('hide');
+					}, function() {
+						if(object.id) {
 							modalService.closeModal();
-							$('#myModal').modal('hide');
-						}, function() {
-							if(object.id) {
-								account = Account.get({accountId: object.id});
-								modalService.closeModal();
-							}
-						});
-					}
-					if (modalService.objectType == "operation") {
-						var operation = new Operation(object);
-						operation.$save(function(user, putResponseHeaders) {
-							$scope.object = operation;
-							$.notify("Sauvegarde r\u00E9alis\u00E9e", "info");
-							modalService.closeModal();
-							$('#myModal').modal('hide');
-						}, function() {
-							if(object.id) {
-								operation = Operation.get({operationId: object.id});
-								modalService.closeModal();
-							}
-						});
-					}
-					if (modalService.objectType == "category") {
-						var category = new Category(object);
-						category.$save(function(user, putResponseHeaders) {
-							$scope.object = category;
-							$.notify("Sauvegarde r\u00E9alis\u00E9e", "info");
-							modalService.closeModal();
-							$('#myModal').modal('hide');
-						}, function() {
-							if(object.id) {
-								category = Category.get({categoryId: object.id});
-								modalService.closeModal();
-							}
-						});
-					}
-					if (modalService.objectType == "thirdParty") {
-						var thirdParty = new ThirdParty(object);
-						thirdParty.$save(function(user, putResponseHeaders) {
-							$scope.object = category;
-							$.notify("Sauvegarde r\u00E9alis\u00E9e", "info");
-							modalService.closeModal();
-							$('#myModal').modal('hide');
-						}, function() {
-							if(object.id) {
-								thirdParty = ThirdParty.get({thirdPartyId: object.id});
-								modalService.closeModal();
-							}
-						});
-					}
+						}
+					});
 				};
 				$('#myModal').modal('show');
 			});
 			
 			$scope.$on('ModalDeleteBroadcast', function() {
-				$scope.template = "tmpl/" + modalService.objectType
-						+ "/delete.template.html";
+				templateDirectory = modalService.objectType.charAt(0).toLowerCase() + modalService.objectType.substring(1);
+				$scope.template = "tmpl/" + templateDirectory + "/delete.template.html";
 				$scope.object = modalService.object;
 
 				$scope.reset = function(object) {
@@ -93,10 +67,9 @@ comptesPerso.controller('editModalController', [
 				$scope.confirm = function(object) {
 					console.log("delete : " + modalService.objectType);
 					$scope.object.forEach(function(c) {
+						var instance = ReflectUtilNewInstance(modalService.objectType, c);
 						console.log("delete : " + c);
-
-						var category = new Category(c);
-						category.$remove(function(user, header) {
+						instance.$remove(function(user, header) {
 							$.notify("Suppression OK", "info");
 							modalService.closeModal();
 							$('#myModal').modal('hide');
