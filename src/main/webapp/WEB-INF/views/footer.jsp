@@ -65,6 +65,8 @@
 	src="<%=request.getContextPath()%>/js/extensions/resourceErrorHandler.js"></script>
 <script
 	src="<%=request.getContextPath()%>/js/extensions/list_helpers.js"></script>
+<script
+	src="<%=request.getContextPath()%>/js/extensions/app_fnc_range.js"></script>
 
 <!-- Ressources -->
 <script src="<%=request.getContextPath()%>/js/ressources/account.js"></script>

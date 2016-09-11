@@ -83,8 +83,9 @@ function handleEditClick(scope, type, modalService) {
  */
 function previousPage(scope, ressourceManager) {
 	return function() {
-		if(scope.currentPage > 1) {
-			scope.currentPage = scope.currentPage - 1;
+		p = scope.currentPage;
+		if(p > 1) {
+			scope.currentPage = p - 1;
 			scope.refresh();
 		}
 	};
