@@ -50,7 +50,9 @@
 				<td>TODO</td>
 				<!-- #TODO remplir le type de compte -->
 				<td><a ng-if="!disableEditMode" href=""
-					ng-click="handleEditClick(account)">{{ account.label }}</a></td>
+					ng-click="handleEditClick(account)">{{ account.label }}</a>
+					<span ng-if="disableEditMode">{{ account.label }}</span>
+					</td>
 				<td>{{ account.realBalance}} &euro;</td>
 				<td>{{ account.pointedBalance}} &euro;</td>
 			</tr>

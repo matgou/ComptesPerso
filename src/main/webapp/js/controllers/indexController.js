@@ -9,7 +9,7 @@ comptesPerso.controller('indexDashboardController', [
 		function dashboardController($scope, Account, modalService) {
 			$scope.disableEditMode = true;
 			editModalTemplate = "tmpl/account/editModal.template.html";
-			$scope.accounts = Account.query();
+			Account.query({}, function(data, request){$scope.accounts = data.content});
 			$scope.handleEditClick = function(account) {
 				console.log("ModalService.callModal('account', " + account
 						+ ");")
