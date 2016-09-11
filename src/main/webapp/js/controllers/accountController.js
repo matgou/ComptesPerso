@@ -8,7 +8,7 @@ comptesPerso.controller('accountController', [
 		function dashboardController($scope, Account, modalService) {
 			$scope.accounts = Account.query();
 			// Initialise controller
-			initListController($scope, 'Account', modalService);
+			initListController($scope, 'Account', Account, modalService);
 			// Reload object when modal close
 			$scope.$on('ModalClose', function() {
 				$scope.accounts = Account.query();

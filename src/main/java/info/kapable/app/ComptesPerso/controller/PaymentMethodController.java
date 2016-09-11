@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import info.kapable.app.ComptesPerso.pojo.PaymentMethod;
@@ -27,9 +28,9 @@ public class PaymentMethodController extends CrudController<PaymentMethod> {
 	
 	@Override
     @RequestMapping(value="/paymentMethods", method = RequestMethod.GET)
-	public List<PaymentMethod> list() {
+	public List<PaymentMethod> list(@RequestParam(value = "page", required=false, defaultValue = "1") int page) {
 		logger.debug("Get all paymentMethods");
-		return paymentMethodService.getAll().getContent();
+		return paymentMethodService.getAll(page, 10).getContent();
 	}
 
 	@Override

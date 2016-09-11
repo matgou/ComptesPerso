@@ -9,7 +9,7 @@ public abstract class CrudController<T> {
 	 * 
 	 * @return
 	 */
-    public abstract List<T> list();
+	public abstract List<T> list(int pageNumber);
     
     /**
      * Return the object of given id

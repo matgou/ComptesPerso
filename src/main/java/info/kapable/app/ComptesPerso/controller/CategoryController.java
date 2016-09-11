@@ -36,9 +36,9 @@ public class CategoryController extends CrudController<Category> {
 	
 	@Override
     @RequestMapping(value="/categories", method = RequestMethod.GET)
-	public List<Category> list() {
+	public List<Category> list(@RequestParam(value = "page", required=false, defaultValue = "1") int page) {
 		logger.debug("Get all category");
-		return this.categoryService.getAll().getContent();
+		return this.categoryService.getAll(page, 10).getContent();
 	}
 
 	@Override

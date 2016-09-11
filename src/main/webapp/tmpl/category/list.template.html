@@ -28,7 +28,8 @@
 							ng-click="selectAll(categories)">
 							<span class="glyphicon glyphicon-check"></span>
 						</button>
-						<button class="btn btn-default btn-sm" ng-click="unselectAll(categories)">
+						<button class="btn btn-default btn-sm"
+							ng-click="unselectAll(categories)">
 							<span class="glyphicon glyphicon-unchecked"></span>
 						</button>
 					</div></th>
@@ -47,4 +48,18 @@
 			</tr>
 		</tbody>
 	</table>
+	<nav aria-label="Page navigation">
+		<ul class="pagination">
+			<li><a href="" ng-click="previousPage()" aria-label="Previous"> <span
+					aria-hidden="true">&laquo;</span>
+			</a></li>
+			<li><a href="" ng-click="selectPage(1)">1</a></li>
+			<li><a href="" ng-click="selectPage(2)">2</a></li>
+			<li><a href="" ng-click="selectPage(3)">3</a></li>
+			<li><a href="" ng-click="selectPage(4)">4</a></li>
+			<li><a href="" ng-click="selectPage(5)">5</a></li>
+			<li><a href="" ng-click="nextPage()" aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+			</a></li>
+		</ul>
+	</nav>
 </div>

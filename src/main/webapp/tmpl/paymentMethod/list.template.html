@@ -28,7 +28,8 @@
 							ng-click="selectAll(paymentMethods)">
 							<span class="glyphicon glyphicon-check"></span>
 						</button>
-						<button class="btn btn-default btn-sm" ng-click="unselectAll(paymentMethods)">
+						<button class="btn btn-default btn-sm"
+							ng-click="unselectAll(paymentMethods)">
 							<span class="glyphicon glyphicon-unchecked"></span>
 						</button>
 					</div></th>
@@ -37,8 +38,8 @@
 		</thead>
 		<tbody>
 			<tr ng-repeat="paymentMethod in paymentMethods">
-				<td><input ng-model="selected[paymentMethod.id]" type="checkbox"
-					name="select-{{ paymentMethod.id }}"
+				<td><input ng-model="selected[paymentMethod.id]"
+					type="checkbox" name="select-{{ paymentMethod.id }}"
 					style="margin-left: auto; margin-right: auto;"></td>
 				<td><a href="" ng-click="handleEditClick(thirdParty)">{{
 						paymentMethod.label }}</a></td>

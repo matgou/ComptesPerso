@@ -75,12 +75,55 @@ function handleEditClick(scope, type, modalService) {
 	};
 };
 
+/**
+ * 
+ * @param scope
+ * @param ressourceManager
+ * @returns
+ */
+function previousPage(scope, ressourceManager) {
+	return function() {
+		if(scope.currentPage > 1) {
+			scope.currentPage = scope.currentPage - 1;
+			scope.categories = ressourceManager.query({"page": scope.currentPage});
+		}
+	};
+}
 
-function initListController(scope, type, modalService) {
+/**
+ * 
+ * @param scope
+ * @param ressourceManager
+ * @returns
+ */
+function nextPage(scope, ressourceManager) {
+	return function() {
+		scope.currentPage = scope.currentPage + 1;
+		scope.categories = ressourceManager.query({"page": scope.currentPage});
+	};
+}
+
+/**
+ * 
+ * @param scope
+ * @param ressourceManager
+ * @returns
+ */
+function selectPage(scope, ressourceManager) {
+	return function(pageNumber) {
+		scope.currentPage = pageNumber;
+		scope.categories = ressourceManager.query({"page": scope.currentPage})
+	};
+}
+
+function initListController(scope, type, ressourceManager, modalService) {
 	scope.selected = new Array();
     scope.selectAll = selectAll(scope);
     scope.unselectAll = unselectAll(scope);
     scope.askDelete = askDelete(scope, type, modalService);
 	scope.handleEditClick = handleEditClick(scope, type, modalService);
 	scope.handleNewClick = handleNewClick(scope, type, modalService);
+	scope.previousPage = previousPage(scope, ressourceManager);
+	scope.nextPage = nextPage(scope, ressourceManager);
+	scope.selectPage = selectPage(scope, ressourceManager);
 }

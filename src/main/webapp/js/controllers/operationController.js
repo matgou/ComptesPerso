@@ -17,7 +17,7 @@ comptesPerso.controller('operationController', [
 			};
 			
 			// Initialise controller
-			initListController($scope, 'Opperation', modalService);
+			initListController($scope, 'Opperation', Operation, modalService);
 			// Reload object when modal close
 			$scope.$on('ModalClose', function() {
 				$scope.operation = Operation.query();

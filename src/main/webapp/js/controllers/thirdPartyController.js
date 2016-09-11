@@ -9,7 +9,7 @@ comptesPerso.controller('thirdPartyController', [
 			// Get all thirdParties
 			$scope.thirdParties = ThirdParty.query();
 			// Initialise controller
-			initListController($scope, 'ThirdParty', modalService);
+			initListController($scope, 'ThirdParty', ThirdParty, modalService);
 			// Reload object when modal close
 			$scope.$on('ModalClose', function() {
 				$scope.thirdParties = ThirdParty.query();

@@ -6,9 +6,10 @@ comptesPerso.controller('CategoryController', [
 		'Category',
 		'ModalService',
 		function dashboardController($scope, Category, modalService) {
-			$scope.categories = Category.query();
+			$scope.currentPage = 1;
+			$scope.categories = Category.query({"page": $scope.currentPage});
 			// Initialise controller
-			initListController($scope, 'Category', modalService);
+			initListController($scope, 'Category', Category, modalService);
 			// Reload object when modal close
 			$scope.$on('ModalClose', function() {
 				$scope.categories = Category.query();

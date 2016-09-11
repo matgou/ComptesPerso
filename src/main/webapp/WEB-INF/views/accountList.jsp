@@ -1,4 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <jsp:include page="header.jsp" />
 
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">

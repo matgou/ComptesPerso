@@ -3,87 +3,99 @@
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<button type="button" ng-click="reset()" class="close" data-dismiss="modal"
-					aria-label="Close">
+				<button type="button" ng-click="reset()" class="close"
+					data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
 				<h4 class="modal-title">Edition de compte</h4>
 			</div>
 			<div class="modal-body">
-					<form class="form-horizontal">
-  						<div class="form-group">
-        					<div class="col-md-2 pull-left">
-								<label for="input-label">Description</label>
-       						</div>
-    						<div class="col-sm-10">
-						 		<input type="text" name="input-initialValue" ng-model="object.description" />
+				<form class="form-horizontal">
+					<div class="form-group">
+						<div class="col-md-2 pull-left">
+							<label for="input-label">Description</label>
+						</div>
+						<div class="col-sm-10">
+							<input type="text" name="input-initialValue"
+								ng-model="object.description" />
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-2 pull-left">
+							<label for="input-label">Cat&eacute;gorie</label>
+						</div>
+						<div class="col-sm-10">
+							<select ng-model="object.category.id">
+								<option ng-repeat="category in categories"
+									value="{{ category.id }}">{{ category.label }}</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-2 pull-left">
+							<label for="input-label">Tiers</label>
+						</div>
+						<div class="col-sm-10">
+							<select ng-model="object.thirdParty.id">
+								<option ng-repeat="thirdParty in thirdParties"
+									value="{{ thirdParty.id }}">{{ thirdParty.label }}</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-2 pull-left">
+							<label for="input-label">Date</label>
+						</div>
+						<div class="col-sm-10">
+							<div class="input-group date">
+								<input type="text" name="input-date"
+									class="form-control datepicker" ng-model="object.date"
+									value="{{ object.date }}" dt />
+								<div class="input-group-addon">
+									<span class="glyphicon glyphicon-th"></span>
+								</div>
 							</div>
 						</div>
-  						<div class="form-group">
-        					<div class="col-md-2 pull-left">
-								<label for="input-label">Cat&eacute;gorie</label>
-       						</div>
-    						<div class="col-sm-10">
-								<select ng-model="object.category.id">
-									<option ng-repeat="category in categories" value="{{ category.id }}">{{ category.label }}</option>
-								</select>
-       						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-2 pull-left">
+							<label>Valeurs</label>
 						</div>
-  						<div class="form-group">
-        					<div class="col-md-2 pull-left">
-								<label for="input-label">Tiers</label>
-       						</div>
-    						<div class="col-sm-10">
-    							<select ng-model="object.thirdParty.id">
-    								<option ng-repeat="thirdParty in thirdParties" value="{{ thirdParty.id }}">{{ thirdParty.label }}</option>
-    							</select>
-       						</div>
+						<div class="col-sm-10">
+							<table class="table">
+								<tr>
+									<th><label for="input-label">Cr&eacute;dit</label></th>
+									<th><label for="input-label">D&eacute;bit</label></th>
+								</tr>
+								<tr>
+									<td><input type="text" name="input-initialValue"
+										ng-model="object.credit" /></td>
+									<td><input type="text" name="input-initialValue"
+										ng-model="object.debit" /></td>
+								</tr>
+							</table>
 						</div>
-  						<div class="form-group">
-        					<div class="col-md-2 pull-left">
-								<label for="input-label">Date</label>
-       						</div>
-    						<div class="col-sm-10"><div class="input-group date">
-							    <input type="text" name="input-date" class="form-control datepicker" ng-model="object.date" value="{{ object.date }}" dt/>
-							    <div class="input-group-addon">
-							        <span class="glyphicon glyphicon-th"></span>
-    							</div>
-    						</div></div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-2 pull-left">
+							<label for="input-label">Compte</label>
 						</div>
-  						<div class="form-group">
-        					<div class="col-md-2 pull-left">
-        						<label>Valeurs</label>
-       						</div>
-    						<div class="col-sm-10">
-	  							<table class="table">
-	  								<tr>
-	        							<th><label for="input-label">Cr&eacute;dit</label></th>
-	        							<th><label for="input-label">D&eacute;bit</label></th>
-	        						</tr>
-	        						<tr>
-	        							<td><input type="text" name="input-initialValue" ng-model="object.credit" /></td>
-	        							<td><input type="text" name="input-initialValue" ng-model="object.debit" /></td>
-	        						</tr>
-	       						</table>
-       						</div>
+						<div class="col-sm-10">
+							<select ng-model="object.account.id">
+								<option ng-repeat="account in accounts" value="{{ account.id }}">{{
+									account.label }}</option>
+							</select>
 						</div>
-  						<div class="form-group">
-        					<div class="col-md-2 pull-left">
-        						<label for="input-label">Compte</label>
-       						</div>
-    						<div class="col-sm-10">
-    							<select ng-model="object.account.id">
-    								<option ng-repeat="account in accounts" value="{{ account.id }}">{{ account.label }}</option>
-    							</select>
-       						</div>
-						</div>
-					</form>
-				
-					<pre>operation = {{object | json}}</pre>
+					</div>
+				</form>
+
+				<pre>operation = {{object | json}}</pre>
 			</div>
 			<div class="modal-footer">
-				<button type="button" ng-click="reset()" class="btn btn-default" data-dismiss="modal">Close</button>
-				<button type="button" ng-click="update(object)" class="btn btn-primary">Save changes</button>
+				<button type="button" ng-click="reset()" class="btn btn-default"
+					data-dismiss="modal">Close</button>
+				<button type="button" ng-click="update(object)"
+					class="btn btn-primary">Save changes</button>
 			</div>
 		</div>
 		<!-- /.modal-content -->

@@ -4,12 +4,14 @@
 	</h2>
 	<div class="col-md-4 col-xs-4">
 		<div class="manage-control">
-			<button type="button" ng-if="!disableEditMode" ng-click="handleNewClick()"
-				class="btn btn-default btn-lg" role="button">
+			<button type="button" ng-if="!disableEditMode"
+				ng-click="handleNewClick()" class="btn btn-default btn-lg"
+				role="button">
 				<span class="glyphicon glyphicon-plus"></span>
 			</button>
-			<button type="button" ng-if="!disableEditMode" ng-click="askDelete(accounts)"
-				class="btn btn-default btn-lg" role="button">
+			<button type="button" ng-if="!disableEditMode"
+				ng-click="askDelete(accounts)" class="btn btn-default btn-lg"
+				role="button">
 				<span class="glyphicon glyphicon-trash"></span>
 			</button>
 		</div>
@@ -22,13 +24,14 @@
 	<table class="table table-striped">
 		<thead>
 			<tr>
-				<th ng-if="!disableEditMode" style="padding-left: 0;"><div class="btn-group"
-						role="group">
+				<th ng-if="!disableEditMode" style="padding-left: 0;"><div
+						class="btn-group" role="group">
 						<button type="button" class="btn btn-default btn-sm"
 							ng-click="selectAll(accounts)">
 							<span class="glyphicon glyphicon-check"></span>
 						</button>
-						<button class="btn btn-default btn-sm" ng-click="unselectAll(accounts)">
+						<button class="btn btn-default btn-sm"
+							ng-click="unselectAll(accounts)">
 							<span class="glyphicon glyphicon-unchecked"></span>
 						</button>
 					</div></th>
@@ -40,16 +43,17 @@
 		</thead>
 		<tbody>
 			<tr ng-repeat="account in accounts">
-				<td ng-if="!disableEditMode"><input ng-model="selected[account.id]" type="checkbox"
+				<td ng-if="!disableEditMode"><input
+					ng-model="selected[account.id]" type="checkbox"
 					name="select-{{ account.id }}"
 					style="margin-left: auto; margin-right: auto;"></td>
-				<td>TODO</td><!-- #TODO remplir le type de compte -->
-				<td><a ng-if="!disableEditMode" href="" ng-click="handleEditClick(account)">{{
-						account.label }}</a></td>
+				<td>TODO</td>
+				<!-- #TODO remplir le type de compte -->
+				<td><a ng-if="!disableEditMode" href=""
+					ng-click="handleEditClick(account)">{{ account.label }}</a></td>
 				<td>{{ account.realBalance}} &euro;</td>
 				<td>{{ account.pointedBalance}} &euro;</td>
 			</tr>
 		</tbody>
 	</table>
 </div>
-	

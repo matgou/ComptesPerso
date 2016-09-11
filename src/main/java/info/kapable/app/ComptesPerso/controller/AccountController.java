@@ -53,7 +53,7 @@ public class AccountController extends CrudController<Account> {
 	}
 
 	@Override
-	public List<Account> list() {
+	public List<Account> list(int page) {
     	List<AccountWithBalance> accounts = this.accountService.getAccountForUser("matgou");
     	ArrayList<Account> returnList = new ArrayList<Account>();
     	for(AccountWithBalance a: accounts) {

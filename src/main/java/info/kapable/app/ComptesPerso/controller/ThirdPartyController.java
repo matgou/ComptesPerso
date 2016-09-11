@@ -30,9 +30,9 @@ public class ThirdPartyController extends CrudController<ThirdParty> {
 	@Override
     @RequestMapping(value="/thirdParties", method = RequestMethod.GET)
 
-	public List<ThirdParty> list() {
+	public List<ThirdParty> list(@RequestParam(value = "page", required=false, defaultValue = "1") int page) {
 		logger.debug("Get all thirdParties");
-		List<ThirdParty> t = thirdPartyService.getAll().getContent();
+		List<ThirdParty> t = thirdPartyService.getAll(page, 10).getContent();
 		return t;
 	}
 
