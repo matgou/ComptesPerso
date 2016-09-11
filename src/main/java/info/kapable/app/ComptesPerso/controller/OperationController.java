@@ -63,7 +63,7 @@ public class OperationController extends CrudController<Operation> {
 	@Override
     @RequestMapping(value="/operations", method = RequestMethod.GET)
 	public Page<Operation> list(@RequestParam(value = "page", required=false, defaultValue = "1") int page) {
-		return this.operationService.getAll(page, 10);
+		return this.operationService.getAll(page-1, 10);
 	}
 
 	@RequestMapping(path="/{id}", method = RequestMethod.DELETE)

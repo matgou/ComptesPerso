@@ -31,9 +31,10 @@ comptesPerso.controller('editModalController', [
 				templateDirectory = modalService.objectType.charAt(0).toLowerCase() + modalService.objectType.substring(1);
 				$scope.template = "tmpl/" + templateDirectory + "/editModal.template.html";
 				$scope.object = modalService.object;
-				$scope.accounts = Account.query().content;
-				$scope.thirdParties = ThirdParty.query().content;
-				$scope.categories = Category.query().content;
+				Account.query({}, function(page, getResponseHeaders) { $scope.accounts = page.content});
+				ThirdParty.query({}, function(page, getResponseHeaders) { $scope.thirdParties = page.content});
+				Category.query({}, function(page, getResponseHeaders) { $scope.categories = page.content});
+				
 				$scope.reset = function(object) {
 					modalService.closeModal();
 				};

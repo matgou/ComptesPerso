@@ -118,3 +118,7 @@ body {
 .btn-table {
 	padding-left: 0;
 }
+
+.app-pagination {
+	right: 0;
+}
