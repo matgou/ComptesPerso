@@ -11,6 +11,14 @@ comptesPerso.service('Category', [ '$resource', function($resource) {
             interceptor : {responseError : resourceErrorHandler},
 			isArray : false
 		},
+		queryRoot: {
+			method : 'GET',
+			params : {
+				categoryId : 'categoriesRoot'
+			},
+            interceptor : {responseError : resourceErrorHandler},
+			isArray : true
+		},
 		remove: {
 			method : 'DELETE',
             params: {categoryId: '@id'},

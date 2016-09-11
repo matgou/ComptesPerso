@@ -32,9 +32,22 @@
 							ng-click="unselectAll(categories)">
 							<span class="glyphicon glyphicon-unchecked"></span>
 						</button>
+						
+						<button class="btn btn-default btn-sm"
+							ng-click="showSearch()">
+							<span class="glyphicon glyphicon-search"></span>
+						</button>
 					</div></th>
 				<th>description</th>
 				<th>cat&eacute;gorie m&egrave;re</th>
+			</tr>
+			<tr ng-if="searchEnable">
+				<td>&nbsp;</td>
+				<td><input ng-change="search(search_label, search_parent)" ng-model="search_label" type="text" class="form-control" id="search-label" placeholder="Rechercher"></td>
+				<td><select ng-change="search(search_label, search_parent.id)" ng-model="search_parent" class="form-control" id="input-parent" ng-model="object.parent"
+							ng-options="category as category.label for category in categoriesParent">
+							<option value="">aucune</option>
+						</select></td>
 			</tr>
 		</thead>
 		<tbody>

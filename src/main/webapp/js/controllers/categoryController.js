@@ -12,6 +12,17 @@ comptesPerso.controller('CategoryController', [
 					$scope.page = page;
 				});
 			};
+			Category.queryRoot({"page": $scope.currentPage}, function(categoriesParent, getResponseHeaders){
+				$scope.categoriesParent =  categoriesParent;
+			});
+			$scope.search=function(search_label, search_parent) {
+				console.log(search_label);
+				console.log(search_parent);
+				Category.query({"page": $scope.currentPage, "label": search_label, "parent": search_parent}, function(page, getResponseHeaders){
+					$scope.categories = page.content;
+					$scope.page = page;
+				});
+			};
 			
 			// Initialise controller
 			initListController($scope, 'Category', Category, modalService);

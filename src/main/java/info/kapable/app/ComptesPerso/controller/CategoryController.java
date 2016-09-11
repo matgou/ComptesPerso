@@ -34,11 +34,12 @@ public class CategoryController extends CrudController<Category> {
 	@Autowired
 	private CategoryService categoryService;
 	
-	@Override
-    @RequestMapping(value="/categories", method = RequestMethod.GET)
-	public Page<Category> list(@RequestParam(value = "page", required=false, defaultValue = "1") int page) {
-		logger.debug("Get all category");
-		Page<Category> p = this.categoryService.getAll(page - 1, 10);
+	@RequestMapping(value="/categories", method = RequestMethod.GET)
+	public Page<Category> search(@RequestParam(value = "page", required=false, defaultValue = "1") int page,
+			@RequestParam(value = "label", required=false) String label,
+			@RequestParam(value = "parent", required=false, defaultValue = "-1") int parentId) {
+		logger.debug("Search category");
+		Page<Category> p = this.categoryService.searchByLabelAndParent(page - 1, 10, label, parentId);
 		return p;
 	}
 
@@ -66,5 +67,17 @@ public class CategoryController extends CrudController<Category> {
     @RequestMapping(value="/search", method = RequestMethod.GET)
 	public List<Category> search(@RequestParam(value = "label", required = false) String searchLabel) {
 	    return null;
+	}
+
+	@Override
+	public Page<Category> list(int pageNumber) {
+		// TODO Auto-generated method stub
+		return this.search(pageNumber, "", -1);
+	}
+
+    @RequestMapping(value="/categoriesRoot", method = RequestMethod.GET)
+	public List<Category> getCategoriesRoot() {
+		return this.categoryService.getCategoriesWithNoParent();
+		
 	}
 }

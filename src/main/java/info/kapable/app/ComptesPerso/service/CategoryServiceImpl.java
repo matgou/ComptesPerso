@@ -1,5 +1,7 @@
 package info.kapable.app.ComptesPerso.service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import javax.persistence.EntityManager;
@@ -7,6 +9,7 @@ import javax.persistence.PersistenceContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
@@ -56,5 +59,33 @@ public class CategoryServiceImpl extends CategoryService {
 	public Page<Category> find(int pageSize, int pageNumber, Map<String, Object> criterias) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public Page<Category> searchByLabelAndParent(int pageNumber, int pageSize, String label, int parentId) {
+		Category parent = null;
+		PageRequest page = new PageRequest(pageNumber, pageSize);
+
+		if(parentId > 0) {
+			parent = this.get((long) parentId);
+		}
+		
+		if(label == null || label.length() < 3) {
+			if(parent == null) {
+				return this.getAll(pageNumber, pageSize);
+			} else {
+				return this.categoryDAO.findByParent(page, parent);
+			}
+		} else {
+			if(parent == null) {
+				return this.categoryDAO.findByLabel(page, label);
+			} else {
+				return this.categoryDAO.findByParentAndLabel(page, parent, label);
+			}
+		}
+	}
+
+	public List<Category> getCategoriesWithNoParent() {
+		return this.categoryDAO.findByParentNull();
 	}
 }

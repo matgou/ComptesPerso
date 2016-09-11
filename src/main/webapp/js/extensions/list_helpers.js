@@ -104,6 +104,16 @@ function nextPage(scope, ressourceManager) {
 	};
 }
 
+function showSearch(scope) {
+	return function() {
+		if(scope.searchEnable) {
+			scope.searchEnable = false;
+		} else {
+			scope.searchEnable = true;
+		}
+	};
+}
+
 /**
  * 
  * @param scope
@@ -119,6 +129,7 @@ function selectPage(scope, ressourceManager) {
 
 function initListController(scope, type, ressourceManager, modalService) {
 	scope.currentPage = 1;
+	scope.searchEnable = false;
 	
 	scope.selected = new Array();
     scope.selectAll = selectAll(scope);
@@ -129,6 +140,7 @@ function initListController(scope, type, ressourceManager, modalService) {
 	scope.previousPage = previousPage(scope, ressourceManager);
 	scope.nextPage = nextPage(scope, ressourceManager);
 	scope.selectPage = selectPage(scope, ressourceManager);
-
+	scope.showSearch = showSearch(scope);
+	
 	scope.refresh();
 }
