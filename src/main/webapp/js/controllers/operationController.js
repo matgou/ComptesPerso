@@ -13,7 +13,9 @@ comptesPerso.controller('operationController', [
 					$scope.page = page;
 				});
 			};
-			$scope.accounts = Account.query();
+			Account.query({}, function(page, getResponseHeaders) {
+				$scope.accounts = page.content;
+			});
 			$scope.update = function() {
 				console.log("selected filter account="+ $scope.selectedAccount);
 				$scope.operations = Operation.fromAccount({

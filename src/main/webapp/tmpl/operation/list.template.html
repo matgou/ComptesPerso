@@ -12,7 +12,7 @@
 				class="btn btn-default btn-lg" role="button">
 				<span class="glyphicon glyphicon-plus"></span>
 			</button>
-			<button type="button" ng-click="askDelete()"
+			<button type="button" ng-click="askDelete(operations)"
 				class="btn btn-default btn-lg" role="button">
 				<span class="glyphicon glyphicon-trash"></span>
 			</button>
@@ -29,10 +29,10 @@
 				<th style="padding-left: 0;"><div class="btn-group"
 						role="group">
 						<button type="button" class="btn btn-default btn-sm"
-							ng-click="selectAll()">
+							ng-click="selectAll(operations)">
 							<span class="glyphicon glyphicon-check"></span>
 						</button>
-						<button class="btn btn-default btn-sm" ng-click="unselectAll()">
+						<button class="btn btn-default btn-sm" ng-click="unselectAll(operations)">
 							<span class="glyphicon glyphicon-unchecked"></span>
 						</button>
 					</div></th>
@@ -47,6 +47,9 @@
 		</thead>
 		<tbody>
 			<tr ng-repeat="operation in operations">
+				<td><input ng-model="selected[operation.id]"
+					type="checkbox" name="select-{{ operation.id }}"
+					style="margin-left: auto; margin-right: auto;"></td>
 				<td>{{ operation.date | date:'dd/MM/yyyy' }}</td>
 				<td>{{ operation.category.label }}</td>
 				<td><a href="" ng-click="handleEditClick(operation)">{{

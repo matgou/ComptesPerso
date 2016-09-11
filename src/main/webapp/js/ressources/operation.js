@@ -32,7 +32,7 @@ comptesPerso.service('Operation', [ '$resource', function($resource) {
 		},
 		fromAccount : {
 			method : 'GET',
-			url : 'transactions/account/:accountId.json',
+			url : 'operations/account/:accountId.json',
 			isArray : true
 		}
 
