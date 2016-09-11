@@ -1,0 +1,32 @@
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+	aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" ng-click="reset()" class="close"
+					data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title">suppression d'op&eacute;rations</h4>
+			</div>
+			<div class="modal-body">
+				Souhaitez-vous r&eacute;ellement supprimer le(s) op&eacute;rationn(s) suivante(s) ?
+				<ul>
+					<li ng-repeat="operation in object">{{operation.description}}</li>
+				</ul>
+			</div>
+			<div class="modal-footer">
+				<button type="button" ng-click="reset()" class="btn btn-default"
+					data-dismiss="modal">fermer</button>
+				<button type="button" ng-click="confirm()" class="btn btn-danger">confirmer</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+<script>
+$('#myModal').modal('handleUpdate');
+$('#myModal').modal('show');
+</script>
