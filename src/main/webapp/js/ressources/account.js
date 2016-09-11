@@ -9,7 +9,7 @@ comptesPerso.service('Account', [ '$resource', function($resource) {
 				accountId : 'accounts'
 			},
             interceptor : {responseError : resourceErrorHandler},
-			isArray : true
+			isArray : false
 		},
 		remove: {
 			method : 'DELETE',

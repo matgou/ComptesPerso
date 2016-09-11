@@ -7,7 +7,12 @@ comptesPerso.controller('operationController', [
 		'Account',
 		'ModalService',
 		function dashboardController($scope, Operation, Account, modalService) {
-			$scope.operations = Operation.query();
+			$scope.refresh=function() {
+				Operation.query({"page": $scope.currentPage}, function(page, getResponseHeaders){
+					$scope.operations = page.content;
+					$scope.page = page;
+				});
+			};
 			$scope.accounts = Account.query();
 			$scope.update = function() {
 				console.log("selected filter account="+ $scope.selectedAccount);
@@ -20,6 +25,6 @@ comptesPerso.controller('operationController', [
 			initListController($scope, 'Opperation', Operation, modalService);
 			// Reload object when modal close
 			$scope.$on('ModalClose', function() {
-				$scope.operation = Operation.query();
+				$scope.refresh();
 			});
 		} ]);

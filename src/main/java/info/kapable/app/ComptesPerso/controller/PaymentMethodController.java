@@ -28,9 +28,9 @@ public class PaymentMethodController extends CrudController<PaymentMethod> {
 	
 	@Override
     @RequestMapping(value="/paymentMethods", method = RequestMethod.GET)
-	public List<PaymentMethod> list(@RequestParam(value = "page", required=false, defaultValue = "1") int page) {
+	public Page<PaymentMethod> list(@RequestParam(value = "page", required=false, defaultValue = "1") int page) {
 		logger.debug("Get all paymentMethods");
-		return paymentMethodService.getAll(page, 10).getContent();
+		return paymentMethodService.getAll(page - 1, 10);
 	}
 
 	@Override

@@ -11,7 +11,7 @@ comptesPerso.service('Operation', [ '$resource', function($resource) {
 			interceptor : {
 				responseError : resourceErrorHandler
 			},
-			isArray : true
+			isArray : false
 		},
 		remove: {
 			method : 'DELETE',

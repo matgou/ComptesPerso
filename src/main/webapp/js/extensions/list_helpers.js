@@ -85,7 +85,7 @@ function previousPage(scope, ressourceManager) {
 	return function() {
 		if(scope.currentPage > 1) {
 			scope.currentPage = scope.currentPage - 1;
-			scope.categories = ressourceManager.query({"page": scope.currentPage});
+			scope.refresh();
 		}
 	};
 }
@@ -99,7 +99,7 @@ function previousPage(scope, ressourceManager) {
 function nextPage(scope, ressourceManager) {
 	return function() {
 		scope.currentPage = scope.currentPage + 1;
-		scope.categories = ressourceManager.query({"page": scope.currentPage});
+		scope.refresh();
 	};
 }
 
@@ -112,11 +112,13 @@ function nextPage(scope, ressourceManager) {
 function selectPage(scope, ressourceManager) {
 	return function(pageNumber) {
 		scope.currentPage = pageNumber;
-		scope.categories = ressourceManager.query({"page": scope.currentPage})
+		scope.refresh();
 	};
 }
 
 function initListController(scope, type, ressourceManager, modalService) {
+	scope.currentPage = 1;
+	
 	scope.selected = new Array();
     scope.selectAll = selectAll(scope);
     scope.unselectAll = unselectAll(scope);
@@ -126,4 +128,6 @@ function initListController(scope, type, ressourceManager, modalService) {
 	scope.previousPage = previousPage(scope, ressourceManager);
 	scope.nextPage = nextPage(scope, ressourceManager);
 	scope.selectPage = selectPage(scope, ressourceManager);
+
+	scope.refresh();
 }

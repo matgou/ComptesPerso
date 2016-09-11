@@ -9,7 +9,7 @@ comptesPerso.service('Category', [ '$resource', function($resource) {
 				categoryId : 'categories'
 			},
             interceptor : {responseError : resourceErrorHandler},
-			isArray : true
+			isArray : false
 		},
 		remove: {
 			method : 'DELETE',

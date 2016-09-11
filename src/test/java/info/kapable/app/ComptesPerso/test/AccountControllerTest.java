@@ -63,7 +63,7 @@ public class AccountControllerTest {
 		
 
 		a2 = new Account();
-		a2.setLabel("Compte test sans opération");
+		a2.setLabel("Compte test sans opï¿½ration");
 		a2.setIntialValue(10.);
 		a2.setType(Account.TYPE_COMPTE_COURANT);
 		this.controller.save(a2);
@@ -81,7 +81,7 @@ public class AccountControllerTest {
 		t.setAccount(a);
 		t.setDate(new Date());
 		t.setDebit(10.);
-		t.setDescription("Une opération");
+		t.setDescription("Une opï¿½ration");
 		t.setCategory(c);
 		t.setThirdParty(tp);
 		this.operationController.save(t);
@@ -89,7 +89,7 @@ public class AccountControllerTest {
 	
 	@Test
 	public void test() {
-		List<AccountWithBalance> l = this.controller.listAll();
+		List<AccountWithBalance> l = this.controller.listAll().getContent();
 		assertTrue(l.size() > 0);
 		AccountWithBalance awb = null;
 		for(AccountWithBalance a_temp: l) {
@@ -100,7 +100,7 @@ public class AccountControllerTest {
 		assertTrue(awb.getRealBalance() == 10.);
 		assertTrue(awb.getPointedBalance() == 10.);
 		
-		List<AccountWithBalance> l2 = this.controller.listAll();
+		List<AccountWithBalance> l2 = this.controller.listAll().getContent();
 		assertTrue(l2.size() > 0);
 
 		AccountWithBalance awb2 = null;

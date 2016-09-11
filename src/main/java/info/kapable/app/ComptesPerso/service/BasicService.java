@@ -1,16 +1,8 @@
 package info.kapable.app.ComptesPerso.service;
 
-import java.util.List;
 import java.util.Map;
 
-import javax.persistence.criteria.Expression;
-
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-
-import info.kapable.app.ComptesPerso.pojo.Category;
-import info.kapable.app.ComptesPerso.pojo.Operation;
-import info.kapable.app.ComptesPerso.pojo.ThirdParty;
 
 public interface BasicService<T> {
 
@@ -20,7 +12,8 @@ public interface BasicService<T> {
 	 */
 	Page<T> getAll();
 	Page<T> getAll(int pageNumber, int pageSize);
-		
+	
+	
 	/**
 	 * Return object of given id
 	 * @param id

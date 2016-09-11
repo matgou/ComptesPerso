@@ -33,9 +33,9 @@ public class AccountController extends CrudController<Account> {
 	AccountService accountService;
 	
 	@RequestMapping(value="/accounts", method = RequestMethod.GET)
-    public List<AccountWithBalance> listAll() {
+    public Page<AccountWithBalance> listAll() {
     	List<AccountWithBalance> accounts = this.accountService.getAccountForUser("matgou");
-    	return accounts;
+    	return new PageImpl<AccountWithBalance>(accounts);
     }
     
     @Override
@@ -53,13 +53,13 @@ public class AccountController extends CrudController<Account> {
 	}
 
 	@Override
-	public List<Account> list(int page) {
+	public Page<Account> list(int page) {
     	List<AccountWithBalance> accounts = this.accountService.getAccountForUser("matgou");
     	ArrayList<Account> returnList = new ArrayList<Account>();
     	for(AccountWithBalance a: accounts) {
     		returnList.add(a);
     	}
-    	return returnList;
+    	return new PageImpl<Account>(returnList);
 	}
 
 	@RequestMapping(path="/{id}", method = RequestMethod.DELETE)

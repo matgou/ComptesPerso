@@ -9,7 +9,7 @@ comptesPerso.service('ThirdParty', [ '$resource', function($resource) {
 				thirdPartyId : 'thirdParties'
 			},
             interceptor : {responseError : resourceErrorHandler},
-			isArray : true
+			isArray : false
 		},
 		remove: {
 			method : 'DELETE',
