@@ -16,7 +16,7 @@ comptesPerso.service('Category', [ '$resource', function($resource) {
 			params : {
 				categoryId : 'allCategories'
 			},
-            interceptor : {responseError : resourceErrorHandler},
+            interceptor : {response: categoryTreeHandler,responseError : resourceErrorHandler},
 			isArray : true
 		},
 		queryRoot: {

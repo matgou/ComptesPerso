@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -35,6 +36,7 @@ public class Category extends Pojo {
 	private boolean categoryDebit = true;
 	
 	@Size(min=2, max=255, message = "{errors.label.size}") 
+	@NotNull(message = "{error.label.notnull}")
 	private String label;
 	@MaxCategoryLevel()
 	private Category parent;

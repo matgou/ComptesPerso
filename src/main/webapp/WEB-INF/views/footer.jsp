@@ -62,6 +62,8 @@
 <script
 	src="<%=request.getContextPath()%>/js/extensions/ModalService.js"></script>
 <script
+	src="<%=request.getContextPath()%>/js/extensions/categoryTreeHandler.js"></script>
+<script
 	src="<%=request.getContextPath()%>/js/extensions/resourceErrorHandler.js"></script>
 <script
 	src="<%=request.getContextPath()%>/js/extensions/list_helpers.js"></script>
