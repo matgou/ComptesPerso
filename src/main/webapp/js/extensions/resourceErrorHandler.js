@@ -12,8 +12,9 @@ function resourceErrorHandler(response) {
 			console.log("error in : " + field + " : ");
 			for (message in list[field]) {
 				console.log(list[field][message]);
-				$( "#input-" + field ).after(function() {
-					  return "<div class=\"modal-alert alert alert-warning\">" + list[field][message] + "</div>";
+				$( "#input-" + field ).parent().addClass("has-error");
+				$( "#input-" + field ).before(function() {
+					  return "<span class=\"help-inline\">" + list[field][message] + "</span>";
 					});
 			}
 		}
