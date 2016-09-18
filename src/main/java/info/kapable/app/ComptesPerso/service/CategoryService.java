@@ -13,4 +13,5 @@ public abstract class CategoryService implements BasicService<Category>{
 	public abstract Page<Category> searchByLabelAndParent(int pageNumber, int pageSize, String label, int parentId);
 
 	public abstract List<Category> getCategoriesWithNoParent();
+
 }

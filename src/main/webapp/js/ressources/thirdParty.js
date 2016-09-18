@@ -11,6 +11,14 @@ comptesPerso.service('ThirdParty', [ '$resource', function($resource) {
             interceptor : {responseError : resourceErrorHandler},
 			isArray : false
 		},
+		queryAll : {
+			method : 'GET',
+			params : {
+				thirdPartyId : 'allThirdParties'
+			},
+            interceptor : {responseError : resourceErrorHandler},
+			isArray : true
+		},
 		remove: {
 			method : 'DELETE',
             params: {thirdPartyId: '@id'},

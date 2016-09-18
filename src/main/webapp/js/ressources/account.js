@@ -11,6 +11,14 @@ comptesPerso.service('Account', [ '$resource', function($resource) {
             interceptor : {responseError : resourceErrorHandler},
 			isArray : false
 		},
+		queryAll : {
+			method : 'GET',
+			params : {
+				accountId : 'allAccounts'
+			},
+            interceptor : {responseError : resourceErrorHandler},
+			isArray : true
+		},
 		remove: {
 			method : 'DELETE',
             params: {accountId: '@id'},

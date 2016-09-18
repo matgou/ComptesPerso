@@ -82,6 +82,8 @@
 <script
 	src="<%=request.getContextPath()%>/js/controllers/editModalController.js"></script>
 <script
+	src="<%=request.getContextPath()%>/js/controllers/paymentMethodController.js"></script>
+<script
 	src="<%=request.getContextPath()%>/js/controllers/indexController.js"></script>
 <script
 	src="<%=request.getContextPath()%>/js/controllers/mainController.js"></script>

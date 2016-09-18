@@ -88,4 +88,9 @@ public class CategoryServiceImpl extends CategoryService {
 	public List<Category> getCategoriesWithNoParent() {
 		return this.categoryDAO.findByParentNull();
 	}
+
+	@Override
+	public List<Category> findAll() {
+		return this.categoryDAO.findAll();
+	}
 }

@@ -62,4 +62,10 @@ public class ThirdPartyController extends CrudController<ThirdParty> {
 	public List<ThirdParty> search(@RequestParam(value = "label", required = false) String searchLabel) {
 		return null;
 	}
+
+	@Override
+    @RequestMapping(value="/allThirdParties", method = RequestMethod.GET)
+	public List<ThirdParty> getListOfAll() {
+		return this.thirdPartyService.findAll();
+	}
 }

@@ -52,4 +52,9 @@ public class OperationServiceImpl extends OperationService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public List<Operation> findAll() {
+		return this.operationDAO.findAll();
+	}
 }

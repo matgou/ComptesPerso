@@ -77,4 +77,14 @@ public class AccountServiceImpl extends AccountService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public int getNbAccount() {
+		return this.accountDAO.getNbAccount();
+	}
+
+	@Override
+	public List<Account> findAll() {
+		return this.accountDAO.findAll();
+	}
 }

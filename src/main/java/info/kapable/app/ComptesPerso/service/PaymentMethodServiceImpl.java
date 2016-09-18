@@ -45,4 +45,14 @@ public class PaymentMethodServiceImpl extends PaymentMethodService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public int getNbPaymentMethod() {
+		return this.paymentMethodDAO.getNbPaymentMethod();
+	}
+
+	@Override
+	public List<PaymentMethod> findAll() {
+		return this.paymentMethodDAO.findAll();
+	}
 }

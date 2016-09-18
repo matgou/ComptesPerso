@@ -72,4 +72,10 @@ public class AccountController extends CrudController<Account> {
 	public List<Account> search(@RequestParam(value = "label", required = false) String searchLabel) {
 		return null;
 	}
+
+	@Override
+    @RequestMapping(value="/allAccounts", method = RequestMethod.GET)
+	public List<Account> getListOfAll() {
+		return this.accountService.findAll();
+	}
 }

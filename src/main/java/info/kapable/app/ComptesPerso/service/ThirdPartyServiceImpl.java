@@ -1,5 +1,6 @@
 package info.kapable.app.ComptesPerso.service;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,5 +47,15 @@ public class ThirdPartyServiceImpl extends ThirdPartyService {
 	public Page<ThirdParty> find(int pageSize, int pageNumber, Map<String, Object> criterias) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public int getNbThirdParty() {
+		return this.thirdPartyDAO.getNbThirdParty();
+	}
+
+	@Override
+	public List<ThirdParty> findAll() {
+		return this.thirdPartyDAO.findAll();
 	}
 }

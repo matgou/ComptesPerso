@@ -1,8 +1,11 @@
 package info.kapable.app.ComptesPerso.service;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.data.domain.Page;
+
+import info.kapable.app.ComptesPerso.pojo.Category;
 
 public interface BasicService<T> {
 
@@ -41,4 +44,10 @@ public interface BasicService<T> {
 	 */
 	// public abstract 
 	Page<T> find(int pageSize, int pageNumber, Map<String, Object> criterias);
+	
+	/**
+	 * Return all objects
+	 * @return List<T>
+	 */
+	public abstract List<T> findAll();
 }

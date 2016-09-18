@@ -13,6 +13,13 @@ public abstract class CrudController<T> {
 	 */
 	public abstract Page<T> list(int pageNumber);
     
+	/**
+	 * Get all object from current context
+	 * 
+	 * @return
+	 */
+	public abstract List<T> getListOfAll();
+	
     /**
      * Return the object of given id
      * 

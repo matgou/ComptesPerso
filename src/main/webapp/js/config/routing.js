@@ -49,7 +49,7 @@ angular
 											.when(
 											'/paymentMethods',
 											{
-												controller : 'paymentMethodController',
+												controller : 'PaymentMethodController',
 												templateUrl : 'tmpl/paymentMethod/list.template.html',
 												activetab: 'paymentMethod'
 											}).otherwise('/');

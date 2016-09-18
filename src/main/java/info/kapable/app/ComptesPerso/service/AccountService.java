@@ -16,4 +16,6 @@ public abstract class AccountService implements BasicService<Account>{
 	public abstract double getRealBalance(Account a);
 
 	public abstract double getPointedBalance(Account a);
+
+	public abstract int getNbAccount();
 }

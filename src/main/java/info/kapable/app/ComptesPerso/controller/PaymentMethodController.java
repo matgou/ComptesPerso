@@ -59,4 +59,10 @@ public class PaymentMethodController extends CrudController<PaymentMethod> {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+    @RequestMapping(value="/allPaymentMethods", method = RequestMethod.GET)
+	public List<PaymentMethod> getListOfAll() {
+		return this.paymentMethodService.findAll();
+	}
 }

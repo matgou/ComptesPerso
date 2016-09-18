@@ -80,4 +80,10 @@ public class CategoryController extends CrudController<Category> {
 		return this.categoryService.getCategoriesWithNoParent();
 		
 	}
+
+	@Override
+    @RequestMapping(value="/allCategories", method = RequestMethod.GET)
+	public List<Category> getListOfAll() {
+		return this.categoryService.findAll();
+	}
 }

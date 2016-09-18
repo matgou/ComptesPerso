@@ -15,4 +15,7 @@ public interface AccountDAO extends JpaRepository<Account, Long> {
 	
 	@Query(value = "SELECT ( SELECT COALESCE(sum(o.credit),0) - COALESCE(sum(o.debit),0) FROM Operation o WHERE o.account=a AND o.pointedTransaction = true ) + a.intialValue FROM Account a WHERE a = :account")
 	public Double getPointedBalance(@Param("account") Account a);
+
+	@Query(value = "SELECT COUNT(*) FROM Account a")
+	public int getNbAccount();
 }

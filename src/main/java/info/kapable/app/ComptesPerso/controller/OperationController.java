@@ -57,6 +57,12 @@ public class OperationController extends CrudController<Operation> {
 	@Override
     @RequestMapping(method = RequestMethod.POST)
 	public Operation save(@RequestBody Operation o) {
+		if(o.getCredit() == null) {
+			o.setCredit(0.);
+		}
+		if(o.getDebit() == null) {
+			o.setDebit(0.);
+		}
 		return this.operationService.save(o);
 	}
 
@@ -77,6 +83,12 @@ public class OperationController extends CrudController<Operation> {
 		Map<String, Object> criterias = new HashMap<String, Object>();
 		criterias.put("label", searchLabel);
 		return this.operationService.find(1, 10, criterias).getContent();
+	}
+
+	@Override
+    @RequestMapping(value="/allOperations", method = RequestMethod.GET)
+	public List<Operation> getListOfAll() {
+		return this.operationService.findAll();
 	}
 
 }
