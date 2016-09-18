@@ -10,9 +10,13 @@
 
 	<context:component-scan base-package="info.kapable.app.ComptesPerso" />
 	<jpa:repositories base-package="info.kapable.app.ComptesPerso.dao" />
-
+	
 	<mvc:annotation-driven />
 	<mvc:default-servlet-handler />
+
+	<bean id="methodHandlerExceptionResolver" class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerExceptionResolver">
+    </bean>
+
 	<tx:annotation-driven transaction-manager="transactionManager" />
 	<context:property-placeholder 
         location="${ext.properties.dir:classpath:}/database.properties" />
@@ -53,7 +57,7 @@
 		</property> -->
 		<property name="jpaVendorAdapter">
 			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-				<property name="showSql" value="false" />
+				<property name="showSql" value="true" />
 				<property name="generateDdl" value="true" />
 				<property name="databasePlatform" value="${db_jdbc_dialect}" />
 			</bean>
